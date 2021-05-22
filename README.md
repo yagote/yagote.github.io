@@ -1,0 +1,1 @@
+# yagote.github.io  ok
