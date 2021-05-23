@@ -287,7 +287,7 @@ function loadIssueData(appId, appKey, userName, userRepo, isValine) {
                         verify: false,
                         appId: appId,
                         appKey: appKey,
-                        placeholder: '有什么想法？写一下？',
+                        placeholder: '留下您的高见！',
                         avatar: 'mp',
                         avatarForce: false,
                         meta: ["nick", "mail", "link"],
@@ -334,7 +334,7 @@ function loadIssueData(appId, appKey, userName, userRepo, isValine) {
             }
         }
         // console.clear();
-        console.log("~~~~欢迎来到本站！有时间多来看看哦~https://yablogs.cn/")
+        console.log("~~~~欢迎光临！记得有时间多来看看哦，https://removeif.github.io/ ~~~~")
     }
         ,
         500
