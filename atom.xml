@@ -6,7 +6,7 @@
   <link href="http://yablogs.cn/atom.xml" rel="self"/>
   
   <link href="http://yablogs.cn/"/>
-  <updated>2021-07-25T09:23:03.848Z</updated>
+  <updated>2021-05-28T05:09:18.023Z</updated>
   <id>http://yablogs.cn/</id>
   
   <author>
@@ -15,92 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>强制删除电脑文件</title>
-    <link href="http://yablogs.cn/2021/07/25/%E5%BC%BA%E5%88%B6%E5%88%A0%E9%99%A4%E7%94%B5%E8%84%91%E6%96%87%E4%BB%B6/"/>
-    <id>http://yablogs.cn/2021/07/25/%E5%BC%BA%E5%88%B6%E5%88%A0%E9%99%A4%E7%94%B5%E8%84%91%E6%96%87%E4%BB%B6/</id>
-    <published>2021-07-25T09:03:37.000Z</published>
-    <updated>2021-07-25T09:23:03.848Z</updated>
-    
-    <content type="html"><![CDATA[<hr><span id="more"></span><p>​       有时候电脑需要删除文件时，总是有各种原因不能删除，就算关机重启也没有用。这可能是由于该文件里的某个文件已经打开但没有关闭，或者是操作的权限不足导致的。</p><p>解决方法：</p><blockquote><p>方法一：找到文件夹，关闭掉</p></blockquote><p>这个先找到<strong>任务管理器</strong>查看正在运行的软件，将相关软件关闭后，再次尝试删除即可</p><blockquote><p>方法二：强制删除</p></blockquote><p>如果方法一不奏效，那么进行方法二，这个是强制删除的，不管是其他软件或文件打开而导致删除不了，又或者是权限不足，用这个方法一般都是可以删除掉的。</p><figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DEL /F /A /Q \\?\%<span class="number">1</span></span><br><span class="line">RD /S /Q \\?\%<span class="number">1</span></span><br></pre></td></tr></table></figure><p>把上面的两行代码保存为.bat文件，然后把要删除的文件拖到这个.bat文件中即可</p><p>很方便，一下子就删掉了。</p>]]></content>
-    
-    
-    <summary type="html">&lt;hr&gt;</summary>
-    
-    
-    
-    <category term="其他" scheme="http://yablogs.cn/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-    <category term="其他" scheme="http://yablogs.cn/tags/%E5%85%B6%E4%BB%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git提交博客到github上报错Connection was reset, errno 10054</title>
-    <link href="http://yablogs.cn/2021/07/24/Git%E6%8F%90%E4%BA%A4%E5%8D%9A%E5%AE%A2%E5%88%B0github%E4%B8%8A%E6%8A%A5%E9%94%99Connection-was-reset-errno-10054/"/>
-    <id>http://yablogs.cn/2021/07/24/Git%E6%8F%90%E4%BA%A4%E5%8D%9A%E5%AE%A2%E5%88%B0github%E4%B8%8A%E6%8A%A5%E9%94%99Connection-was-reset-errno-10054/</id>
-    <published>2021-07-24T14:28:12.000Z</published>
-    <updated>2021-07-24T14:49:48.157Z</updated>
-    
-    <content type="html"><![CDATA[<hr><span id="more"></span><p>今天提交内容到博客上时，一直报错 有时是报错：<code>‘fatal: unable to access&#39;……&#39; Failed to connect to github.com port 443: Timed out’   </code>      有时是报错：<code>‘error: RPC failed; curl 28 OpenSSL SSL_read: Connection was reset, errno 10054’</code>最后是根据错误提示<code>‘Connection was reset, errno 10054’</code>来搜索解决方法<br>最终找到解决方法,在Git中关闭安全认证即可<br>在Git中进行代码操作</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.sslVerify &quot;false&quot;</span><br></pre></td></tr></table></figure><p>再接着就可以提交了</p>]]></content>
-    
-    
-    <summary type="html">&lt;hr&gt;</summary>
-    
-    
-    
-    <category term="Git" scheme="http://yablogs.cn/categories/Git/"/>
-    
-    <category term="博客" scheme="http://yablogs.cn/categories/Git/%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-    <category term="Git" scheme="http://yablogs.cn/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android路上的坑</title>
-    <link href="http://yablogs.cn/2021/07/19/Android%E8%B7%AF%E4%B8%8A%E7%9A%84%E5%9D%91/"/>
-    <id>http://yablogs.cn/2021/07/19/Android%E8%B7%AF%E4%B8%8A%E7%9A%84%E5%9D%91/</id>
-    <published>2021-07-19T12:48:39.000Z</published>
-    <updated>2021-07-24T14:47:56.054Z</updated>
-    
-    <content type="html"><![CDATA[<hr><span id="more"></span><ul><li><p>Android Studio更新后容易出现一些问题啊，特别是gradle 。更新后一直提示gradle扩展不能用，可是gradle扩展明明好好的。本来想卸载gradle后再重新安装一下，卸载掉gradle后，发现问题更大了，这Android Studio 干脆不能打开了，一顿操作猛如虎，最后百度了一下才解决了这个问题，还是的安装好gradle才可以打开。没有把错误截图下来，忘了具体的错误内容了。反正就感觉不太好下手弄</p></li><li><p>发现Android Studio中gradle的问题是真的多，是不是就搞出一个错误，大多都是和gradle相关。</p></li><li><p>打开Android studio导入项目还会提示failed at (这是导入的时间)，第一次上手，也不知道是什么原因，也没提示到底是什么错误，就在运行结果显示栏左边有failed at</p></li><li><p>创建一个空活动时，不能自动生成.java 文件和一个叫什么来着的文件。第一次创建空活动时就能自动生成这两个文件，之后忘了修改了什么就再也不能生成这两个文件了。好像是加载了 不同版本的gradle……忘了</p></li><li><p>好多坑，这才刚刚开始……</p></li></ul>]]></content>
-    
-    
-    <summary type="html">&lt;hr&gt;</summary>
-    
-    
-    
-    <category term="Android" scheme="http://yablogs.cn/categories/Android/"/>
-    
-    
-    <category term="Android studio" scheme="http://yablogs.cn/tags/Android-studio/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我曾七次鄙视我自己的灵魂</title>
-    <link href="http://yablogs.cn/2021/05/29/%E6%88%91%E6%9B%BE%E4%B8%83%E6%AC%A1%E9%84%99%E8%A7%86%E6%88%91%E8%87%AA%E5%B7%B1%E7%9A%84%E7%81%B5%E9%AD%82/"/>
-    <id>http://yablogs.cn/2021/05/29/%E6%88%91%E6%9B%BE%E4%B8%83%E6%AC%A1%E9%84%99%E8%A7%86%E6%88%91%E8%87%AA%E5%B7%B1%E7%9A%84%E7%81%B5%E9%AD%82/</id>
-    <published>2021-05-29T12:41:00.000Z</published>
-    <updated>2021-06-23T04:14:01.625Z</updated>
-    
-    <content type="html"><![CDATA[<hr><span id="more"></span><blockquote><ul><li><strong>第一次，当它本可进取时，却故作谦卑;</strong></li><li>第二次，当它在空虚时，用爱欲来填充；</li><li><strong>第三次，在困难和容易之间，它选择了容易；</strong></li><li>第四次，它犯了错，却借由别人也会犯错来宽慰自己；</li><li>第五次，它自由软弱，却把它认为是生命的坚韧；</li><li>第六次，当它鄙夷一张丑恶的嘴脸时，却不知那正是自己面具中的一副；</li><li><strong>第七次，它侧身于生活的污泥中，虽不甘心，却又畏首畏尾.</strong></li></ul></blockquote><blockquote><ul><li><strong>The first time when I saw her being meek that she might attain height.</strong></li><li>The second time when I saw her limping before the crippled.</li><li><strong>The third time when she was given to choose between the hard and the easy, and she chose the easy.</strong></li><li>The fourth time when she committed a wrong, and comforted herself that others also commit wrong.</li><li>The fifth time when she forbore for weakness, and attributed her patience to strength.</li><li>The sixth time when she despised the ugliness of a face, and knew not that it was one of her own masks.</li><li><strong>And the seventh time when she sang a song of praise, and deemed it a virtue.</strong></li></ul></blockquote><hr><hr><h3 id="纪伯伦《沙与沫》——我曾七次鄙视自己的灵魂"><a href="#纪伯伦《沙与沫》——我曾七次鄙视自己的灵魂" class="headerlink" title="纪伯伦《沙与沫》——我曾七次鄙视自己的灵魂"></a><strong><code>纪伯伦《沙与沫》——我曾七次鄙视自己的灵魂</code></strong></h3>]]></content>
-    
-    
-    <summary type="html">&lt;hr&gt;</summary>
-    
-    
-    
-    <category term="聊一下" scheme="http://yablogs.cn/categories/%E8%81%8A%E4%B8%80%E4%B8%8B/"/>
-    
-    
-    <category term="我想" scheme="http://yablogs.cn/tags/%E6%88%91%E6%83%B3/"/>
-    
-  </entry>
   
   <entry>
     <title>新格式的草稿</title>
@@ -151,9 +65,9 @@
     <link href="http://yablogs.cn/2021/05/27/%E6%97%B6%E9%97%B4%E8%83%8C%E7%9D%80%E6%88%91%E6%82%84%E6%82%84%E6%8D%8F%E7%A2%8E%E4%BA%86%E4%BB%8E%E5%89%8D/"/>
     <id>http://yablogs.cn/2021/05/27/%E6%97%B6%E9%97%B4%E8%83%8C%E7%9D%80%E6%88%91%E6%82%84%E6%82%84%E6%8D%8F%E7%A2%8E%E4%BA%86%E4%BB%8E%E5%89%8D/</id>
     <published>2021-05-27T09:47:20.000Z</published>
-    <updated>2021-05-29T08:10:36.074Z</updated>
+    <updated>2021-05-29T05:58:45.766Z</updated>
     
-    <content type="html"><![CDATA[<hr><span id="more"></span><p>未来在此刻</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;nihao,你好&quot;</span>)</span><br><span class="line"><span class="comment">#主要是为了测试，看看代码块是否变为了黑色</span></span><br></pre></td></tr></table></figure><p>1<br>2<br>3<br>4<br>5</p>]]></content>
+    <content type="html"><![CDATA[<hr><span id="more"></span><p>未来在此刻</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;nihao,你好&quot;</span>)</span><br><span class="line"><span class="comment">#主要是为了测试，看看代码块是否变为了黑色</span></span><br></pre></td></tr></table></figure>]]></content>
     
     
     <summary type="html">&lt;hr&gt;</summary>
