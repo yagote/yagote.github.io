@@ -6,7 +6,7 @@
   <link href="http://yablogs.cn/atom.xml" rel="self"/>
   
   <link href="http://yablogs.cn/"/>
-  <updated>2021-06-23T04:14:01.625Z</updated>
+  <updated>2021-07-19T14:13:34.043Z</updated>
   <id>http://yablogs.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android路上的坑</title>
+    <link href="http://yablogs.cn/2021/07/19/Android%E8%B7%AF%E4%B8%8A%E7%9A%84%E5%9D%91/"/>
+    <id>http://yablogs.cn/2021/07/19/Android%E8%B7%AF%E4%B8%8A%E7%9A%84%E5%9D%91/</id>
+    <published>2021-07-19T12:48:39.000Z</published>
+    <updated>2021-07-19T14:13:34.043Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><ul><li>Android Studio更新后容易出现一些问题啊，特别是gradle 。更新后一直提示gradle扩展不能用，可是gradle扩展明明好好的。本来想卸载gradle后再重新安装一下，卸载掉gradle后，发现问题更大了，这Android Studio 干脆不能打开了，一顿操作猛如虎，最后百度了一下才解决了这个问题，还是的安装好gradle才可以打开。</li></ul></blockquote><blockquote><ul><li>发现Android Studio中gradle的问题是真的多，是不是就搞出一个错误，大多都是和gradle相关。</li><li>打开Android studio导入项目还会提示failed at (时间)</li><li>创建一个空活动时，不能自动生成.java 文件</li><li>好多坑，这才刚刚开始</li></ul></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Android Studio更新后容易出现一些问题啊，特别是gradle 。更新后一直提示gradle扩展不能用，可是gradle扩展明明好好的。本来想卸载gradle后再重新安装一下，卸载掉gradle后，发现问题更大了，这Andro</summary>
+      
+    
+    
+    
+    <category term="Android" scheme="http://yablogs.cn/categories/Android/"/>
+    
+    
+    <category term="Android studio" scheme="http://yablogs.cn/tags/Android-studio/"/>
+    
+  </entry>
   
   <entry>
     <title>我曾七次鄙视我自己的灵魂</title>
