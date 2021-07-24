@@ -6,7 +6,7 @@
   <link href="http://yablogs.cn/atom.xml" rel="self"/>
   
   <link href="http://yablogs.cn/"/>
-  <updated>2021-07-19T14:13:34.043Z</updated>
+  <updated>2021-07-24T14:49:48.157Z</updated>
   <id>http://yablogs.cn/</id>
   
   <author>
@@ -17,21 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Git提交博客到github上报错Connection was reset, errno 10054</title>
+    <link href="http://yablogs.cn/2021/07/24/Git%E6%8F%90%E4%BA%A4%E5%8D%9A%E5%AE%A2%E5%88%B0github%E4%B8%8A%E6%8A%A5%E9%94%99Connection-was-reset-errno-10054/"/>
+    <id>http://yablogs.cn/2021/07/24/Git%E6%8F%90%E4%BA%A4%E5%8D%9A%E5%AE%A2%E5%88%B0github%E4%B8%8A%E6%8A%A5%E9%94%99Connection-was-reset-errno-10054/</id>
+    <published>2021-07-24T14:28:12.000Z</published>
+    <updated>2021-07-24T14:49:48.157Z</updated>
+    
+    <content type="html"><![CDATA[<hr><span id="more"></span><p>今天提交内容到博客上时，一直报错 有时是报错：<code>‘fatal: unable to access&#39;……&#39; Failed to connect to github.com port 443: Timed out’   </code>      有时是报错：<code>‘error: RPC failed; curl 28 OpenSSL SSL_read: Connection was reset, errno 10054’</code>最后是根据错误提示<code>‘Connection was reset, errno 10054’</code>来搜索解决方法<br>最终找到解决方法,在Git中关闭安全认证即可<br>在Git中进行代码操作</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.sslVerify &quot;false&quot;</span><br></pre></td></tr></table></figure><p>再接着就可以提交了</p>]]></content>
+    
+    
+    <summary type="html">&lt;hr&gt;</summary>
+    
+    
+    
+    <category term="Git" scheme="http://yablogs.cn/categories/Git/"/>
+    
+    <category term="博客" scheme="http://yablogs.cn/categories/Git/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+    <category term="Git" scheme="http://yablogs.cn/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android路上的坑</title>
     <link href="http://yablogs.cn/2021/07/19/Android%E8%B7%AF%E4%B8%8A%E7%9A%84%E5%9D%91/"/>
     <id>http://yablogs.cn/2021/07/19/Android%E8%B7%AF%E4%B8%8A%E7%9A%84%E5%9D%91/</id>
     <published>2021-07-19T12:48:39.000Z</published>
-    <updated>2021-07-19T14:13:34.043Z</updated>
+    <updated>2021-07-24T14:47:56.054Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><ul><li>Android Studio更新后容易出现一些问题啊，特别是gradle 。更新后一直提示gradle扩展不能用，可是gradle扩展明明好好的。本来想卸载gradle后再重新安装一下，卸载掉gradle后，发现问题更大了，这Android Studio 干脆不能打开了，一顿操作猛如虎，最后百度了一下才解决了这个问题，还是的安装好gradle才可以打开。</li></ul></blockquote><blockquote><ul><li>发现Android Studio中gradle的问题是真的多，是不是就搞出一个错误，大多都是和gradle相关。</li><li>打开Android studio导入项目还会提示failed at (时间)</li><li>创建一个空活动时，不能自动生成.java 文件</li><li>好多坑，这才刚刚开始</li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<hr><span id="more"></span><ul><li><p>Android Studio更新后容易出现一些问题啊，特别是gradle 。更新后一直提示gradle扩展不能用，可是gradle扩展明明好好的。本来想卸载gradle后再重新安装一下，卸载掉gradle后，发现问题更大了，这Android Studio 干脆不能打开了，一顿操作猛如虎，最后百度了一下才解决了这个问题，还是的安装好gradle才可以打开。没有把错误截图下来，忘了具体的错误内容了。反正就感觉不太好下手弄</p></li><li><p>发现Android Studio中gradle的问题是真的多，是不是就搞出一个错误，大多都是和gradle相关。</p></li><li><p>打开Android studio导入项目还会提示failed at (这是导入的时间)，第一次上手，也不知道是什么原因，也没提示到底是什么错误，就在运行结果显示栏左边有failed at</p></li><li><p>创建一个空活动时，不能自动生成.java 文件和一个叫什么来着的文件。第一次创建空活动时就能自动生成这两个文件，之后忘了修改了什么就再也不能生成这两个文件了。好像是加载了 不同版本的gradle……忘了</p></li><li><p>好多坑，这才刚刚开始……</p></li></ul>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;Android Studio更新后容易出现一些问题啊，特别是gradle 。更新后一直提示gradle扩展不能用，可是gradle扩展明明好好的。本来想卸载gradle后再重新安装一下，卸载掉gradle后，发现问题更大了，这Andro</summary>
-      
+    <summary type="html">&lt;hr&gt;</summary>
     
     
     
