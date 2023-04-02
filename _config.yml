@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: YaBlogs
-subtitle: Hello,My Buddies! Welcome to My Website!
-description: ''
+title: YaBlogs虾壳
+subtitle: --时间背着我悄悄捏碎了从前。
+description: Blog 博客 网站搭建 IT技术 分享 教程 Hexo
 keywords:
-author: Yagote
-language: en
+author: yagote
+language: zh-CN
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: http://yablogs.cn
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -29,6 +29,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+    - 404.html  #自己加的404页面
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -97,7 +98,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: oranges
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
