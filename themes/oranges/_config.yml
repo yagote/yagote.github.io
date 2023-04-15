@@ -91,12 +91,12 @@ navbar:
     key: archives
   -
     name: 分类
-    enable: false
+    enable: true
     path: /categories/
     key: categories
   -
     name: 标签
-    enable: true
+    enable: false
     path: /tags/
     key: tags
   -
