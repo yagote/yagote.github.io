@@ -224,6 +224,60 @@
 <p><code>map.entrySet()</code>是一个<code>HashMap</code>对象的方法，它返回一个包含<code>map</code>中所有键值对的<code>Set</code>集合，每个元素都是一个<code>Map.Entry</code>对象，该对象表示<code>map</code>中的一个键值对。</p>
 <p>具体来说，<code>map.entrySet()</code>的作用是返回一个包含<code>map</code>中所有键值对的<code>Set</code>集合，每个元素都是一个<code>Map.Entry</code>对象。<code>Map.Entry</code>是一个接口，用于表示<code>Map</code>中的一个键值对。它包含两个方法<code>getKey()</code>和<code>getValue()</code>，分别用于获取键和值。</p>
 <p>因此，<code>map.entrySet()</code>的返回值是一个<code>Set&lt;Map.Entry&lt;K,V&gt;&gt;</code>类型的集合，其中<code>K</code>表示键的类型，<code>V</code>表示值的类型，表示<code>map</code>中的所有键值对。这样可以方便地遍历<code>map</code>中的所有键值对，进行相关操作。</p>
+<h3 id="二、两数之和"><a href="#二、两数之和" class="headerlink" title="二、两数之和"></a>二、两数之和</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(target - nums[i])) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;map.get(target-nums[i]),i&#125;;	<span class="comment">//创建数组[target-nums[i]值对应的位置,i]</span></span><br><span class="line">            &#125;</span><br><span class="line">            map.put(nums[i], i);	<span class="comment">//值和对应的位置</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;No two sum solution&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       </div>
       
@@ -268,7 +322,7 @@
     <div class="title">目录</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81136-%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97"><span class="toc-text">一、136. 只出现一次的数字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%EF%BC%9A%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="toc-text">解法一：位运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C%EF%BC%9AHashMap"><span class="toc-text">解法二：HashMap</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81136-%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97"><span class="toc-text">一、136. 只出现一次的数字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%EF%BC%9A%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="toc-text">解法一：位运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C%EF%BC%9AHashMap"><span class="toc-text">解法二：HashMap</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-text">二、两数之和</span></a></li></ol>
       
     </div>
   </div>
