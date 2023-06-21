@@ -11,7 +11,7 @@
   
   <title>
     
-      archive_a: 2023 
+      新文件的博客 
       
       
       |
@@ -108,165 +108,101 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2023</span>
-          </h2>
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">新文件的博客</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2023-06-21 19:48:10
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2023/06/21/%E6%96%B0%E5%8D%9A%E5%AE%A23/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2023-06-21 19:48:10
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
         </div>
       
-      <div class="post-item" title="新文件的博客">
-        <div class="time-m-d">06-21</div>
-        <div class="title">
-          <a href="/2023/06/21/%E6%96%B0%E6%96%87%E4%BB%B6%E7%9A%84%E5%8D%9A%E5%AE%A2/">
-            <span>新文件的博客</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="新博客3">
-        <div class="time-m-d">06-21</div>
-        <div class="title">
-          <a href="/2023/06/21/%E6%96%B0%E5%8D%9A%E5%AE%A23/">
-            <span>新博客3</span>
-          </a>
-        </div>
-      </div>
+
     
-      <div class="post-item" title="新博客2">
-        <div class="time-m-d">06-21</div>
-        <div class="title">
-          <a href="/2023/06/21/%E6%96%B0%E5%8D%9A%E5%AE%A22/">
-            <span>新博客2</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="新博客">
-        <div class="time-m-d">06-21</div>
-        <div class="title">
-          <a href="/2023/06/21/%E6%96%B0%E5%8D%9A%E5%AE%A2/">
-            <span>新博客</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="好的">
-        <div class="time-m-d">06-21</div>
-        <div class="title">
-          <a href="/2023/06/21/%E5%A5%BD%E7%9A%84/">
-            <span>好的</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="HTML笔记">
-        <div class="time-m-d">05-01</div>
-        <div class="title">
-          <a href="/2023/05/01/HTML%E7%AC%94%E8%AE%B0/">
-            <span>HTML笔记</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="算法练习-哈希表">
-        <div class="time-m-d">04-15</div>
-        <div class="title">
-          <a href="/2023/04/15/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0-%E5%93%88%E5%B8%8C%E8%A1%A8/">
-            <span>算法练习-哈希表</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="博客技巧">
-        <div class="time-m-d">04-09</div>
-        <div class="title">
-          <a href="/2023/04/09/%E5%8D%9A%E5%AE%A2%E6%8A%80%E5%B7%A7/">
-            <span>博客技巧</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="vue2和vue3的区别">
-        <div class="time-m-d">04-09</div>
-        <div class="title">
-          <a href="/2023/04/09/vue2%E5%92%8Cvue3%E7%9A%84%E5%8C%BA%E5%88%AB/">
-            <span>vue2和vue3的区别</span>
-          </a>
-        </div>
-      </div>
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2021</span>
-          </h2>
-        </div>
-      
-      <div class="post-item" title="年轻总是一时兴起，再不了了之">
-        <div class="time-m-d">05-25</div>
-        <div class="title">
-          <a href="/2021/05/25/%E5%B9%B4%E8%BD%BB%E6%80%BB%E6%98%AF%E4%B8%80%E6%97%B6%E5%85%B4%E8%B5%B7%EF%BC%8C%E5%86%8D%E4%B8%8D%E4%BA%86%E4%BA%86%E4%B9%8B/">
-            <span>年轻总是一时兴起，再不了了之</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="有分类吗">
-        <div class="time-m-d">05-24</div>
-        <div class="title">
-          <a href="/2021/05/24/%E6%9C%89%E5%88%86%E7%B1%BB%E5%90%97/">
-            <span>有分类吗</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="新主题的第一个博客">
-        <div class="time-m-d">05-24</div>
-        <div class="title">
-          <a href="/2021/05/24/%E6%96%B0%E4%B8%BB%E9%A2%98%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/">
-            <span>新主题的第一个博客</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="怎样添加图片到博客上？">
-        <div class="time-m-d">05-23</div>
-        <div class="title">
-          <a href="/2021/05/23/%E6%B7%BB%E5%8A%A0%E4%BA%86%E5%9B%BE%E7%89%87%E7%9A%84%E5%8D%9A%E5%AE%A2/">
-            <span>怎样添加图片到博客上？</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="这个可以吗">
-        <div class="time-m-d">05-23</div>
-        <div class="title">
-          <a href="/2021/05/23/%E8%BF%99%E4%B8%AA%E5%8F%AF%E4%BB%A5%E5%90%97/">
-            <span>这个可以吗</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Blog">
-        <div class="time-m-d">05-23</div>
-        <div class="title">
-          <a href="/2021/05/23/My-Blog/">
-            <span>Blog</span>
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
       </div>
     
   </div>
-</div>
+
 
         
 <div class="footer">
@@ -534,6 +470,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E6%96%B0%E6%96%87%E4%BB%B6%E7%9A%84%E5%8D%9A%E5%AE%A2 + '&url=' + http%3A%2F%2Fyablogs.cn%2F2023%2F06%2F21%2F%25E6%2596%25B0%25E6%2596%2587%25E4%25BB%25B6%25E7%259A%2584%25E5%258D%259A%25E5%25AE%25A2%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://yablogs.cn/2023/06/21/%E6%96%B0%E6%96%87%E4%BB%B6%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>
