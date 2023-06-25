@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>算法练习-哈希表</title>
+<meta name="keywords" content="算法练习-哈希表, 虾壳">
+<meta name="description" content="1、只出现一次的数字https://leetcode.cn/problems/single-number/description/?favorite=2cktkvj
+解法一：位运算
+123456789class Solution &#123">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="算法练习-哈希表">
+<meta property="og:description" content="1、只出现一次的数字https://leetcode.cn/problems/single-number/description/?favorite=2cktkvj
+解法一：位运算
+123456789class Solution &#123">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <link rel="stylesheet" href="/style/simple-lightbox.min.css"><meta name="generator" content="Hexo 5.4.0"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://yagote.github.io">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://yagote.github.io">
+        <h1 class="site-title">虾壳</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags/" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">算法练习-哈希表</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2023-04-15</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/Java/">
+              Java
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/HashMap/">
+              HashMap
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <h3 id="1、只出现一次的数字"><a href="#1、只出现一次的数字" class="headerlink" title="1、只出现一次的数字"></a>1、只出现一次的数字</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/single-number/description/?favorite=2cktkvj">https://leetcode.cn/problems/single-number/description/?favorite=2cktkvj</a></p>
+<h4 id="解法一：位运算"><a href="#解法一：位运算" class="headerlink" title="解法一：位运算"></a>解法一：位运算</h4><p><img src="https://s1.ax1x.com/2023/04/15/p99P4un.png" alt="p99P4un.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res =nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            res=res^nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="解法二：HashMap"><a href="#解法二：HashMap" class="headerlink" title="解法二：HashMap"></a>解法二：HashMap</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 如果数组长度为1或2，则返回数组的第一个元素</span></span><br><span class="line">        <span class="keyword">if</span>(nums.length == <span class="number">1</span> || nums.length == <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 创建一个哈希表，用于统计每个数字出现的次数</span></span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;(<span class="number">12</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            <span class="comment">// 将每个数字作为键，其出现次数作为值，加入哈希表中</span></span><br><span class="line">            map.put(num,map.getOrDefault(num,<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 获取哈希表中所有的键值对</span></span><br><span class="line">        Set&lt;Map.Entry&lt;Integer,Integer&gt;&gt; entrySet = map.entrySet();</span><br><span class="line">        <span class="keyword">int</span> singleNumber = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 遍历哈希表中的键值对</span></span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;Integer,Integer&gt; entry: entrySet)&#123;</span><br><span class="line">            <span class="comment">// 如果某个数字只出现了一次，则将其作为单独的数字</span></span><br><span class="line">            <span class="keyword">if</span>(entry.getValue() == <span class="number">1</span>)&#123;</span><br><span class="line">                singleNumber =  entry.getKey();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 返回单独的数字</span></span><br><span class="line">        <span class="keyword">return</span> singleNumber;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>（1）HashMap&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;(12);</strong></p>
+<p>这行代码创建了一个HashMap对象，它用于存储整数类型的键值对，其中键为数组中的数字，值为该数字出现的次数。<code>new HashMap&lt;&gt;(12)</code>表示<strong>创建一个初始容量为12</strong>的HashMap实例，这是为了避免在插入元素时需要不断地扩容，从而提高代码的执行效率。实际上，这里的容量12只是一个初始值，HashMap会根据需要自动调整容量。这里的初始容量如果设置得太小，可能会导致哈希表的负载因子过高，从而增加哈希碰撞的概率，降低代码的执行效率。因此，选择合适的初始容量是一个需要考虑的问题。</p>
+<p><strong>（2）怎样选择合适的初始容量</strong></p>
+<p>选择合适的初始容量需要考虑两个因素：<strong>哈希表中元素的数量和负载因子</strong>。</p>
+<p>哈希表的负载因子是指哈希表中元素的数量与哈希表大小的比值。<strong>负载因子越大，哈希表中元素的分布就越密集，哈希碰撞的概率也就越高。</strong>因此，为了避免哈希碰撞，通常情况下<strong>负载因子的取值范围在0.5到0.75之间</strong>。</p>
+<p>对于初始容量的选择，可以根据哈希表中元素的数量和负载因子来计算得出。通常情况下，可以选择将初始容量设置为预计存储元素数量除以负载因子，然后向上取整。例如，如果预计存储100个元素，且负载因子为0.75，则初始容量应该为(100/0.75)=133.33，向上取整后为134。</p>
+<p><strong>（3）map.put(num,map.getOrDefault(num,0)+1);</strong></p>
+<p>这行代码的作用是将数组<code>nums</code>中的每个数字作为键，将该数字出现的次数作为值，存储到<code>HashMap</code>对象<code>map</code>中。</p>
+<ul>
+<li>首先，使用<code>num</code>作为键，在<code>map</code>中查找对应的值。</li>
+<li>如果<code>num</code>不存在于<code>map</code>中，则<code>map.getOrDefault(num,0)</code>会返回0，表示该数字还没有出现过。</li>
+<li>如果<code>num</code>已经存在于<code>map</code>中，则<code>map.getOrDefault(num,0)</code>会返回该数字在<code>map</code>中对应的值，也就是该数字已经出现的次数。</li>
+<li>在上述基础上，将该数字出现的次数加1，然后将其作为该数字在<code>map</code>中对应的新值，使用<code>map.put(num,newValue)</code>将其存储到<code>map</code>中。</li>
+</ul>
+<p><strong>（4）map.getOrDefault(num,0)</strong></p>
+<p><code>map.getOrDefault(num, 0)</code>是一个<code>HashMap</code>对象的方法，用于获取指定键对应的值，如果该键不存在，则返回一个默认值。</p>
+<ul>
+<li>首先，使用<code>num</code>作为键，在<code>map</code>中查找对应的值。</li>
+<li>如果<code>num</code>存在于<code>map</code>中，则返回该键对应的值。</li>
+<li>如果<code>num</code>不存在于<code>map</code>中，则返回指定的默认值<code>0</code>。</li>
+</ul>
+<p><strong>（5）map.getOrDefault(）的两个参数是什么意思</strong></p>
+<p><code>map.getOrDefault()</code>方法接受两个参数，第一个参数表示要获取的键，第二个参数表示当该键不存在时的默认值。</p>
+<ul>
+<li>首先，使用<code>num</code>作为键，在<code>map</code>中查找对应的值。</li>
+<li>如果<code>num</code>存在于<code>map</code>中，则返回该键对应的值。</li>
+<li>如果<code>num</code>不存在于<code>map</code>中，则返回指定的默认值<code>0</code>。</li>
+</ul>
+<p>这个方法的主要作用是避免在获取值时出现<code>NullPointerException</code>异常，同时也可以简化代码的编写，避免了使用<code>if-else</code>语句来判断键是否存在的过程。</p>
+<p><strong>（6）Set&lt;Map.Entry&lt;Integer,Integer&gt;&gt; entrySet = map.entrySet();</strong></p>
+<p>这行代码的作用是将<code>HashMap</code>对象<code>map</code>中的键值对转换为一个<code>Set</code>集合，其中每个元素都是一个<code>Map.Entry</code>对象，该对象表示<code>map</code>中的一个键值对。</p>
+<p><code>map.entrySet()</code>方法返回一个包含<code>map</code>中所有键值对的<code>Set</code>集合，每个元素都是一个<code>Map.Entry</code>对象。<code>Map.Entry</code>是一个接口，用于表示<code>Map</code>中的一个键值对。它包含两个方法<code>getKey()</code>和<code>getValue()</code>，分别用于获取键和值。因此，<code>Set&lt;Map.Entry&lt;Integer,Integer&gt;&gt; entrySet = map.entrySet()</code>的作用是将<code>map</code>中的所有键值对转换为一个<code>Set</code>集合，其中每个元素都是一个<code>Map.Entry&lt;Integer,Integer&gt;</code>类型的对象，表示<code>map</code>中的一个键值对。这样可以方便地遍历<code>map</code>中的所有键值对，进行相关操作。</p>
+<h3 id="2、两数之和"><a href="#2、两数之和" class="headerlink" title="2、两数之和"></a>2、两数之和</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/description/">https://leetcode.cn/problems/two-sum/description/</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(target - nums[i])) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;map.get(target-nums[i]),i&#125;;	<span class="comment">//创建数组[target-nums[i]值对应的位置,i]</span></span><br><span class="line">            &#125;</span><br><span class="line">            map.put(nums[i], i);	<span class="comment">//值和对应的位置</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;No two sum solution&quot;</span>);	<span class="comment">//或者直接return null;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>map.containsKey()</strong></p>
+<p><strong>Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();这里的Integer可以写为int吗</strong></p>
+<p>不可以。在Java中，泛型类型参数只能是对象类型，而不能是基本数据类型。因此，你必须使用包装类型 Integer 而不能使用基本数据类型 int。当然，因为自动装箱和拆箱的存在，你可以在使用 Integer 类型的时候直接传入 int 类型的值，Java 会自动将其转换为 Integer 类型。但是在使用泛型时，你必须使用对象类型。</p>
+<h3 id="3、快乐数"><a href="#3、快乐数" class="headerlink" title="3、快乐数"></a>3、快乐数</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/happy-number/description/">https://leetcode.cn/problems/happy-number/description/</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">      <span class="comment">// 创建一个哈希表用于记录出现过的数字</span></span><br><span class="line">    Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">    <span class="comment">// 当数字不等于 1 时，继续执行替换操作</span></span><br><span class="line">    <span class="keyword">while</span> (n != <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 计算当前数字的每个位置上的数字的平方和</span></span><br><span class="line">        <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> digit = n % <span class="number">10</span>;</span><br><span class="line">            sum += digit * digit;</span><br><span class="line">            n /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果平方和已经出现过，则说明出现了循环，返回 false</span></span><br><span class="line">        <span class="keyword">if</span> (set.contains(sum)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 将平方和加入哈希表中</span></span><br><span class="line">        set.add(sum);</span><br><span class="line">        <span class="comment">// 更新数字为平方和，继续执行替换操作</span></span><br><span class="line">        n = sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果最终数字变为 1，则返回 true</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>set.contains(sum)</strong><br>Set<Integer> set = new HashSet&lt;&gt;();和HashSet<Integer> set = new HashSet&lt;&gt;();一样，看个人的编码习惯。</p>
+<p>这个求每位的平方和用得很好</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">int</span> digit = n % <span class="number">10</span>;</span><br><span class="line">    sum += digit * digit;</span><br><span class="line">    n /= <span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、找不同"><a href="#4、找不同" class="headerlink" title="4、找不同"></a>4、找不同</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">char</span> <span class="title">findTheDifference</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建一个新的列表，用来存储字符串t中的所有字符</span></span><br><span class="line">        List&lt;Character&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;t.length();i++)&#123;</span><br><span class="line">            list.add(t.charAt(i));	<span class="comment">//charAt() 获取字符串中指定位置的字符</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 当列表中只剩下一个元素时，那么这个元素就是在t中被添加的字符</span></span><br><span class="line">        <span class="keyword">while</span>(list.size()!=<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="comment">// 遍历字符串s中的每个字符</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</span><br><span class="line">                <span class="comment">// 遍历列表中的每个字符</span></span><br><span class="line">                <span class="keyword">for</span> (Character character : list) &#123;</span><br><span class="line">                    <span class="comment">// 如果列表中的字符与字符串s中的字符相等</span></span><br><span class="line">                    <span class="keyword">if</span> (character.equals(s.charAt(i)))&#123;</span><br><span class="line">                        <span class="comment">// 那么就将这个字符从列表中移除，并跳出内层循环</span></span><br><span class="line">                        list.remove(character);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 列表中剩下的唯一元素就是在t中被添加的字符</span></span><br><span class="line">        <span class="keyword">return</span> list.get(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码的思路是先将字符串 t 中的所有字符存储到一个列表中，然后遍历字符串 s 中的每个字符，在列表中查找是否存在相同的字符，如果存在就将其从列表中移除。最终，列表中剩下的唯一元素就是在字符串 t 中被添加的字符。</p>
+<h3 id="5、解密消息"><a href="#5、解密消息" class="headerlink" title="5、解密消息"></a>5、解密消息</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/decode-the-message/description/">https://leetcode.cn/problems/decode-the-message/description/</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">decodeMessage</span><span class="params">(String key, String message)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">char</span>[] k = key.replaceAll(<span class="string">&quot; &quot;</span>, <span class="string">&quot;&quot;</span>).toCharArray(); <span class="comment">// 去掉字符中的所有空格,转为字符数组</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// key作为键，26个字母作为值，使用HashMap存储</span></span><br><span class="line">        Map&lt;Character, Character&gt; hash = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">char</span> c = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!hash.containsKey(k[i])) &#123;</span><br><span class="line">                hash.put(k[i], c);</span><br><span class="line">                c++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历message替换为键对应的值</span></span><br><span class="line">        <span class="keyword">char</span>[] m = message.toCharArray();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (m[j] != <span class="string">&#x27; &#x27;</span>) &#123;</span><br><span class="line">                m[j] = hash.get(m[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> String.valueOf(m);   <span class="comment">//valueOf(char[]) 将字符数组转换为字符串</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6、宝石与石头"><a href="#6、宝石与石头" class="headerlink" title="6、宝石与石头"></a>6、宝石与石头</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/jewels-and-stones/description/">https://leetcode.cn/problems/jewels-and-stones/description/</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">numJewelsInStones</span><span class="params">(String jewels, String stones)</span> </span>&#123;</span><br><span class="line">        Map&lt;Character,Integer&gt; hash = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;stones.length();i++)&#123;<span class="comment">//统计字符串stones中每个字符出现的次数</span></span><br><span class="line">            hash.put(stones.charAt(i),hash.getOrDefault(stones.charAt(i), <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>;k&lt;jewels.length();k++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(hash.containsKey(jewels.charAt(k)))&#123;</span><br><span class="line">               count +=hash.get(jewels.charAt(k));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>**hash.put(stones.charAt(i),hash.getOrDefault(stones.charAt(i), 0) + 1);**这个代码中的这个方法getOrDefault(stones.charAt(i), 0)表示获取键stones.charAt(i)对应的值，如果键不存在则设置值为0，加1则计算出字符stones.charAt(i)出现的次数。</p>
+<h3 id="7、判断句子是否为全字母句"><a href="#7、判断句子是否为全字母句" class="headerlink" title="7、判断句子是否为全字母句"></a>7、判断句子是否为全字母句</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/check-if-the-sentence-is-pangram/description/">https://leetcode.cn/problems/check-if-the-sentence-is-pangram/description/</a></p>
+<p><strong>使用HashMap</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkIfPangram</span><span class="params">(String sentence)</span> </span>&#123;</span><br><span class="line">        Map&lt;Character,Integer&gt; hash = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sentence.length(); i++) &#123;</span><br><span class="line">            hash.put(sentence.charAt(i),i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">char</span> c = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">while</span> (c&lt;=<span class="string">&#x27;z&#x27;</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!hash.containsKey(c))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            c++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用HashSet</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkIfPangram</span><span class="params">(String sentence)</span> </span>&#123;</span><br><span class="line">      HashSet&lt;Character&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sentence.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">char</span> c = sentence.charAt(i);</span><br><span class="line">            set.add(c);	<span class="comment">//存储的值满足唯一性，符合集合的特性</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> set.size() == <span class="number">26</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>HashMap是键值对，而HashSet只存储键。</p>
+<h3 id="8、第一个出现两次的字母"><a href="#8、第一个出现两次的字母" class="headerlink" title="8、第一个出现两次的字母"></a>8、第一个出现两次的字母</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/first-letter-to-appear-twice/description/">https://leetcode.cn/problems/first-letter-to-appear-twice/description/</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">char</span> <span class="title">repeatedCharacter</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        Map&lt;Character,Integer&gt; hash = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">char</span> c = <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            hash.put(s.charAt(i),hash.getOrDefault(s.charAt(i),<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(hash.get(s.charAt(i))==<span class="number">2</span>)&#123;</span><br><span class="line">                c = s.charAt(i);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="keyword">return</span> c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="9、好数对的数目"><a href="#9、好数对的数目" class="headerlink" title="9、好数对的数目"></a>9、好数对的数目</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-good-pairs/description/">https://leetcode.cn/problems/number-of-good-pairs/description/</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIdenticalPairs</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer,Integer&gt; hash = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            hash.put(nums[i],hash.getOrDefault(nums[i],<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Set&lt;Map.Entry&lt;Integer,Integer&gt;&gt; entry = hash.entrySet();    <span class="comment">//将hash中的键值对转为集合元素</span></span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;Integer,Integer&gt; e: entry)&#123;   <span class="comment">//遍历哈希表</span></span><br><span class="line">            <span class="keyword">if</span>(e.getValue()&gt;<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = e.getValue()-<span class="number">1</span>; i &gt;=<span class="number">1</span> ; i--) &#123;</span><br><span class="line">                    count += i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>Set&lt;Map.Entry&lt;Integer,Integer&gt;&gt; entry = hash.entrySet();</strong> </p>
+<p>这行代码的作用是将<code>HashMap</code>对象hash转换为一个<code>Set</code>集合，其中每个元素都是一个<code>Map.Entry</code>对象，该对象为一个键值对。</p>
+<p><code>hash.entrySet()</code>方法返回一个包含<code>hash</code>中所有键值对的<code>Set</code>集合。<code>Map.Entry</code>是一个接口，用于表示一个键值对，它包含两个方法<code>getKey()</code>和<code>getValue()</code>，分别用于获取键和值。</p>
+
+        </div>
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#1%E3%80%81%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97"><span class="top-box-text">1、只出现一次的数字</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#2%E3%80%81%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="top-box-text">2、两数之和</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#3%E3%80%81%E5%BF%AB%E4%B9%90%E6%95%B0"><span class="top-box-text">3、快乐数</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#4%E3%80%81%E6%89%BE%E4%B8%8D%E5%90%8C"><span class="top-box-text">4、找不同</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#5%E3%80%81%E8%A7%A3%E5%AF%86%E6%B6%88%E6%81%AF"><span class="top-box-text">5、解密消息</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#6%E3%80%81%E5%AE%9D%E7%9F%B3%E4%B8%8E%E7%9F%B3%E5%A4%B4"><span class="top-box-text">6、宝石与石头</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#7%E3%80%81%E5%88%A4%E6%96%AD%E5%8F%A5%E5%AD%90%E6%98%AF%E5%90%A6%E4%B8%BA%E5%85%A8%E5%AD%97%E6%AF%8D%E5%8F%A5"><span class="top-box-text">7、判断句子是否为全字母句</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#8%E3%80%81%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%87%BA%E7%8E%B0%E4%B8%A4%E6%AC%A1%E7%9A%84%E5%AD%97%E6%AF%8D"><span class="top-box-text">8、第一个出现两次的字母</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#9%E3%80%81%E5%A5%BD%E6%95%B0%E5%AF%B9%E7%9A%84%E6%95%B0%E7%9B%AE"><span class="top-box-text">9、好数对的数目</span></a></li></ol>
+        </div>
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2023/04/09/bo-ke-ji-qiao/">
+          <h3 class="post-title">
+            下一篇：博客技巧
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/yagote" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+<!--  -->
+<!--    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>-->
+<!--  -->
+    
+        Copyright © 2023 虾壳
+    
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  <script src="/js/simple-lightbox.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {new SimpleLightbox('.post-detail .simple-lightbox', {fileExt: false,captionsData:'alt'});});</script></body>
+</html>
+
