@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>JPA和MyBatis</title>
+<meta name="keywords" content="JPA和MyBatis, 虾壳">
+<meta name="description" content="一、JPA介绍JPA（Java Persistence API）是Java EE平台中的一种ORM（对象关系映射）规范，它提供了一种通过注解或XML描述Java对象与数据库表之间映射关系的方式，从而可以方便地进行数据库操作，而无需编写复杂的">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="JPA和MyBatis">
+<meta property="og:description" content="一、JPA介绍JPA（Java Persistence API）是Java EE平台中的一种ORM（对象关系映射）规范，它提供了一种通过注解或XML描述Java对象与数据库表之间映射关系的方式，从而可以方便地进行数据库操作，而无需编写复杂的">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://yagote.github.io">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://yagote.github.io">
+        <h1 class="site-title">虾壳</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags/" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">JPA和MyBatis</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2023-08-01</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/Java/">
+              Java
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <h2 id="一、JPA介绍"><a href="#一、JPA介绍" class="headerlink" title="一、JPA介绍"></a>一、JPA介绍</h2><p>JPA（Java Persistence API）是Java EE平台中的一种ORM（对象关系映射）规范，它提供了一种通过注解或XML描述Java对象与数据库表之间映射关系的方式，从而可以方便地进行数据库操作，而无需编写复杂的SQL语句。<strong>JPA不是具体的实现，而是一个规范</strong>，其实现需要使用JPA提供者（如Hibernate、EclipseLink等）。</p>
+<p>通过JPA，开发者可以使用面向对象的方式进行数据库操作，而不需要关注底层的SQL语句和数据库的细节，提高了开发效率和代码的可维护性。JPA支持事务、缓存、延迟加载等常见的ORM特性，同时还支持查询语言JPQL（Java Persistence Query Language）和Criteria API等高级查询方式，方便了开发者进行复杂的查询。</p>
+<h2 id="二、常用的JPA实现"><a href="#二、常用的JPA实现" class="headerlink" title="二、常用的JPA实现"></a>二、常用的JPA实现</h2><ol>
+<li>Hibernate：Hibernate是最流行的JPA实现之一，也是最早的ORM框架之一，它提供了JPA规范的实现，同时也提供了很多其他的特性。</li>
+<li>EclipseLink：EclipseLink是另一个流行的JPA实现，它是Eclipse基金会的一个开源项目，提供了许多高级的特性和扩展。</li>
+<li>OpenJPA：OpenJPA是Apache基金会的一个开源项目，提供了一个JPA实现，同时也提供了一些额外的特性和扩展。</li>
+<li>Spring Data JPA：Spring Data JPA是Spring框架中的一个模块，它使用JPA作为数据访问的基础，提供了一些额外的特性和便利功能。</li>
+<li>TopLink：TopLink是Oracle公司的一个ORM框架，也是JPA规范的实现之一，它提供了很多高级的特性和扩展。</li>
+</ol>
+<h2 id="三、JPA和MyBatis区别"><a href="#三、JPA和MyBatis区别" class="headerlink" title="三、JPA和MyBatis区别"></a>三、JPA和MyBatis区别</h2><h3 id="1、MyBatis是jpa实现吗"><a href="#1、MyBatis是jpa实现吗" class="headerlink" title="1、MyBatis是jpa实现吗"></a>1、MyBatis是jpa实现吗</h3><p>MyBatis不是JPA实现，它是一种基于XML配置和SQL语句的持久层框架，也被称为ORM（对象关系映射）框架，类似于Hibernate、EclipseLink等。与JPA不同的是，MyBatis不使用注解或JPA实体类的方式进行对象和数据库表的映射，而是通过XML文件配置SQL语句和参数映射，从而实现数据的持久化。</p>
+<p>MyBatis相对于JPA实现来说，更加灵活，可以自由地编写SQL语句，支持复杂的查询和定制化的数据访问操作，而JPA更加注重对象关系映射的标准化和简化开发，提供了更多的约定和默认行为，开发者不需要编写复杂的SQL语句，可以更加关注业务逻辑的实现。因此，选择使用MyBatis还是JPA实现，需要根据具体的需求和项目特点来进行选择。</p>
+<h3 id="2、MyBatis和JPA的区别"><a href="#2、MyBatis和JPA的区别" class="headerlink" title="2、MyBatis和JPA的区别"></a>2、MyBatis和JPA的区别</h3><p>MyBatis和JPA都是Java持久层框架，但它们存在一些区别，主要体现在以下几个方面：</p>
+<ol>
+<li>数据库访问方式：MyBatis使用SQL语句进行数据库操作，而JPA使用<strong>对象关系映射</strong>进行数据库操作，不需要编写SQL语句。</li>
+<li>对象关系映射：<strong>MyBatis需要手动编写SQL语句</strong>和对象属性之间的映射关系，而<strong>JPA使用注解或XML</strong>描述实体类和数据库表之间的映射关系，不需要手动编写映射关系。</li>
+<li>查询语言：<strong>MyBatis使用原生SQL语句</strong>进行查询，而<strong>JPA使用JPQL</strong>（Java Persistence Query Language）进行查询。</li>
+<li>性能：MyBatis的性能相对较好，可以手动优化SQL语句和缓存，而JPA的性能相对较差，需要使用缓存进行优化。</li>
+<li>简化开发：JPA提供了一些默认行为和约定，可以简化开发，而MyBatis需要开发者手动编写SQL语句和映射关系，相对更加灵活。</li>
+</ol>
+<p><strong>知乎上的回答：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/416271643">https://zhuanlan.zhihu.com/p/416271643</a></strong></p>
+<p>1.ORM映射不同:</p>
+<p>　　Mybatis是半自动的ORM框架，提供数据库与结果集的映射；<br>　　JPA（Hibernate）是全自动的ORM框架，提供对象与数据库的映射；</p>
+<p>2.可移植性不同：</p>
+<p>　　JPA（Hibernate）通过它强大的映射结构和hql语言，大大降低了对象与数据库(oracle、mysql等)的耦合性<br>　　Mybatis由于需要手写sql，因此与数据库的耦合性直接取决于程序员写sql的方法，如果sql不具通用性而用了很多某数据库特性的sql语句的话，移植性也会随之降低很多，成本很高。</p>
+<p>3.日志系统的完整性不同:</p>
+<p>　　JPA（Hibernate）日志系统非常健全，涉及广泛，包括：sql记录、关系异常、优化警告、缓存提示、脏数据警告等;而Mybatis则除了基本记录功能外，功能薄弱很多。</p>
+<p>4.SQL优化上的区别:</p>
+<p>　　由于Mybatis的sql都是写在xml里，因此优化sql比Hibernate方便很多。而Hibernate的sql很多都是自动生成的，无法直接维护sql;虽有hql，但功能还是不及sql强大，见到报表等变态需求时，hql也歇菜，也就是说hql是有局限的;hibernate虽然也支持原生sql，但开发模式上却与orm不同，需要转换思维，因此使用上不是非常方便。总之写sql的灵活度上Hibernate不及Mybatis。</p>
+<p><strong>CSDN上对JPA的解释：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_51308214/article/details/125165747">https://blog.csdn.net/qq_51308214/article/details/125165747</a></strong></p>
+<p>JPA（Java Persistence API）和JDBC类似，也是官方定义的一组接口，但是它相比传统的JDBC，它是为了实现ORM而生的，即Object-Relationl Mapping，它的作用是在关系型数据库和对象之间形成一个映射，这样，我们在具体的操作数据库的时候，就不需要再去和复杂的SQL语句打交道，只要像平时操作对象一样操作它就可以了。<br>在之前，我们使用JDBC或是Mybatis来操作数据，通过直接编写对应的SQL语句来实现数据访问，但是我们发现实际上我们在Java中大部分操作数据库的情况都是读取数据并封装为一个实体类，因此，为什么不直接将实体类直接对应到一个数据库表呢？也就是说，一张表里面有什么属性，那么我们的对象就有什么属性，所有属性跟数据库里面的字段一一对应，而读取数据时，只需要读取一行的数据并封装为我们定义好的实体类既可以，而具体的SQL语句执行，完全可以交给框架根据我们定义的映射关系去生成，不再由我们去编写，因为这些SQL实际上都是千篇一律的。<br>而实现JPA规范的框架一般最常用的就是Hibernate，它是一个重量级框架，学习难度相比Mybatis也更高一些，而SpringDataJPA也是采用Hibernate框架作为底层实现，并对其加以封装。</p>
+
+        </div>
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%B8%80%E3%80%81JPA%E4%BB%8B%E7%BB%8D"><span class="top-box-text">一、JPA介绍</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8%E7%9A%84JPA%E5%AE%9E%E7%8E%B0"><span class="top-box-text">二、常用的JPA实现</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%B8%89%E3%80%81JPA%E5%92%8CMyBatis%E5%8C%BA%E5%88%AB"><span class="top-box-text">三、JPA和MyBatis区别</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#1%E3%80%81MyBatis%E6%98%AFjpa%E5%AE%9E%E7%8E%B0%E5%90%97"><span class="top-box-text">1、MyBatis是jpa实现吗</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#2%E3%80%81MyBatis%E5%92%8CJPA%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="top-box-text">2、MyBatis和JPA的区别</span></a></li></ol></li></ol>
+        </div>
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2023/06/22/javascript/">
+          <h3 class="post-title">
+            下一篇：JavaScript
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+<!--  -->
+<!--    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>-->
+<!--  -->
+    
+        Copyright © 2021-2023 虾壳
+    
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+
