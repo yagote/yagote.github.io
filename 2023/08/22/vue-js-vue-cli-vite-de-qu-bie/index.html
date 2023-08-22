@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>Vue.js、Vue-CLI、Vite的区别</title>
+<meta name="keywords" content="Vue.js、Vue-CLI、Vite的区别, 虾壳">
+<meta name="description" content="一、Vue.js、Vue-CLI、Vite的区别vuejs、vuecli和vite的主要区别如下:
+
+vuejs是Vue.js的核心库,提供了主要的核心功能如数据绑定、组件化等。它是其他工具的基础。
+vue-cli是Vue项目脚手架工具,可">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Vue.js、Vue-CLI、Vite的区别">
+<meta property="og:description" content="一、Vue.js、Vue-CLI、Vite的区别vuejs、vuecli和vite的主要区别如下:
+
+vuejs是Vue.js的核心库,提供了主要的核心功能如数据绑定、组件化等。它是其他工具的基础。
+vue-cli是Vue项目脚手架工具,可">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://yagote.github.io">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://yagote.github.io">
+        <h1 class="site-title">虾壳</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags/" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">Vue.js、Vue-CLI、Vite的区别</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2023-08-22</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/Vue/">
+              Vue
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <h2 id="一、Vue-js、Vue-CLI、Vite的区别"><a href="#一、Vue-js、Vue-CLI、Vite的区别" class="headerlink" title="一、Vue.js、Vue-CLI、Vite的区别"></a>一、Vue.js、Vue-CLI、Vite的区别</h2><p>vuejs、vuecli和vite的主要区别如下:</p>
+<ul>
+<li>vuejs是Vue.js的核心库,提供了主要的核心功能如数据绑定、组件化等。它是其他工具的基础。</li>
+<li>vue-cli是Vue项目脚手架工具,可以快速搭建Vue项目脚手架。它会帮我们安装和配置webpack、babel等工具,构建开发环境和生产环境,方便开发Vue项目。</li>
+<li>vite是一个快速的前端开发构建工具。它采用ES 模块导入和动态导入来替代巨大的 bundle 文件,大大加快开发体验。相比 webpack,vite 的构建速度要快很多。</li>
+</ul>
+<p>区别点总结:</p>
+<ul>
+<li>vuejs是核心库,提供基础功能</li>
+<li>vue-cli是可构建整个Vue项目的脚手架工具</li>
+<li>vite是用于快速搭建前端开发环境的构建工具,比vue-cli更轻量级,构建速度更快</li>
+</ul>
+<p>所以:</p>
+<ul>
+<li>vuejs是核心库基础</li>
+<li>vue-cli可以通过脚手架快速开始一个完整的Vue项目</li>
+<li>vite是用于快速开发的前端构建工具,性能比vue-cli更好</li>
+</ul>
+<p>他们协同使用:</p>
+<ul>
+<li>开发前使用vite或vue-cli搭建项目环境</li>
+<li>项目中使用vuejs开发组件和功能</li>
+</ul>
+<h2 id="二、Vite和vue-cli区别"><a href="#二、Vite和vue-cli区别" class="headerlink" title="二、Vite和vue-cli区别"></a>二、Vite和vue-cli区别</h2><blockquote>
+<p>不同点</p>
+</blockquote>
+<p>（1）作用不同</p>
+<ul>
+<li>vue-cli是一款Vue项目脚手架生成工具,用于通过命令行快速初始化一个具有基础配置的Vue项目。</li>
+<li>vite是一款前端开发和构建工具,用于替代webpack进行快速开发。</li>
+</ul>
+<p>（2）构建原理不同</p>
+<ul>
+<li>vue-cli内部使用webpack作为项目构建工具。</li>
+<li>vite使用原生ES模块化和Rollup.js来进行更快的开发构建。</li>
+</ul>
+<p>（3）构建速度</p>
+<ul>
+<li>vue-cli使用webpack构建速度较慢,项目初始化和打包时间较长。</li>
+<li>vite采用静态资源导入并做了优化,构建速度比vue-cli快很多,候补提升用户体验。</li>
+</ul>
+<p>（4）项目配置</p>
+<ul>
+<li>vue-cli项目初始化后需要配置webpack、babel等重要插件。</li>
+<li>vite内置很多优化,新项目基本无需额外配置就可以直接使用。</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li>vue-cli是项目初始化脚手架工具,通过它可以快速建立一个完整的Vue项目;</li>
+<li>vite主要进行项目构建,以其自身的 schneller 构建模式实现更快地开发体验;</li>
+<li>两者功能上都可以用于Vue项目开发,但vite更侧重于快速开发过程。</li>
+</ul>
+<blockquote>
+<p>相同点</p>
+</blockquote>
+<p>vite和vue-cli都是为开发和构建Vue项目而设计的:</p>
+<ul>
+<li>vue-cli是Vue官方推荐的项目脚手架工具,它可以快速生成一个符合标准的Vue项目模板,里面内置了webpack等构建 tools。</li>
+<li>vite的定位是一款前端开发构建工具,它专注于提供一个开发体验更流畅的构建系统。</li>
+</ul>
+<p>所以两者的差异在于:</p>
+<ul>
+<li><strong>vue-cli</strong>主要用于新建Vue项目时的初始化配置，它给我们<strong>生成一个完整的项目模板</strong>。</li>
+<li><strong>vite</strong>不是项目脚手架，它只负责开发和构建过程中的<strong>模块打包、文件 watching 等工作流</strong>。</li>
+</ul>
+<p>但具体使用时:</p>
+<ul>
+<li>我们<strong>可以使用vite来代替vue-cli新建项目,它也提供了命令行工具可以快速初始化项目。</strong></li>
+<li>已有的vue-cli项目，也可以选择使用vite来提升项目的构建和开发体验。</li>
+</ul>
+<p>总之，两者都是为Vue应用服务的工具:</p>
+<ul>
+<li>vue-cli方便初始化项目模板</li>
+<li>vite专注于更快更流畅的开发构建体验</li>
+</ul>
+<h2 id="三、如何从-Vue-CLI-迁移到-Vite"><a href="#三、如何从-Vue-CLI-迁移到-Vite" class="headerlink" title="三、如何从 Vue CLI 迁移到 Vite"></a>三、如何从 Vue CLI 迁移到 Vite</h2><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=PAT7SbdTBjI&amp;ab_channel=VueGermany">https://www.youtube.com/watch?v=PAT7SbdTBjI&amp;ab_channel=VueGermany</a></p>
+<p>从已有的Vue CLI项目迁移到Vite的主要步骤是:</p>
+<p>（1）删除Vue CLI相关依赖</p>
+<p>删除项目中安装的<code>@vue/cli-service</code>和<code>@vue/cli-plugin-xxx</code>等依赖。</p>
+<p>（2）安装Vite依赖</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vite --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>（3）修改<code>package.json</code></p>
+<ul>
+<li>删除<code>scripts</code>中与Vue CLI相关脚本</li>
+<li>添加<code>vite</code>脚本:</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="attr">&quot;dev&quot;</span>: <span class="string">&quot;vite&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;build&quot;</span>: <span class="string">&quot;vite build&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;preview&quot;</span>: <span class="string">&quot;vite preview&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（4）修改<code>main.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"></span><br><span class="line">createApp(App).mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>（5）移除配置文件</p>
+<p>如<code>vue.config.js</code>,因为Vite使用不同的配置方法。</p>
+<p>（6）处理静态资源</p>
+<p>Vite默认不处理静态资源,需要自行配置或使用<code>vite-plugin-static</code>等插件。</p>
+<p>（7）Polyfills处理</p>
+<p>Vite使用的是ESModule,需要在入口文件手动引入必要的Polyfills。</p>
+<p>（8）重新启动开发</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+<p>以上步骤可以实现从Vue CLI项目迁移到Vite的基本需求。需要时间调整配置细节和适配Vite模式。</p>
+
+        </div>
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%B8%80%E3%80%81Vue-js%E3%80%81Vue-CLI%E3%80%81Vite%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="top-box-text">一、Vue.js、Vue-CLI、Vite的区别</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%BA%8C%E3%80%81Vite%E5%92%8Cvue-cli%E5%8C%BA%E5%88%AB"><span class="top-box-text">二、Vite和vue-cli区别</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%B8%89%E3%80%81%E5%A6%82%E4%BD%95%E4%BB%8E-Vue-CLI-%E8%BF%81%E7%A7%BB%E5%88%B0-Vite"><span class="top-box-text">三、如何从 Vue CLI 迁移到 Vite</span></a></li></ol>
+        </div>
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2023/08/12/git-jiao-cheng/">
+          <h3 class="post-title">
+            下一篇：Git教程
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+<!--  -->
+<!--    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>-->
+<!--  -->
+    
+        Copyright © 2021-2023 虾壳
+    
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+
