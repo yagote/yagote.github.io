@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>k8s重要命令</title>
+<meta name="keywords" content="k8s重要命令, 虾壳">
+<meta name="description" content="
+彻底删除pod有两种方式，删除创建该pod的控制器，或者删除该pod所在的namespace
+
+1、服务部署12345678910111213141516# 1、部署nginx[root@master ~]# kubectl create">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="k8s重要命令">
+<meta property="og:description" content="
+彻底删除pod有两种方式，删除创建该pod的控制器，或者删除该pod所在的namespace
+
+1、服务部署12345678910111213141516# 1、部署nginx[root@master ~]# kubectl create">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://yagote.github.io">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://yagote.github.io">
+        <h1 class="site-title">虾壳</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags/" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">k8s重要命令</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2023-09-11</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/kubernetes/">
+              kubernetes
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <blockquote>
+<p>彻底删除pod有两种方式，删除创建该pod的控制器，或者删除该pod所在的namespace</p>
+</blockquote>
+<h3 id="1、服务部署"><a href="#1、服务部署" class="headerlink" title="1、服务部署"></a>1、服务部署</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、部署nginx</span></span><br><span class="line">[<span class="type">root</span>@<span class="type">master</span> ~]<span class="comment"># kubectl create deployment nginx --image=nginx:1.14-alpine</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、暴露端口</span></span><br><span class="line">[<span class="type">root</span>@<span class="type">master</span> ~]<span class="comment"># kubectl expose deployment nginx --port=80 --type=NodePort</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3、查看服务状态</span></span><br><span class="line">[<span class="type">root</span>@<span class="type">master</span> ~]<span class="comment"># kubectl get pods,service</span></span><br><span class="line">NAME                         READY   STATUS    RESTARTS   AGE</span><br><span class="line">pod/nginx<span class="literal">-86c57db685</span><span class="literal">-fdc2k</span>   <span class="number">1</span>/<span class="number">1</span>     Running   <span class="number">0</span>          <span class="number">18</span>m</span><br><span class="line"></span><br><span class="line">NAME                 <span class="built_in">TYPE</span>        CLUSTER<span class="literal">-IP</span>      EXTERNAL<span class="literal">-IP</span>   PORT(S)        AGE</span><br><span class="line">service/kubernetes   ClusterIP   <span class="number">10.96</span>.<span class="number">0.1</span>       &lt;none&gt;        <span class="number">443</span>/TCP        <span class="number">82</span>m</span><br><span class="line">service/nginx        NodePort    <span class="number">10.104</span>.<span class="number">121.45</span>   &lt;none&gt;        <span class="number">80</span>:<span class="number">30073</span>/TCP   <span class="number">17</span>m</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4、最后在电脑上访问下部署的nginx服务</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2、创建namespace"><a href="#2、创建namespace" class="headerlink" title="2、创建namespace"></a>2、创建namespace</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个命名空间 dev</span></span><br><span class="line">kubectl create namespace dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、删除namespace"><a href="#3、删除namespace" class="headerlink" title="3、删除namespace"></a>3、删除namespace</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除命名空间dev</span></span><br><span class="line">kubectl delete ns dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、创建pod"><a href="#4、创建pod" class="headerlink" title="4、创建pod"></a>4、创建pod</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在上面的namespace下创建并运行一个包含nginx容器的Pod</span></span><br><span class="line">kubectl run pod -<span class="literal">-image</span>=nginx <span class="literal">-n</span> dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、查看pod"><a href="#5、查看pod" class="headerlink" title="5、查看pod"></a>5、查看pod</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看在命名空间dev下的pod</span></span><br><span class="line">kubectl get pod <span class="literal">-n</span> dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="6、删除pod"><a href="#6、删除pod" class="headerlink" title="6、删除pod"></a>6、删除pod</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pod-864f9875b9-pcw7x为pod的名称，-n dev指定在哪个命名空间，若不指定则默认是default命名空间</span></span><br><span class="line">kubectl delete pod pod<span class="literal">-864f9875b9</span><span class="literal">-pcw7x</span> <span class="literal">-n</span> dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="7、通过yaml文件创建namespace、pod"><a href="#7、通过yaml文件创建namespace、pod" class="headerlink" title="7、通过yaml文件创建namespace、pod"></a>7、通过yaml文件创建namespace、pod</h3><p>nginxpod.yaml内容：(注意：这里并不创建控制器)</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Namespace</span><br><span class="line">metadata:</span><br><span class="line">  name: dev</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: nginxpod</span><br><span class="line">  namespace: dev</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">  - name: nginx<span class="literal">-containers</span></span><br><span class="line">    image: nginx:<span class="number">1.17</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>执行命令创建namespace、pod</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kubectl create <span class="operator">-f</span> nginxpod.yaml</span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># namespace/dev created		# namespacem名称为dev</span></span><br><span class="line"><span class="comment"># pod/nginxpod created		# pod名称为nginxpod</span></span><br></pre></td></tr></table></figure>
+
+<p>查看资源</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">root</span>@<span class="type">master</span> ~]<span class="comment">#  kubectl get -f nginxpod.yaml</span></span><br><span class="line">NAME            STATUS   AGE</span><br><span class="line">namespace/dev   Active   <span class="number">18</span>s</span><br><span class="line"></span><br><span class="line">NAME            READY   STATUS    RESTARTS   AGE</span><br><span class="line">pod/nginxpod    <span class="number">1</span>/<span class="number">1</span>     Running   <span class="number">0</span>          <span class="number">17</span>s</span><br></pre></td></tr></table></figure>
+
+<p>删除资源</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete <span class="operator">-f</span> nginxpod.yaml</span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># namespace &quot;dev&quot; deleted</span></span><br><span class="line"><span class="comment"># pod &quot;nginxpod&quot; deleted</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="8、推荐方式"><a href="#8、推荐方式" class="headerlink" title="8、推荐方式"></a>8、推荐方式</h3><p>创建/更新资源      使用声明式对象配置 kubectl apply -f  XXX.yaml</p>
+<p>删除资源              使用命令式对象配置 kubectl delete -f  XXX.yaml</p>
+<p>查询资源              使用命令式对象管理 kubectl get(describe) 资源名称</p>
+<h3 id="9、创建控制器（Deployment）、pod"><a href="#9、创建控制器（Deployment）、pod" class="headerlink" title="9、创建控制器（Deployment）、pod"></a>9、创建控制器（Deployment）、pod</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在命名空间dev下创建了控制器nginx1和pod(名称格式：nginx1-79d7bd676b-d82nx)</span></span><br><span class="line"><span class="comment"># 注意这里是Deployment控制器，所以使用的是deploy，其他类型的控制器的命令不同</span></span><br><span class="line"><span class="comment"># kubernetes版本高于1.2时，默认创建的是Deployment类型的控制器</span></span><br><span class="line">kubectl run nginx1 -<span class="literal">-image</span>=nginx:<span class="number">1.17</span>.<span class="number">1</span> -<span class="literal">-port</span>=<span class="number">80</span> -<span class="literal">-namespace</span> dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="10、删除控制器（Deployment）"><a href="#10、删除控制器（Deployment）" class="headerlink" title="10、删除控制器（Deployment）"></a>10、删除控制器（Deployment）</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除Deployment类型的控制器nginx1后，尤其创建的pod(nginx1-79d7bd676b-d82nx)也自动被删除了</span></span><br><span class="line"><span class="comment"># 注意这里是Deployment控制器，所以使用的是deploy，其他类型的控制器的命令不同</span></span><br><span class="line">kubectl delete deploy nginx1 <span class="literal">-n</span> dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="11、获取pod的ip"><a href="#11、获取pod的ip" class="headerlink" title="11、获取pod的ip"></a>11、获取pod的ip</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">root</span>@<span class="type">master</span> ~]<span class="comment"># kubectl get pods -n dev -o wide</span></span><br><span class="line">NAME                     READY   STATUS    RESTARTS   AGE    IP             NODE    ... </span><br><span class="line">nginx<span class="literal">-5ff7956ff6</span><span class="literal">-fg2db</span>   <span class="number">1</span>/<span class="number">1</span>     Running   <span class="number">0</span>          <span class="number">190</span>s   <span class="number">10.244</span>.<span class="number">1.23</span>   node1   ...</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#1%E3%80%81%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2"><span class="top-box-text">1、服务部署</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#2%E3%80%81%E5%88%9B%E5%BB%BAnamespace"><span class="top-box-text">2、创建namespace</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#3%E3%80%81%E5%88%A0%E9%99%A4namespace"><span class="top-box-text">3、删除namespace</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#4%E3%80%81%E5%88%9B%E5%BB%BApod"><span class="top-box-text">4、创建pod</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#5%E3%80%81%E6%9F%A5%E7%9C%8Bpod"><span class="top-box-text">5、查看pod</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#6%E3%80%81%E5%88%A0%E9%99%A4pod"><span class="top-box-text">6、删除pod</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#7%E3%80%81%E9%80%9A%E8%BF%87yaml%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BAnamespace%E3%80%81pod"><span class="top-box-text">7、通过yaml文件创建namespace、pod</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#8%E3%80%81%E6%8E%A8%E8%8D%90%E6%96%B9%E5%BC%8F"><span class="top-box-text">8、推荐方式</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#9%E3%80%81%E5%88%9B%E5%BB%BA%E6%8E%A7%E5%88%B6%E5%99%A8%EF%BC%88Deployment%EF%BC%89%E3%80%81pod"><span class="top-box-text">9、创建控制器（Deployment）、pod</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#10%E3%80%81%E5%88%A0%E9%99%A4%E6%8E%A7%E5%88%B6%E5%99%A8%EF%BC%88Deployment%EF%BC%89"><span class="top-box-text">10、删除控制器（Deployment）</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#11%E3%80%81%E8%8E%B7%E5%8F%96pod%E7%9A%84ip"><span class="top-box-text">11、获取pod的ip</span></a></li></ol>
+        </div>
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2023/09/03/git-shi-yong-cao-zuo/">
+          <h3 class="post-title">
+            下一篇：Git实用操作
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+<!--  -->
+<!--    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>-->
+<!--  -->
+    
+        Copyright © 2021-2023 虾壳
+    
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+
