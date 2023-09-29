@@ -1,0 +1,689 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Git教程 | 虾壳</title><meta name="author" content="yagote"><meta name="copyright" content="yagote"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、Git概述Git 是一个免费的、开源的分布式版本控制系统，可以快速高效地处理从小型到大型的各种 项目。官网地址： https:&#x2F;&#x2F;git-scm.com&#x2F; 集中式版本控制工具：CVS 、SVN(Subversion)、VSS；分布式版本控制工具：Git 、Mercurial 、Bazaar、Darcs Git 和代码托管中心：代码托管中心是基于网络服务器的远程代码仓库， 一般简单称为远程库。➢">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git教程">
+<meta property="og:url" content="http://yagote.github.io/2023/08/12/git-jiao-cheng/index.html">
+<meta property="og:site_name" content="虾壳">
+<meta property="og:description" content="一、Git概述Git 是一个免费的、开源的分布式版本控制系统，可以快速高效地处理从小型到大型的各种 项目。官网地址： https:&#x2F;&#x2F;git-scm.com&#x2F; 集中式版本控制工具：CVS 、SVN(Subversion)、VSS；分布式版本控制工具：Git 、Mercurial 、Bazaar、Darcs Git 和代码托管中心：代码托管中心是基于网络服务器的远程代码仓库， 一般简单称为远程库。➢">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-08-12T03:48:52.000Z">
+<meta property="article:modified_time" content="2023-08-24T13:20:51.751Z">
+<meta property="article:author" content="yagote">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yagote.github.io/2023/08/12/git-jiao-cheng/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Git教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-24 21:20:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="虾壳"><span class="site-name">虾壳</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Git教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-12T03:48:52.000Z" title="发表于 2023-08-12 11:48:52">2023-08-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-24T13:20:51.751Z" title="更新于 2023-08-24 21:20:51">2023-08-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Git教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="一、Git概述"><a href="#一、Git概述" class="headerlink" title="一、Git概述"></a>一、Git概述</h2><p>Git 是一个免费的、开源的分布式版本控制系统，可以快速高效地处理从小型到大型的各种 项目。官网地址： <a target="_blank" rel="noopener" href="https://git-scm.com/">https://git-scm.com/</a></p>
+<p>集中式版本控制工具：CVS 、SVN(Subversion)、VSS；<br>分布式版本控制工具：Git 、Mercurial 、Bazaar、Darcs</p>
+<p>Git 和代码托管中心：代码托管中心是基于网络服务器的远程代码仓库， 一般简单称为远程库。<br>➢ 局域网<br>✓ GitLab<br>➢ 互联网<br>✓ GitHub (外网)<br>✓ Gitee 码云 (国内网站)</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811696846-3f2285c6-2d58-4d41-b39a-fab7e4a019fe.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811696846-3f2285c6-2d58-4d41-b39a-fab7e4a019fe.png"  alt="img" lazyload></a></p>
+<h2 id="二、Git常用命令"><a href="#二、Git常用命令" class="headerlink" title="二、Git常用命令"></a>二、Git常用命令</h2><table>
+<thead>
+<tr>
+<th>命令名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git config –global user.name 用户名</td>
+<td>设置用户签名</td>
+</tr>
+<tr>
+<td>git config –global user.email 邮箱</td>
+<td>设置用户签名</td>
+</tr>
+<tr>
+<td>git init</td>
+<td>初始化本地库</td>
+</tr>
+<tr>
+<td>git status</td>
+<td>查看本地库状态</td>
+</tr>
+<tr>
+<td>git add 文件名</td>
+<td>添加到暂存区</td>
+</tr>
+<tr>
+<td>git commit -m “日志信息” 文件名</td>
+<td>提交到本地库</td>
+</tr>
+<tr>
+<td>git reflog</td>
+<td>查看历史记录</td>
+</tr>
+<tr>
+<td>git reset –hard 版本号</td>
+<td>版本穿梭</td>
+</tr>
+<tr>
+<td>git config user.name</td>
+<td>查看用户名</td>
+</tr>
+<tr>
+<td>git config user.password</td>
+<td>查看密码</td>
+</tr>
+<tr>
+<td>git config user.email</td>
+<td>查看邮箱</td>
+</tr>
+<tr>
+<td>git config –list</td>
+<td>查看配置信息</td>
+</tr>
+</tbody></table>
+<h3 id="1、设置用户签名"><a href="#1、设置用户签名" class="headerlink" title="1、设置用户签名"></a>1、设置用户签名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name 用户名</span><br><span class="line">git config --global user.email 邮箱</span><br></pre></td></tr></table></figure>
+
+<p>Git 首次安装必须设置一下用户签名，否则无法提交代码。设置用户签名和将来登录 GitHub (或其他代码托管中心)的账号没有任何关系。</p>
+<h3 id="2、初始化本地库"><a href="#2、初始化本地库" class="headerlink" title="2、初始化本地库"></a>2、初始化本地库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、查看本地库状态"><a href="#3、查看本地库状态" class="headerlink" title="3、查看本地库状态"></a>3、查看本地库状态</h3><p>yyp复制粘贴命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811696963-ff068831-8edf-4d31-b43e-e04e3d0fefc6.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811696963-ff068831-8edf-4d31-b43e-e04e3d0fefc6.png"  alt="img" lazyload></a></p>
+<h3 id="4、添加"><a href="#4、添加" class="headerlink" title="4、添加"></a>4、添加</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add 文件名		<span class="comment"># 将文件添加到暂存区</span></span><br><span class="line">git add hello.txt</span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697043-1ba9dde3-9cf3-4a2c-9ed7-756c8e1ad5b0.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697043-1ba9dde3-9cf3-4a2c-9ed7-756c8e1ad5b0.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697122-927810fd-0eb3-4555-bb81-f830f4e23407.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697122-927810fd-0eb3-4555-bb81-f830f4e23407.png"  alt="img" lazyload></a></p>
+<p>删除暂存区的文件，在工作区还是有的（工作区即本电脑上的实际文件）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached 文件名</span><br><span class="line">git rm --cached hello.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、提交本地库"><a href="#5、提交本地库" class="headerlink" title="5、提交本地库"></a>5、提交本地库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;提交备注&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697206-e49f2d97-0576-4fbd-97df-94290162872b.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697206-e49f2d97-0576-4fbd-97df-94290162872b.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697293-2ed7b6c2-5574-4102-a3b1-c47318693eab.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697293-2ed7b6c2-5574-4102-a3b1-c47318693eab.png"  alt="img" lazyload></a></p>
+<h3 id="6、查看历史记录"><a href="#6、查看历史记录" class="headerlink" title="6、查看历史记录"></a>6、查看历史记录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697376-daf77965-0c4e-4ca2-9252-852624cd84dd.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697376-daf77965-0c4e-4ca2-9252-852624cd84dd.png"  alt="img" lazyload></a></p>
+<p>查看详细日志</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697455-f5a88b7b-0ae8-4809-b38a-a49c2f46e663.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697455-f5a88b7b-0ae8-4809-b38a-a49c2f46e663.png"  alt="img" lazyload></a></p>
+<h3 id="7、修改文件内容"><a href="#7、修改文件内容" class="headerlink" title="7、修改文件内容"></a>7、修改文件内容</h3><p>这里是为了测试修改后提交，增加多个提交记录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">vi hello.txt</span><br><span class="line"><span class="comment">#第一个版本内容</span></span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line"><span class="comment">#第二个版本内容</span></span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">this version-2</span><br><span class="line">this version-2</span><br><span class="line">this version-2</span><br><span class="line"><span class="comment">#第三个版本内容</span></span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">this version-3</span><br><span class="line">this version-3</span><br><span class="line">this version-3</span><br></pre></td></tr></table></figure>
+
+<p>第二个版本</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697532-c543c6b3-5996-4a1a-b88d-0012173efd7d.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697532-c543c6b3-5996-4a1a-b88d-0012173efd7d.png"  alt="img" lazyload></a></p>
+<p>第三个版本</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697611-fb2cd4f7-bc52-41d6-addf-8b3d4db2db70.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697611-fb2cd4f7-bc52-41d6-addf-8b3d4db2db70.png"  alt="img" lazyload></a></p>
+<p>查看历史记录</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697700-a7f9364c-b017-4c51-b1eb-7dffb7b3e121.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697700-a7f9364c-b017-4c51-b1eb-7dffb7b3e121.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697781-427e56b3-3a67-45f5-a4bf-c2afb273a190.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697781-427e56b3-3a67-45f5-a4bf-c2afb273a190.png"  alt="img" lazyload></a></p>
+<h3 id="8、版本切换"><a href="#8、版本切换" class="headerlink" title="8、版本切换"></a>8、版本切换</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 版本号</span><br><span class="line">git reset --hard bf1cc68 	<span class="comment">#切换到版本二</span></span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697864-5129b49c-eded-461d-b4dd-dde10f23fb53.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697864-5129b49c-eded-461d-b4dd-dde10f23fb53.png"  alt="img" lazyload></a></p>
+<h2 id="三、Git分支操作"><a href="#三、Git分支操作" class="headerlink" title="三、Git分支操作"></a>三、Git分支操作</h2><p>在版本控制过程中， 同时推进多个任务，为每个任务， 我们就可以创建每个任务的单独 分支。使用分支意味着程序员可以把自己的工作从开发主线上分离开来，开发自己分支的时 候， 不会影响主线分支的运行。对于初学者而言， 分支可以简单理解为副本，一个分支就是 一个单独的副本。(分支底层其实也是指针的引用)</p>
+<p>各个分支在开发过程中， 如果某一个分支开发失败，不会对其他分支有任何影响。失败 的分支删除重新开始即可。</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697944-dbb5c65e-27d9-4626-8bdc-0f636aa107f1.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811697944-dbb5c65e-27d9-4626-8bdc-0f636aa107f1.png"  alt="img" lazyload></a></p>
+<table>
+<thead>
+<tr>
+<th>命令名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git branch 分支名</td>
+<td>创建分支</td>
+</tr>
+<tr>
+<td>git branch -v</td>
+<td>查看分支</td>
+</tr>
+<tr>
+<td>git checkout 分支名</td>
+<td>切换分支</td>
+</tr>
+<tr>
+<td>git merge 分支名</td>
+<td>把指定的分支合并到当前分支上</td>
+</tr>
+</tbody></table>
+<h3 id="1、查看分支"><a href="#1、查看分支" class="headerlink" title="1、查看分支"></a>1、查看分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -v</span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698056-328d8996-9d83-4970-b136-a9b3393c2d5e.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698056-328d8996-9d83-4970-b136-a9b3393c2d5e.png"  alt="img" lazyload></a></p>
+<h3 id="2、创建分支"><a href="#2、创建分支" class="headerlink" title="2、创建分支"></a>2、创建分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名</span><br><span class="line">git branch hot-fix</span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698142-99bc5c18-111a-435d-a57d-0630a568e18f.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698142-99bc5c18-111a-435d-a57d-0630a568e18f.png"  alt="img" lazyload></a></p>
+<h3 id="3、切换分支"><a href="#3、切换分支" class="headerlink" title="3、切换分支"></a>3、切换分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout 分支名</span><br><span class="line">git checkout hot-fix</span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698245-4f24d4fa-69c5-4985-b1f1-c3fbc62af7f8.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698245-4f24d4fa-69c5-4985-b1f1-c3fbc62af7f8.png"  alt="img" lazyload></a></p>
+<p>在分支hot-fix上修改hello.txt</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698327-0550bbf4-b4d7-4609-bdc4-ccb18ba43135.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698327-0550bbf4-b4d7-4609-bdc4-ccb18ba43135.png"  alt="img" lazyload></a></p>
+<p>提交分支的内容</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698516-4a446388-6fe2-49b0-945c-7614294593bf.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698516-4a446388-6fe2-49b0-945c-7614294593bf.png"  alt="img" lazyload></a></p>
+<h3 id="4、合并分支"><a href="#4、合并分支" class="headerlink" title="4、合并分支"></a>4、合并分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git merge 分支名</span><br><span class="line"></span><br><span class="line">git checkout master	<span class="comment"># 先切换分支</span></span><br><span class="line">git merge hot-fix <span class="comment"># 把分支hot-fix合并到主分支master上</span></span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698618-aec91458-609a-49f7-a028-15bb76a759bc.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698618-aec91458-609a-49f7-a028-15bb76a759bc.png"  alt="img" lazyload></a></p>
+<p>第二次修改分支hot-fix后合并</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698706-2426ba7e-fa46-4d25-a588-d081437cb40a.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698706-2426ba7e-fa46-4d25-a588-d081437cb40a.png"  alt="img" lazyload></a></p>
+<h3 id="5、合并冲突"><a href="#5、合并冲突" class="headerlink" title="5、合并冲突"></a>5、合并冲突</h3><p>测试时出现合并冲突的原因实际是：主线和其他分支不在同一个版本上，就是新建一个分支后，主线进行了修改，版本迭代了，而分支的版本还是主线之前的版本，如果此时把分支合并到主线上就会出现合并冲突问题。</p>
+<p>合并分支时，两个分支在同一个文件的同一个位置有两套完全不同的修改。 Git 无法替我们决定使用哪一个。必须人为决定新代码内容。</p>
+<p>出现如下状态：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698805-65badff6-e5b1-4838-9284-0f3d43d02597.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698805-65badff6-e5b1-4838-9284-0f3d43d02597.png"  alt="img" lazyload></a></p>
+<p><strong>解决冲突：</strong></p>
+<p>（1）编辑有冲突的文件，删除特殊符号，决定要使用的内容</p>
+<p>特殊符号： &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD 当前分支的代码 ======= 合并过来的代码 &gt;&gt;&gt;&gt;&gt;&gt;&gt; hot-fix</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698946-e01ac022-d64b-4f64-a510-0f093c78f112.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811698946-e01ac022-d64b-4f64-a510-0f093c78f112.png"  alt="img" lazyload></a></p>
+<p>（2）添加到暂存区</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699033-be8cdd82-aab6-487a-8725-382c12bef110.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699033-be8cdd82-aab6-487a-8725-382c12bef110.png"  alt="img" lazyload></a></p>
+<p>（3）执行提交（注意： 此时使用git commit 命令时不能带文件名），发现后面 MERGING 消失，变为正常。</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699111-c6ae1bef-cd75-4ec4-9eae-1a64a0e955c8.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699111-c6ae1bef-cd75-4ec4-9eae-1a64a0e955c8.png"  alt="img" lazyload></a></p>
+<p>主分支目前的文件内容是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">hello,git</span><br><span class="line">this version-3</span><br><span class="line">this version-3</span><br><span class="line">this version-3</span><br><span class="line">hot-fix change</span><br></pre></td></tr></table></figure>
+
+<p>hot-fix分支的文件内容是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello,git</span><br><span class="line">hot-fix change</span><br></pre></td></tr></table></figure>
+
+<p>所以解决冲突实际上只是修改了主线的内容，分支的内容还是之前的内容。</p>
+<h2 id="四、团队协作"><a href="#四、团队协作" class="headerlink" title="四、团队协作"></a>四、团队协作</h2><h3 id="1、团队内协作"><a href="#1、团队内协作" class="headerlink" title="1、团队内协作"></a>1、团队内协作</h3><p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699194-88be5ab8-5b10-4f34-8a7e-882a7206e61b.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699194-88be5ab8-5b10-4f34-8a7e-882a7206e61b.png"  alt="img" lazyload></a></p>
+<h3 id="2、跨团队协作"><a href="#2、跨团队协作" class="headerlink" title="2、跨团队协作"></a>2、跨团队协作</h3><p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699277-906be907-1af6-4382-8645-879210e03d00.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699277-906be907-1af6-4382-8645-879210e03d00.png"  alt="img" lazyload></a></p>
+<h2 id="五、GitHub操作"><a href="#五、GitHub操作" class="headerlink" title="五、GitHub操作"></a>五、GitHub操作</h2><h3 id="1、创建远程仓库"><a href="#1、创建远程仓库" class="headerlink" title="1、创建远程仓库"></a>1、创建远程仓库</h3><p>在github上创建仓库</p>
+<h3 id="2、远程仓库操作"><a href="#2、远程仓库操作" class="headerlink" title="2、远程仓库操作"></a>2、远程仓库操作</h3><table>
+<thead>
+<tr>
+<th>命令名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git remote -v</td>
+<td>查看当前所有远程地址别名</td>
+</tr>
+<tr>
+<td>git remote add 别名 远程地址</td>
+<td>起别名</td>
+</tr>
+<tr>
+<td>git push 别名 分支</td>
+<td>推送本地分支上的内容到远程仓库</td>
+</tr>
+<tr>
+<td>git clone 远程地址</td>
+<td>将远程仓库的内容克隆到本地</td>
+</tr>
+<tr>
+<td>git pull 远程库地址别名 远程分支名</td>
+<td>将远程仓库对于分支最新内容拉下来后与 当前本地分支直接合并</td>
+</tr>
+</tbody></table>
+<h4 id="2-1-创建远程仓库别名"><a href="#2-1-创建远程仓库别名" class="headerlink" title="2.1 创建远程仓库别名"></a>2.1 创建远程仓库别名</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add 别名 远程地址</span><br><span class="line">git remote add git-demo https://github.com/yagote/git-demo.git	<span class="comment">#对远程仓库起了个别名git-demo</span></span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699366-bac237c5-c132-4ffb-9f7e-8f652d5dd078.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699366-bac237c5-c132-4ffb-9f7e-8f652d5dd078.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699462-e475f6ba-0553-428b-bdab-e23489eef2c3.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699462-e475f6ba-0553-428b-bdab-e23489eef2c3.png"  alt="img" lazyload></a></p>
+<h4 id="2-2-推送本地分支到远程仓库"><a href="#2-2-推送本地分支到远程仓库" class="headerlink" title="2.2 推送本地分支到远程仓库"></a>2.2 推送本地分支到远程仓库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push 别名 分支</span><br><span class="line">git push git-demo master</span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/202308242115414.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/202308242115414.png"  alt="img" lazyload></a>!</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699622-2877058c-5591-4ade-a76c-8f0698ed6fed.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699622-2877058c-5591-4ade-a76c-8f0698ed6fed.png"  alt="img" lazyload></a></p>
+<h4 id="2-3-拉取远程仓库"><a href="#2-3-拉取远程仓库" class="headerlink" title="2.3 拉取远程仓库"></a>2.3 拉取远程仓库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git pull 远程库地址别名 远程分支名</span><br><span class="line">git pull git-demo master</span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699705-5db95d5a-861c-4836-bb07-962c33877dea.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699705-5db95d5a-861c-4836-bb07-962c33877dea.png"  alt="img" lazyload></a></p>
+<h4 id="2-4-克隆远程仓库到本地"><a href="#2-4-克隆远程仓库到本地" class="headerlink" title="2.4 克隆远程仓库到本地"></a>2.4 克隆远程仓库到本地</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> 远程地址</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/yagote/git-demo.git	<span class="comment">#在另一个文件夹中克隆本项目</span></span><br></pre></td></tr></table></figure>
+
+<p>clone 会做如下操作：拉取代码：初始化本地仓库：创建别名(别名为origin)</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699783-00794bce-7d3c-4f8c-aa84-1c6054b9bece.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699783-00794bce-7d3c-4f8c-aa84-1c6054b9bece.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699886-6778c11b-9ba8-47a0-9298-783a258ea265.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811699886-6778c11b-9ba8-47a0-9298-783a258ea265.png"  alt="img" lazyload></a></p>
+<h3 id="3、团队内协作"><a href="#3、团队内协作" class="headerlink" title="3、团队内协作"></a>3、团队内协作</h3><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823221406231.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823221406231.png"  alt="image-20230823221406231" style="zoom:80%;"  lazyload></a>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700057-b06e8d80-2907-47ac-b1ee-e813a0763e6c.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700057-b06e8d80-2907-47ac-b1ee-e813a0763e6c.png"  alt="img" lazyload></a></p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700154-4a25ec84-3142-4a23-8f3a-34dc0c62be8c.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700154-4a25ec84-3142-4a23-8f3a-34dc0c62be8c.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>JeeCoding打开邀请链接，点击同意即可加入yagote的项目中</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700246-7507418b-2a6c-4e0a-a79b-870bd119dc88.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700246-7507418b-2a6c-4e0a-a79b-870bd119dc88.png"  alt="img" lazyload></a></p>
+<p>JeeCoding提交自己修改的代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push https://github.com/yagote/git-demo.git master</span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700336-0b89cdcf-6f05-4713-9b71-a23fc377d469.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700336-0b89cdcf-6f05-4713-9b71-a23fc377d469.png"  alt="img" lazyload></a></p>
+<p>yagote更新本地的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull git-demo master</span><br></pre></td></tr></table></figure>
+
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700429-7134f371-6136-4ae0-b7f4-800a8f477ddf.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700429-7134f371-6136-4ae0-b7f4-800a8f477ddf.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p><strong>注：Windows打开《凭据管理器》可修改Git连接GitHub的用户，如果要更换连接的用户，删掉目前的github凭据管理即可，Git连接github时会提示输入github的账号和密码。</strong></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700515-b303ffe5-fab4-49ca-a806-3fb701c2c266.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700515-b303ffe5-fab4-49ca-a806-3fb701c2c266.png"  alt="img" lazyload></a></p>
+<h3 id="4、跨团队协作"><a href="#4、跨团队协作" class="headerlink" title="4、跨团队协作"></a>4、跨团队协作</h3><p>（1）JeeCoding账户forkyagote的项目<a target="_blank" rel="noopener" href="https://github.com/yagote/yaok%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E4%BA%86%E4%B8%80%E4%BA%9B%E4%BF%AE%E6%94%B9">https://github.com/yagote/yaok，并进行了一些修改</a></p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700607-2c9c7da2-5b19-416b-8b1a-6528b0a33f3a.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700607-2c9c7da2-5b19-416b-8b1a-6528b0a33f3a.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>（2）在JeeCoding账户上新建一个Pull request 请求</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700699-90f6289c-8510-4659-8ebc-c1fe49e513f8.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700699-90f6289c-8510-4659-8ebc-c1fe49e513f8.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700779-5cd32c7e-9e1c-43f6-b922-983e72f0dd5b.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700779-5cd32c7e-9e1c-43f6-b922-983e72f0dd5b.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>（3）回到yagote账户，可以看到有一个Pull request 请求</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700867-89f71281-c6dc-4368-b642-7e7b958f1104.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700867-89f71281-c6dc-4368-b642-7e7b958f1104.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>yagote查看JeeCoding修改的代码</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700950-d88e176b-a56b-46c3-93fa-afee727bee0a.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811700950-d88e176b-a56b-46c3-93fa-afee727bee0a.png"  alt="img" lazyload></a></p>
+<p>（4）yagote审核代码，同意JeeCoding的修改</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701039-ac0d6a90-c57a-43bb-8e6a-a906fa0df24f.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701039-ac0d6a90-c57a-43bb-8e6a-a906fa0df24f.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>（5）合并完成</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701126-54f3e0cd-eb62-4c06-be1d-b2331bda8d08.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701126-54f3e0cd-eb62-4c06-be1d-b2331bda8d08.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>yagote/yaok中的内容已修改</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701214-ea9d8057-b177-4f6b-abdf-6512662b5637.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701214-ea9d8057-b177-4f6b-abdf-6512662b5637.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>yagote/yaok中查看Pull requests记录</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701292-247a8f78-5ac3-40d1-9eb8-956a45cfbcc2.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701292-247a8f78-5ac3-40d1-9eb8-956a45cfbcc2.png"  alt="img" lazyload></a></p>
+<h3 id="5、SSH免密登录"><a href="#5、SSH免密登录" class="headerlink" title="5、SSH免密登录"></a>5、SSH免密登录</h3><p>远程仓库中还有一个 SSH 的地址，因此也可以使用 SSH 进行访问。未设置时仓库会提示：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701375-7048fbff-9bf9-432f-abbd-e20f190ed456.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701375-7048fbff-9bf9-432f-abbd-e20f190ed456.png"  alt="img" lazyload></a></p>
+<p>（1）进入到目录C:\Users\86184.ssh下进行操作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#运行命令生成.ssh秘钥目录</span></span><br><span class="line">ssh-keygen -t rsa -C 邮箱</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701536-525f3542-4c20-4fab-a997-90e2c699502d.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701536-525f3542-4c20-4fab-a997-90e2c699502d.png"  alt="img" lazyload></a></p>
+<p>（2）将公钥内容全部复制到yagote的账户设置上</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701613-9a7eac1e-d4a8-4a0f-b819-66c729652d36.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701613-9a7eac1e-d4a8-4a0f-b819-66c729652d36.png"  alt="img" lazyload></a><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701741-0f7d16d2-da81-4d54-96a9-0bf1145b0762.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701741-0f7d16d2-da81-4d54-96a9-0bf1145b0762.png"  alt="img" lazyload></a><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701820-8d6784c6-e9c8-4e2c-b407-273bd65f888b.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701820-8d6784c6-e9c8-4e2c-b407-273bd65f888b.png"  alt="img" lazyload></a></p>
+<p>（3）使用SSH连接yagote的仓库git-demo获取最新的代码</p>
+<p>在git-demo中进行操作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull git@github.com:yagote/git-demo.git master	<span class="comment">#拉取主线内容</span></span><br></pre></td></tr></table></figure>
+
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701902-dd28bb2b-4862-445e-a76a-5b1b8bb1e3be.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701902-dd28bb2b-4862-445e-a76a-5b1b8bb1e3be.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>可以查看到JeeCoding修改的代码</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701992-d3425ce2-6478-40dd-868f-5fc0d37c88d9.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811701992-d3425ce2-6478-40dd-868f-5fc0d37c88d9.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>（4）yagote修改代码，使用SSH连接提交</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi hello.txt</span><br><span class="line">git add hello.txt</span><br><span class="line">git commit -m <span class="string">&quot;yagote修改&quot;</span></span><br><span class="line">git push git@github.com:yagote/git-demo.git master <span class="comment">#提交到主线</span></span><br></pre></td></tr></table></figure>
+
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702071-43e68245-f5bb-44f3-8b32-f79a886d263f.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702071-43e68245-f5bb-44f3-8b32-f79a886d263f.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702168-afcfa9c3-5074-48df-99fc-f43513b6bbaa.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702168-afcfa9c3-5074-48df-99fc-f43513b6bbaa.png"  alt="img" lazyload></a></p>
+<h2 id="六、IDEA集成Git"><a href="#六、IDEA集成Git" class="headerlink" title="六、IDEA集成Git"></a>六、IDEA集成Git</h2><h3 id="1、配置-Git-忽略文件"><a href="#1、配置-Git-忽略文件" class="headerlink" title="1、配置 Git 忽略文件"></a>1、配置 Git 忽略文件</h3><p>为什么要忽略他们？与项目的实际功能无关，不参与服务器上部署运行。把它们忽略掉能够屏蔽 IDE 工具之 间的差异。</p>
+<p>在C:\Users\86184目录下进行配置，新建一个git.ignore文件，添加如下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># Compiled class file</span><br><span class="line">*.class</span><br><span class="line"># Log file</span><br><span class="line">*.log</span><br><span class="line"># BlueJ files</span><br><span class="line">*.ctxt</span><br><span class="line"># Mobile Tools for Java (J2ME)</span><br><span class="line">.mtj.tmp/</span><br><span class="line"># Package Files #</span><br><span class="line">*.jar</span><br><span class="line">*.war</span><br><span class="line">*.nar</span><br><span class="line">*.ear</span><br><span class="line">*.zip</span><br><span class="line">*.tar.gz</span><br><span class="line">*.rar</span><br><span class="line"># virtual machine crash logs, see </span><br><span class="line">http://www.java.com/en/download/help/error_hotspot.xml</span><br><span class="line">hs_err_pid*</span><br><span class="line">.classpath</span><br><span class="line">.project</span><br><span class="line">.settings</span><br><span class="line">target</span><br><span class="line">.idea</span><br><span class="line">*.iml</span><br></pre></td></tr></table></figure>
+
+<p>在.gitconfig 文件中引用忽略配置文件（此文件在 Windows 的家目录中）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">	name = yagote</span><br><span class="line">	email = Layne@atguigu.com</span><br><span class="line">[core]</span><br><span class="line">	excludesfile = C:/Users/86184/git.ignore</span><br><span class="line">注意：这里要使用“正斜线（/）”，不要使用“反斜线（\）”</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、定位-Git-程序"><a href="#2、定位-Git-程序" class="headerlink" title="2、定位 Git 程序"></a>2、定位 Git 程序</h3><p>新建一个maven工程进行测试</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702252-5ad80c33-c70b-4c8d-b7d3-3cb48679caf2.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702252-5ad80c33-c70b-4c8d-b7d3-3cb48679caf2.png"  alt="img" lazyload></a></p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702334-cc678ddf-6ac1-4b29-8518-771470b3576f.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702334-cc678ddf-6ac1-4b29-8518-771470b3576f.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<h3 id="3、初始化本地库"><a href="#3、初始化本地库" class="headerlink" title="3、初始化本地库"></a>3、初始化本地库</h3><p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702427-11cbe2dd-194a-4f35-98c9-417224562a24.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702427-11cbe2dd-194a-4f35-98c9-417224562a24.png"  alt="img" lazyload></a></p>
+<p>选择要创建 Git 本地仓库的工程：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702525-8102207c-616b-453f-9ca4-6fefdefd189b.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702525-8102207c-616b-453f-9ca4-6fefdefd189b.png"  alt="img" lazyload></a></p>
+<h3 id="4、添加到暂存区"><a href="#4、添加到暂存区" class="headerlink" title="4、添加到暂存区"></a>4、添加到暂存区</h3><p>右键点击需要添加到Git暂存区的文件，选择 Git -&gt; Add</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702614-b2e87c00-8b7c-44f4-bad0-989e6f9bdd14.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702614-b2e87c00-8b7c-44f4-bad0-989e6f9bdd14.png"  alt="img" lazyload></a></p>
+<p>创建新文件时，idea会提示：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/202308242116955.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/202308242116955.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702797-9e68d6ff-d2a9-4519-b9a8-b28a291e7719.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702797-9e68d6ff-d2a9-4519-b9a8-b28a291e7719.png"  alt="img" lazyload></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">git</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello,Git!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、提交到本地库"><a href="#5、提交到本地库" class="headerlink" title="5、提交到本地库"></a>5、提交到本地库</h3><p>右键项目：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702888-1281ca9c-61a5-4bb6-a78f-a9f3b6e1d259.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702888-1281ca9c-61a5-4bb6-a78f-a9f3b6e1d259.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702981-b44d5de1-a493-4f04-a03f-119ff66503f7.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811702981-b44d5de1-a493-4f04-a03f-119ff66503f7.png"  alt="img" lazyload></a></p>
+<p>填写提交信息，这一步相当于git commit -m “first-commit”</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703062-a765e6b8-ac60-4f22-aa54-de963d340811.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703062-a765e6b8-ac60-4f22-aa54-de963d340811.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703153-7d2b74b2-ba16-4487-8c48-4abd6d407848.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703153-7d2b74b2-ba16-4487-8c48-4abd6d407848.png"  alt="img" lazyload></a></p>
+<p>提交后文件名称变为黑色了</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703235-f82bb774-ddb6-43e0-acfa-0e544b31da4f.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703235-f82bb774-ddb6-43e0-acfa-0e544b31da4f.png"  alt="img" lazyload></a></p>
+<h3 id="6、切换版本"><a href="#6、切换版本" class="headerlink" title="6、切换版本"></a>6、切换版本</h3><p>修改项目内容进行了两次提交，所以现在有三个版本，查看版本：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703321-39817923-c52d-4304-80aa-7f2f92b0e8d2.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703321-39817923-c52d-4304-80aa-7f2f92b0e8d2.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703399-1ef30fca-a1e6-4ea2-ab6e-afd4a959976d.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703399-1ef30fca-a1e6-4ea2-ab6e-afd4a959976d.png"  alt="img" lazyload></a></p>
+<p>切换版本，点击要切换的版本，右键：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703527-af523dc1-c038-42dd-aa4c-994450e834e2.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703527-af523dc1-c038-42dd-aa4c-994450e834e2.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703606-5334b846-2107-4d38-96a5-d0a83d8f5090.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703606-5334b846-2107-4d38-96a5-d0a83d8f5090.png"  alt="img" lazyload></a></p>
+<p>可以看到，代码也退回第二个版本了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">git</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello,Git!&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello,Git22222!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>切换会master，也是最新的版本（这里是第三版本）：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703684-00b84e74-4361-4b94-90ee-0dad067224ea.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703684-00b84e74-4361-4b94-90ee-0dad067224ea.png"  alt="img" lazyload></a></p>
+<p>代码变回第三个版本：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">git</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello,Git!&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello,Git22222!&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello,Git33333!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7、创建分支"><a href="#7、创建分支" class="headerlink" title="7、创建分支"></a>7、创建分支</h3><p>右键项目名称，选择 Git ，在 Repository 里面，点击 Branches 按钮：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703766-a5b35c49-6599-4b42-805d-5223c0dc5e21.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703766-a5b35c49-6599-4b42-805d-5223c0dc5e21.png"  alt="img" lazyload></a></p>
+<p>或者点击右下角：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703851-5a9df0f2-4453-447f-a9b4-dc7a2654622f.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703851-5a9df0f2-4453-447f-a9b4-dc7a2654622f.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703934-842a3255-00da-4d51-85c1-411fe3ebe177.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811703934-842a3255-00da-4d51-85c1-411fe3ebe177.png"  alt="img" lazyload></a></p>
+<p>已创建分支，且当前在hot-fix分支：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704017-b34da073-6b39-425a-8e06-5d9354ee0855.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704017-b34da073-6b39-425a-8e06-5d9354ee0855.png"  alt="img" lazyload></a></p>
+<h3 id="8、切换分支"><a href="#8、切换分支" class="headerlink" title="8、切换分支"></a>8、切换分支</h3><p>点击想要切换到的分支，选择checkout，这里的操作会切换到主线master</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704097-4fcc4604-3944-4276-b397-ad6e034ebb9a.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704097-4fcc4604-3944-4276-b397-ad6e034ebb9a.png"  alt="img" lazyload></a></p>
+<h3 id="9、合并分支"><a href="#9、合并分支" class="headerlink" title="9、合并分支"></a>9、合并分支</h3><p>在分支hot-fix进行修改并提交</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704179-d5cb7256-b565-44e8-b9d3-4f30f138975f.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704179-d5cb7256-b565-44e8-b9d3-4f30f138975f.png"  alt="img" lazyload></a></p>
+<p>切换到主线master，主线master此时的内容并没有被修改，点击分支hot-fix，将分支hot-fix的修改合并到主线master</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704272-f187c169-ae12-465a-a1a7-3f7bef93783e.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704272-f187c169-ae12-465a-a1a7-3f7bef93783e.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704357-6bc00a81-3248-4f14-8fa7-3e3484112910.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704357-6bc00a81-3248-4f14-8fa7-3e3484112910.png"  alt="img" lazyload></a></p>
+<h3 id="10、合并冲突"><a href="#10、合并冲突" class="headerlink" title="10、合并冲突"></a>10、合并冲突</h3><p>如果 master 分支和 hot-fix 分支都修改了代码， 在合并分支的时候就会发生冲突。</p>
+<p>修改hot-fix中的代码：（修改过后一定要记得提交）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">git</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello,Git!&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello,Git22222!&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello,Git33333!&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;这是在分支hot-fix的修改&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;hot-fix-test&quot;</span>);	<span class="comment">//新增这一行</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823213326057.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823213326057.png"  alt="image-20230823213326057" lazyload></a></p>
+<p>修改master中的代码：（修改过后一定要记得提交）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">git</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello,Git!&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello,Git22222!&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello,Git33333!&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;这是在分支hot-fix的修改&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;master-test&quot;</span>);	<span class="comment">//新增这一行</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704449-0dbce8d5-59bc-4e78-a4e3-1676f06b577f.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704449-0dbce8d5-59bc-4e78-a4e3-1676f06b577f.png"  alt="img" lazyload></a></p>
+<p>站在主线master上合并分支hot-fix</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704541-41b774a2-33bf-4fcd-b32c-158768e4a72b.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704541-41b774a2-33bf-4fcd-b32c-158768e4a72b.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>出现合并冲突：</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704620-a682f308-c860-426a-a112-66c51830947f.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704620-a682f308-c860-426a-a112-66c51830947f.png"  alt="img" style="zoom:67%;"  lazyload></a>
+
+<p>需要手动进行合并：</p>
+<p>点击Merge</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704698-62d93ced-6fb4-42ec-83bd-7b941342b79e.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704698-62d93ced-6fb4-42ec-83bd-7b941342b79e.png"  alt="img" lazyload></a></p>
+<p>弹出如下界面，进行手动选择合并：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704776-14ced235-3ba6-4942-9d2a-f823d93254fc.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704776-14ced235-3ba6-4942-9d2a-f823d93254fc.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704856-6a8a85d7-9e3a-4d40-9d98-e9225c03dac0.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704856-6a8a85d7-9e3a-4d40-9d98-e9225c03dac0.png"  alt="img" lazyload></a></p>
+<p>手动合并完代码以后，点击右下角的 Apply 按钮，手动合并后的结果：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704939-aafb6b90-1d27-4e8c-b5e9-bcb46a811e86.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811704939-aafb6b90-1d27-4e8c-b5e9-bcb46a811e86.png"  alt="img" lazyload></a></p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705022-0aae9c88-c8d7-41e7-8b19-edfadddf1d51.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705022-0aae9c88-c8d7-41e7-8b19-edfadddf1d51.png"  alt="img" style="zoom: 67%;"  lazyload></a>
+
+<h2 id="七、IDEA集成GitHub"><a href="#七、IDEA集成GitHub" class="headerlink" title="七、IDEA集成GitHub"></a>七、IDEA集成GitHub</h2><h3 id="1、设置GitHub账号"><a href="#1、设置GitHub账号" class="headerlink" title="1、设置GitHub账号"></a>1、设置GitHub账号</h3><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705114-590b8c33-1c81-4179-9eac-9271a1f8e517.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705114-590b8c33-1c81-4179-9eac-9271a1f8e517.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>建议使用token登录</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705194-a4a8a89f-9bdd-47d5-b198-87162d6591ca.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705194-a4a8a89f-9bdd-47d5-b198-87162d6591ca.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705279-6fbf505f-6d44-47b3-95b2-5305f913eecc.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705279-6fbf505f-6d44-47b3-95b2-5305f913eecc.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705358-34a079fc-df11-4659-ae1e-c02626f16b7f.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705358-34a079fc-df11-4659-ae1e-c02626f16b7f.png"  alt="img" lazyload></a></p>
+<h3 id="2、分享工程到GitHub"><a href="#2、分享工程到GitHub" class="headerlink" title="2、分享工程到GitHub"></a>2、分享工程到GitHub</h3><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705439-b800c052-2f9e-4f2d-99a3-e02c23d493eb.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705439-b800c052-2f9e-4f2d-99a3-e02c23d493eb.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>不用在远程仓库创建git_test，这一步会自动创建一个远程仓库git_test的</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705522-68527325-a8e3-4d15-8d4b-2c7b51aa1b9f.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705522-68527325-a8e3-4d15-8d4b-2c7b51aa1b9f.png"  alt="img" lazyload></a></p>
+<p>提交到远程仓库成功：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823213528872.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823213528872.png"  alt="image-20230823213528872" lazyload></a></p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705605-8f2d1519-82c0-400b-bef5-735d9080c413.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705605-8f2d1519-82c0-400b-bef5-735d9080c413.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>如果出现提交错误，多试几次就好了，网络的问题</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705686-b1ada00d-8371-422d-be55-1a35a59d9aa7.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705686-b1ada00d-8371-422d-be55-1a35a59d9aa7.png"  alt="img" lazyload></a></p>
+<h3 id="3、push推送本地库到远程库"><a href="#3、push推送本地库到远程库" class="headerlink" title="3、push推送本地库到远程库"></a>3、push推送本地库到远程库</h3><p>本地的代码修改后，<strong>先commit到暂存区，再push到远程仓库</strong>，右键点击项目， 可以将当前分支的内容 push 到 GitHub 的远程仓库中。以下演示如何push到远程仓库：</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823222256606.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823222256606.png"  alt="image-20230823222256606" style="zoom:80%;"  lazyload></a>
+
+<p>或者直接点击</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705847-e238ef87-eb96-452e-ae48-c6a8d7e05820.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705847-e238ef87-eb96-452e-ae48-c6a8d7e05820.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705926-23b77253-453a-4f6f-b876-921623e4cd03.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811705926-23b77253-453a-4f6f-b876-921623e4cd03.png"  alt="img" lazyload></a></p>
+<p>修改为SSH连接，点击蓝色字体，自定义远程连接</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706009-e419a2c4-2861-4599-aa5e-504a0dc7bdbb.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706009-e419a2c4-2861-4599-aa5e-504a0dc7bdbb.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706095-6b1c1625-0b6a-4d80-8492-5f53784947be.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706095-6b1c1625-0b6a-4d80-8492-5f53784947be.png"  alt="img" lazyload></a></p>
+<p>更换为SSH连接</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706177-515a445c-9bce-4ca8-8890-79ce12d8e8af.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706177-515a445c-9bce-4ca8-8890-79ce12d8e8af.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706260-0100f276-cc0a-42fd-901f-7d320e357cb1.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706260-0100f276-cc0a-42fd-901f-7d320e357cb1.png"  alt="img" lazyload></a></p>
+<p>push到远程仓库</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706346-2a696c03-c657-4de4-9d59-39381bb7725f.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706346-2a696c03-c657-4de4-9d59-39381bb7725f.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706438-a48a28d0-b549-4abc-a5ec-52a6b4dcf677.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706438-a48a28d0-b549-4abc-a5ec-52a6b4dcf677.png"  alt="img" lazyload></a></p>
+<p>注意：push 是将本地库代码推送到远程库，如果本地库代码跟远程库代码版本不一致，push 的操作是会被拒绝的。也就是说，要想 push 成功，一定要保证本地库的版本要比远程库的版本高！</p>
+<p>在动手改本地代码之前，要先检查下远程库跟本地代码的区别！如果本地的代码版本已经落后，需要先 pull 拉取一下远程库的代码，将本地代码更新到最新以后，然后再修改，提交，推送！</p>
+<h3 id="4、pull-拉取远程库到本地库"><a href="#4、pull-拉取远程库到本地库" class="headerlink" title="4、pull 拉取远程库到本地库"></a>4、pull 拉取远程库到本地库</h3><p>注意：pull 是拉取远端仓库代码到本地，如果远程库代码和本地库代码不一致，会自动合并，如果自动合并失败，还会涉及到手动解决冲突的问题。</p>
+<p>右键点击项目，可以将远程仓库的内容 pull 到本地仓库。</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706523-738d6615-48c9-474c-a3a6-99cc87075c52.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706523-738d6615-48c9-474c-a3a6-99cc87075c52.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>或者下面这个拉取不行，这是更新项目的操作，不是拉取远程仓库的代码</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706610-c88b552e-beb5-479f-82e4-a0cca288c94a.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706610-c88b552e-beb5-479f-82e4-a0cca288c94a.png"  alt="img" lazyload></a></p>
+<p>拉取：</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706701-15b51d99-f7b5-4f47-b1bd-7c0ed22c8196.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706701-15b51d99-f7b5-4f47-b1bd-7c0ed22c8196.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>拉取成功：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706786-4a2d2a51-a1c9-4e5c-a4d2-00eb8c12629f.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706786-4a2d2a51-a1c9-4e5c-a4d2-00eb8c12629f.png"  alt="img" lazyload></a></p>
+<h3 id="5、clone-克隆远程库到本地"><a href="#5、clone-克隆远程库到本地" class="headerlink" title="5、clone 克隆远程库到本地"></a>5、clone 克隆远程库到本地</h3><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706875-b434c1ca-a98a-4948-880a-3ca9ebbd6ab4.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706875-b434c1ca-a98a-4948-880a-3ca9ebbd6ab4.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706967-0c733c1e-d1c8-4981-80bc-b0fce07a1714.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811706967-0c733c1e-d1c8-4981-80bc-b0fce07a1714.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823213811052.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823213811052.png"  alt="image-20230823213811052" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707124-2ed139c8-ba6e-4796-b914-a9066a162ce8.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707124-2ed139c8-ba6e-4796-b914-a9066a162ce8.png"  alt="img" lazyload></a></p>
+<h2 id="八、国内代码托管中心-码云"><a href="#八、国内代码托管中心-码云" class="headerlink" title="八、国内代码托管中心-码云"></a>八、国内代码托管中心-码云</h2><p>网址：<a target="_blank" rel="noopener" href="https://gitee.com/">https://gitee.com/</a></p>
+<h3 id="1、创建远程仓库-1"><a href="#1、创建远程仓库-1" class="headerlink" title="1、创建远程仓库"></a>1、创建远程仓库</h3><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707214-e6071c91-1cb2-46b4-b263-c9d70da40719.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707214-e6071c91-1cb2-46b4-b263-c9d70da40719.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<h3 id="2、IDEA集成码云"><a href="#2、IDEA集成码云" class="headerlink" title="2、IDEA集成码云"></a>2、IDEA集成码云</h3><h4 id="2-1-IDEA-安装码云插件"><a href="#2-1-IDEA-安装码云插件" class="headerlink" title="2.1 IDEA 安装码云插件"></a>2.1 IDEA 安装码云插件</h4><p>idea 默认不带码云插件，第一步要安装 Gitee 插件。</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707302-df2c2126-d1d8-4223-9498-831ed9b82e58.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707302-df2c2126-d1d8-4223-9498-831ed9b82e58.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707385-0a1cad09-d421-4004-b80a-c32cb5c17b1d.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707385-0a1cad09-d421-4004-b80a-c32cb5c17b1d.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<h4 id="2-2-IDEA连接码云"><a href="#2-2-IDEA连接码云" class="headerlink" title="2.2 IDEA连接码云"></a>2.2 IDEA连接码云</h4><p>idea 连接码云和连接 GitHub 几乎一样， 首先在 idea 里面创建一个工程， 初始化 git 工 程，然后将代码添加到暂存区， 提交到本地库，这些步骤上面已经讲过，此处不再赘述。</p>
+<p>添加Gitee账号：</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707477-1d606b5a-eb8d-425b-bebf-cb6e49492ea6.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707477-1d606b5a-eb8d-425b-bebf-cb6e49492ea6.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823222523986.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823222523986.png"  alt="image-20230823222523986" style="zoom:80%;"  lazyload></a>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707668-4f47f694-bb87-41a8-af88-475adfc9abd8.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707668-4f47f694-bb87-41a8-af88-475adfc9abd8.png"  alt="img" lazyload></a></p>
+<p>方法一：分享代码到Gitee（自动创建远程仓库）</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707745-38d007fa-e44f-4c16-b14a-2d49f1998fc7.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707745-38d007fa-e44f-4c16-b14a-2d49f1998fc7.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>方法二：提交到已有的远程仓库</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707831-4dfd38a2-5fcf-4f97-9d1c-c66d5d8b089c.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707831-4dfd38a2-5fcf-4f97-9d1c-c66d5d8b089c.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707921-a5c2c7e6-8f37-4709-b0da-25d0dd87d5e7.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811707921-a5c2c7e6-8f37-4709-b0da-25d0dd87d5e7.png"  alt="img" lazyload></a></p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708003-63ae4be7-f0da-48ba-9cb3-8d522d423e39.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708003-63ae4be7-f0da-48ba-9cb3-8d522d423e39.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708081-db0bc14e-b4af-49d3-a278-beeefead93f5.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708081-db0bc14e-b4af-49d3-a278-beeefead93f5.png"  alt="img" lazyload></a></p>
+<p>提交时出现问题：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708172-54e91105-61b0-4879-8efc-3038d1860778.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708172-54e91105-61b0-4879-8efc-3038d1860778.png"  alt="img" lazyload></a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;邮箱&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708360-bc749335-45ae-47fd-a918-0ffdc8f8ceb7.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708360-bc749335-45ae-47fd-a918-0ffdc8f8ceb7.png"  alt="img" lazyload></a></p>
+<p>添加公钥还是出现问题，原来是邮箱设置为私有的了，取消勾选即可</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823223009031.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823223009031.png"  alt="image-20230823223009031" lazyload></a></p>
+<p>提交成功：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708533-5faacb2a-f9de-4d28-a243-735dc24bcb38.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708533-5faacb2a-f9de-4d28-a243-735dc24bcb38.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708617-ed2a1f82-aba5-4345-ad2a-f1053a514037.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708617-ed2a1f82-aba5-4345-ad2a-f1053a514037.png"  alt="img" lazyload></a></p>
+<h4 id="2-3-拉取Gitee代码"><a href="#2-3-拉取Gitee代码" class="headerlink" title="2.3 拉取Gitee代码"></a>2.3 拉取Gitee代码</h4><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708701-79f9cc56-91cf-41e2-923b-a651ec914325.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708701-79f9cc56-91cf-41e2-923b-a651ec914325.png"  alt="img" style="zoom: 67%;"  lazyload></a>
+
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708779-c9b79a82-4a1a-4f4d-803a-3aed7200eea1.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708779-c9b79a82-4a1a-4f4d-803a-3aed7200eea1.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<h4 id="2-4-码云复制GitHub项目"><a href="#2-4-码云复制GitHub项目" class="headerlink" title="2.4 码云复制GitHub项目"></a>2.4 码云复制GitHub项目</h4><p>把GitHub上的项目复制到Gitee上，GitHub上更新时，Gitee也能进行刷新同步代码。</p>
+<p>复制GitHub项目的https链接：</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708857-6c6cc22c-df6f-485d-8b3e-22ce38414edc.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708857-6c6cc22c-df6f-485d-8b3e-22ce38414edc.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<p>将链接导入到Gitee中：</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708942-62c3eabe-dfc2-4013-adc4-0e4317d44697.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811708942-62c3eabe-dfc2-4013-adc4-0e4317d44697.png"  alt="img" style="zoom:67%;"  lazyload></a>
+
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811709042-f1b64cbc-05ba-4734-b312-d64c8d2ce8ae.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811709042-f1b64cbc-05ba-4734-b312-d64c8d2ce8ae.png"  alt="img" style="zoom: 67%;"  lazyload></a>
+
+<p>导入成功：</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823214431381.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/image-20230823214431381.png"  alt="image-20230823214431381" style="zoom: 67%;"  lazyload></a>
+
+<p>当GitHub项目更新时，Gitee也可同步更新：</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811709212-12661da2-db26-433d-9cae-40e79df80b86.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811709212-12661da2-db26-433d-9cae-40e79df80b86.png"  alt="img" style="zoom:67%;"  lazyload></a>
+
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811709288-cd77b05f-60ce-4d97-a400-e38add1999f8.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811709288-cd77b05f-60ce-4d97-a400-e38add1999f8.png"  alt="img" style="zoom:67%;"  lazyload></a>
+
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/202308242117069.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/202308242117069.png"  alt="img" style="zoom: 67%;"  lazyload></a>
+
+<p>同步更新成功：</p>
+<a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/202308242117544.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/202308242117544.png"  alt="img" style="zoom:80%;"  lazyload></a>
+
+<h2 id="九、自建代码托管平台-GitLab"><a href="#九、自建代码托管平台-GitLab" class="headerlink" title="九、自建代码托管平台-GitLab"></a>九、自建代码托管平台-GitLab</h2><p>GitLab 是由 GitLabInc.开发，使用 MIT 许可证的基于网络的 Git 仓库管理工具，且具有wiki 和 issue 跟踪功能。使用 Git 作为代码管理工具，并在此基础上搭建起来的 web 服务。</p>
+<p>官网地址：<a target="_blank" rel="noopener" href="https://about.gitlab.com/">https://about.gitlab.com/</a></p>
+<p>安装说明：<a target="_blank" rel="noopener" href="https://gitlab.cn/install/">https://gitlab.cn/install/</a></p>
+<h3 id="1、GitLab安装"><a href="#1、GitLab安装" class="headerlink" title="1、GitLab安装"></a>1、GitLab安装</h3><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/wULoCAIkrstFBzoF1AXfaw">https://mp.weixin.qq.com/s/wULoCAIkrstFBzoF1AXfaw</a></p>
+<p>准备一个系统为 CentOS7 以上版本的服务器，要求内存 4G，磁盘 50G。关闭防火墙，并且配置好主机名和 IP，保证服务器可以上网。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y curl policycoreutils-python openssh-server perl</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> sshd</span><br><span class="line">sudo systemctl start sshd</span><br><span class="line"></span><br><span class="line">sudo firewall-cmd --permanent --add-service=http</span><br><span class="line">sudo firewall-cmd --permanent --add-service=https</span><br><span class="line">sudo systemctl reload firewalld</span><br><span class="line"></span><br><span class="line">curl -fsSL https://packages.gitlab.cn/repository/raw/scripts/setup.sh | /bin/bash</span><br><span class="line"></span><br><span class="line">sudo yum/dnf install gitlab-jh</span><br></pre></td></tr></table></figure>
+
+<p>安装完成：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://raw.githubusercontent.com/yagote/blog-image/master/1691811709549-9ce9b195-a5b2-4105-aafa-76fae0bd2876.png"><img   src="/images/loading.svg" data-src="https://raw.githubusercontent.com/yagote/blog-image/master/1691811709549-9ce9b195-a5b2-4105-aafa-76fae0bd2876.png"  alt="img" lazyload></a></p>
+<p>初始化GitLab：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure>
+
+<p>初始化成功：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811709633-bd6bb4c1-1fb9-499d-86db-664eeca1ca13.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811709633-bd6bb4c1-1fb9-499d-86db-664eeca1ca13.png"  alt="img" lazyload></a></p>
+<p>启动GitLab服务：执行以下命令启动 GitLab 服务， 如需停止，执行 gitlab-ctl stop</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl start</span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811709722-ed418835-b3e9-4b1a-a6c5-e63a8f89efc2.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811709722-ed418835-b3e9-4b1a-a6c5-e63a8f89efc2.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811709806-1f2e7b12-5c6a-41a9-b2fa-1bc98e31aee3.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811709806-1f2e7b12-5c6a-41a9-b2fa-1bc98e31aee3.png"  alt="img" lazyload></a></p>
+<h3 id="2、管理员登录"><a href="#2、管理员登录" class="headerlink" title="2、管理员登录"></a>2、管理员登录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/gitlab/initial_root_password	<span class="comment">#查看密码</span></span><br><span class="line">s1AcJe4B6rL7zxtQz8NFJLjoG1AQWzHqksRNO+CfFj4=</span><br></pre></td></tr></table></figure>
+
+<p>用户名：root</p>
+<p>密码：s1AcJe4B6rL7zxtQz8NFJLjoG1AQWzHqksRNO+CfFj4=</p>
+<p>登录成功界面</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811709937-fc64910a-7d2d-4308-a235-78fe3ce5389d.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811709937-fc64910a-7d2d-4308-a235-78fe3ce5389d.png"  alt="img" lazyload></a></p>
+<h3 id="3、GitLab创建远程库"><a href="#3、GitLab创建远程库" class="headerlink" title="3、GitLab创建远程库"></a>3、GitLab创建远程库</h3><p>（1）步骤一：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710043-e1eb4fb8-0cfc-4540-9895-6e9fa066ca9c.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710043-e1eb4fb8-0cfc-4540-9895-6e9fa066ca9c.png"  alt="img" lazyload></a></p>
+<p>（2）步骤二：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710128-06b897d0-c492-4097-8442-bbb478c8b473.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710128-06b897d0-c492-4097-8442-bbb478c8b473.png"  alt="img" lazyload></a></p>
+<p>（3）步骤三：</p>
+<p><a class="simple-lightbox" href="../../../../../Typora/Git%25E6%2595%2599%25E7%25A8%258B.assets/image-20230528214515958.png"><img   src="/images/loading.svg" data-src="../../../../../Typora/Git%25E6%2595%2599%25E7%25A8%258B.assets/image-20230528214515958.png"  alt="img" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710229-55f2b260-8b01-42fe-b226-6c3f4dbd3f22.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710229-55f2b260-8b01-42fe-b226-6c3f4dbd3f22.png"  alt="img" lazyload></a></p>
+<h3 id="4、IDEA集成GitLab"><a href="#4、IDEA集成GitLab" class="headerlink" title="4、IDEA集成GitLab"></a>4、IDEA集成GitLab</h3><p>安装插件：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710301-9b4fd159-6bf9-46a4-a6e2-a82258869cf7.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710301-9b4fd159-6bf9-46a4-a6e2-a82258869cf7.png"  alt="img" lazyload></a><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710375-8ae51070-ed8a-4219-9d8c-73805a125848.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710375-8ae51070-ed8a-4219-9d8c-73805a125848.png"  alt="img" lazyload></a></p>
+<p>添加GitLab服务器：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710452-bb97a8f9-df2b-4816-b506-d4c772944509.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710452-bb97a8f9-df2b-4816-b506-d4c772944509.png"  alt="img" lazyload></a><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710540-c49976d8-5ae2-49a5-887b-03f18e70ac86.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710540-c49976d8-5ae2-49a5-887b-03f18e70ac86.png"  alt="img" lazyload></a></p>
+<p>复制GitLab上项目的https连接，把本地项目push到GitLab上：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710619-fadc14b9-2a8c-40af-8d90-7a3210b1679f.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710619-fadc14b9-2a8c-40af-8d90-7a3210b1679f.png"  alt="img" lazyload></a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://gitlab.example.com/root/git_test.git</span><br><span class="line">http://ip地址/root/git_test.git</span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710702-c184824a-6ab3-4de4-beef-4dfa1e3de44b.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710702-c184824a-6ab3-4de4-beef-4dfa1e3de44b.png"  alt="img" lazyload></a><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710790-64e7afdd-22c0-4bce-a441-abfcf5a12249.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710790-64e7afdd-22c0-4bce-a441-abfcf5a12249.png"  alt="img" lazyload></a></p>
+<p>首次向连接 gitlab，需要登录帐号和密码， 用 root 帐号和密码登录即可：</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710873-2c8d82f7-ea38-4950-86e6-a38beef095a3.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710873-2c8d82f7-ea38-4950-86e6-a38beef095a3.png"  alt="img" lazyload></a></p>
+<p>服务器太小，会遇到连接不上问题，多试几次</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710962-d0a38763-7dc9-47c5-9cbe-5e4cf471f600.png"><img   src="/images/loading.svg" data-src="https://cdn.nlark.com/yuque/0/2023/png/36072155/1691811710962-d0a38763-7dc9-47c5-9cbe-5e4cf471f600.png"  alt="img" lazyload></a></p>
+<p>提交成功。</p>
+<p>只要 GitLab 的远程库连接定义好以后，对 GitLab 远程库进行 pull 和 clone 的操作和 Github 和码云一致。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://yagote.github.io">yagote</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yagote.github.io/2023/08/12/git-jiao-cheng/">http://yagote.github.io/2023/08/12/git-jiao-cheng/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yagote.github.io" target="_blank">虾壳</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Git/">Git</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/08/22/vue-js-vue-cli-vite-de-qu-bie/" title="Vue.js、Vue-CLI、Vite的区别"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Vue.js、Vue-CLI、Vite的区别</div></div></a></div><div class="next-post pull-right"><a href="/2023/08/12/linux-chang-yong-ming-ling/" title="Linux常用命令"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux常用命令</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/07/24/git-ti-jiao-bo-ke-dao-github-shang-bao-cuo-connection-was-reset-errno-10054/" title="Git提交博客到github上报错Connection was reset, errno 10054"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-24</div><div class="title">Git提交博客到github上报错Connection was reset, errno 10054</div></div></a></div><div><a href="/2023/09/03/git-shi-yong-cao-zuo/" title="Git实用操作"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-03</div><div class="title">Git实用操作</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yagote</div><div class="author-info__description">Blog 博客 网站搭建 IT技术 分享 教程 Hexo</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Git%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">一、Git概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">二、Git常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7%E7%AD%BE%E5%90%8D"><span class="toc-number">2.1.</span> <span class="toc-text">1、设置用户签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E6%9C%AC%E5%9C%B0%E5%BA%93"><span class="toc-number">2.2.</span> <span class="toc-text">2、初始化本地库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0%E5%BA%93%E7%8A%B6%E6%80%81"><span class="toc-number">2.3.</span> <span class="toc-text">3、查看本地库状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%B7%BB%E5%8A%A0"><span class="toc-number">2.4.</span> <span class="toc-text">4、添加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E6%8F%90%E4%BA%A4%E6%9C%AC%E5%9C%B0%E5%BA%93"><span class="toc-number">2.5.</span> <span class="toc-text">5、提交本地库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E6%9F%A5%E7%9C%8B%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95"><span class="toc-number">2.6.</span> <span class="toc-text">6、查看历史记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-number">2.7.</span> <span class="toc-text">7、修改文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2"><span class="toc-number">2.8.</span> <span class="toc-text">8、版本切换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Git%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">三、Git分支操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%9F%A5%E7%9C%8B%E5%88%86%E6%94%AF"><span class="toc-number">3.1.</span> <span class="toc-text">1、查看分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF"><span class="toc-number">3.2.</span> <span class="toc-text">2、创建分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-number">3.3.</span> <span class="toc-text">3、切换分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF"><span class="toc-number">3.4.</span> <span class="toc-text">4、合并分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%90%88%E5%B9%B6%E5%86%B2%E7%AA%81"><span class="toc-number">3.5.</span> <span class="toc-text">5、合并冲突</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">四、团队协作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%9B%A2%E9%98%9F%E5%86%85%E5%8D%8F%E4%BD%9C"><span class="toc-number">4.1.</span> <span class="toc-text">1、团队内协作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E8%B7%A8%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C"><span class="toc-number">4.2.</span> <span class="toc-text">2、跨团队协作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81GitHub%E6%93%8D%E4%BD%9C"><span class="toc-number">5.</span> <span class="toc-text">五、GitHub操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">5.1.</span> <span class="toc-text">1、创建远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="toc-number">5.2.</span> <span class="toc-text">2、远程仓库操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E5%88%9B%E5%BB%BA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%88%AB%E5%90%8D"><span class="toc-number">5.2.1.</span> <span class="toc-text">2.1 创建远程仓库别名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E6%8E%A8%E9%80%81%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">5.2.2.</span> <span class="toc-text">2.2 推送本地分支到远程仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E6%8B%89%E5%8F%96%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">5.2.3.</span> <span class="toc-text">2.3 拉取远程仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E5%85%8B%E9%9A%86%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="toc-number">5.2.4.</span> <span class="toc-text">2.4 克隆远程仓库到本地</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%9B%A2%E9%98%9F%E5%86%85%E5%8D%8F%E4%BD%9C"><span class="toc-number">5.3.</span> <span class="toc-text">3、团队内协作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E8%B7%A8%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C"><span class="toc-number">5.4.</span> <span class="toc-text">4、跨团队协作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81SSH%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95"><span class="toc-number">5.5.</span> <span class="toc-text">5、SSH免密登录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81IDEA%E9%9B%86%E6%88%90Git"><span class="toc-number">6.</span> <span class="toc-text">六、IDEA集成Git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E9%85%8D%E7%BD%AE-Git-%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="toc-number">6.1.</span> <span class="toc-text">1、配置 Git 忽略文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%AE%9A%E4%BD%8D-Git-%E7%A8%8B%E5%BA%8F"><span class="toc-number">6.2.</span> <span class="toc-text">2、定位 Git 程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E6%9C%AC%E5%9C%B0%E5%BA%93"><span class="toc-number">6.3.</span> <span class="toc-text">3、初始化本地库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%B7%BB%E5%8A%A0%E5%88%B0%E6%9A%82%E5%AD%98%E5%8C%BA"><span class="toc-number">6.4.</span> <span class="toc-text">4、添加到暂存区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E6%8F%90%E4%BA%A4%E5%88%B0%E6%9C%AC%E5%9C%B0%E5%BA%93"><span class="toc-number">6.5.</span> <span class="toc-text">5、提交到本地库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E5%88%87%E6%8D%A2%E7%89%88%E6%9C%AC"><span class="toc-number">6.6.</span> <span class="toc-text">6、切换版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF"><span class="toc-number">6.7.</span> <span class="toc-text">7、创建分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-number">6.8.</span> <span class="toc-text">8、切换分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF"><span class="toc-number">6.9.</span> <span class="toc-text">9、合并分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E3%80%81%E5%90%88%E5%B9%B6%E5%86%B2%E7%AA%81"><span class="toc-number">6.10.</span> <span class="toc-text">10、合并冲突</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81IDEA%E9%9B%86%E6%88%90GitHub"><span class="toc-number">7.</span> <span class="toc-text">七、IDEA集成GitHub</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%AE%BE%E7%BD%AEGitHub%E8%B4%A6%E5%8F%B7"><span class="toc-number">7.1.</span> <span class="toc-text">1、设置GitHub账号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%88%86%E4%BA%AB%E5%B7%A5%E7%A8%8B%E5%88%B0GitHub"><span class="toc-number">7.2.</span> <span class="toc-text">2、分享工程到GitHub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81push%E6%8E%A8%E9%80%81%E6%9C%AC%E5%9C%B0%E5%BA%93%E5%88%B0%E8%BF%9C%E7%A8%8B%E5%BA%93"><span class="toc-number">7.3.</span> <span class="toc-text">3、push推送本地库到远程库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81pull-%E6%8B%89%E5%8F%96%E8%BF%9C%E7%A8%8B%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0%E5%BA%93"><span class="toc-number">7.4.</span> <span class="toc-text">4、pull 拉取远程库到本地库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81clone-%E5%85%8B%E9%9A%86%E8%BF%9C%E7%A8%8B%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="toc-number">7.5.</span> <span class="toc-text">5、clone 克隆远程库到本地</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%9B%BD%E5%86%85%E4%BB%A3%E7%A0%81%E6%89%98%E7%AE%A1%E4%B8%AD%E5%BF%83-%E7%A0%81%E4%BA%91"><span class="toc-number">8.</span> <span class="toc-text">八、国内代码托管中心-码云</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93-1"><span class="toc-number">8.1.</span> <span class="toc-text">1、创建远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81IDEA%E9%9B%86%E6%88%90%E7%A0%81%E4%BA%91"><span class="toc-number">8.2.</span> <span class="toc-text">2、IDEA集成码云</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-IDEA-%E5%AE%89%E8%A3%85%E7%A0%81%E4%BA%91%E6%8F%92%E4%BB%B6"><span class="toc-number">8.2.1.</span> <span class="toc-text">2.1 IDEA 安装码云插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-IDEA%E8%BF%9E%E6%8E%A5%E7%A0%81%E4%BA%91"><span class="toc-number">8.2.2.</span> <span class="toc-text">2.2 IDEA连接码云</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E6%8B%89%E5%8F%96Gitee%E4%BB%A3%E7%A0%81"><span class="toc-number">8.2.3.</span> <span class="toc-text">2.3 拉取Gitee代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E7%A0%81%E4%BA%91%E5%A4%8D%E5%88%B6GitHub%E9%A1%B9%E7%9B%AE"><span class="toc-number">8.2.4.</span> <span class="toc-text">2.4 码云复制GitHub项目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E8%87%AA%E5%BB%BA%E4%BB%A3%E7%A0%81%E6%89%98%E7%AE%A1%E5%B9%B3%E5%8F%B0-GitLab"><span class="toc-number">9.</span> <span class="toc-text">九、自建代码托管平台-GitLab</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81GitLab%E5%AE%89%E8%A3%85"><span class="toc-number">9.1.</span> <span class="toc-text">1、GitLab安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E7%AE%A1%E7%90%86%E5%91%98%E7%99%BB%E5%BD%95"><span class="toc-number">9.2.</span> <span class="toc-text">2、管理员登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81GitLab%E5%88%9B%E5%BB%BA%E8%BF%9C%E7%A8%8B%E5%BA%93"><span class="toc-number">9.3.</span> <span class="toc-text">3、GitLab创建远程库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81IDEA%E9%9B%86%E6%88%90GitLab"><span class="toc-number">9.4.</span> <span class="toc-text">4、IDEA集成GitLab</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/13/vuex-vue-zhong-de-zhuang-tai-guan-li/" title="vuex——vue中的状态管理">vuex——vue中的状态管理</a><time datetime="2023-09-13T13:31:22.000Z" title="发表于 2023-09-13 21:31:22">2023-09-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/11/k8s-chong-yao-ming-ling/" title="k8s重要命令">k8s重要命令</a><time datetime="2023-09-11T12:54:48.000Z" title="发表于 2023-09-11 20:54:48">2023-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/03/git-shi-yong-cao-zuo/" title="Git实用操作">Git实用操作</a><time datetime="2023-09-03T15:52:56.000Z" title="发表于 2023-09-03 23:52:56">2023-09-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/28/springboot-web-kai-fa-qian-hou-duan-diao-yong-de-yi-xie-wen-ti-shu-li/" title="SpringBoot web开发前后端调用的一些问题梳理">SpringBoot web开发前后端调用的一些问题梳理</a><time datetime="2023-08-28T15:41:55.000Z" title="发表于 2023-08-28 23:41:55">2023-08-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/24/qian-duan-kuang-jia/" title="前端框架">前端框架</a><time datetime="2023-08-24T04:37:28.000Z" title="发表于 2023-08-24 12:37:28">2023-08-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By yagote</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
