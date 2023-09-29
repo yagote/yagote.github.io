@@ -1,236 +1,32 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    
+extends includes/layout.pug
 
-    
-<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
-    
+block content
+  #post
+    if top_img === false
+      include includes/header/post-info.pug
 
-<meta charset="utf-8" >
-
-<title>SpringBoot web开发前后端调用的一些问题梳理</title>
-<meta name="keywords" content="SpringBoot web开发前后端调用的一些问题梳理, 虾壳">
-<meta name="description" content="
-1、springboot+vue前后端不分离的项目，前端怎么与后端进行交互的，前端如何向后端发送请求（如何调用后端接口）
-
-前后端不分离项目常用Ajax、Axios或者Vue-resource请求接口；    对需要实时通讯的则可以考虑S">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta property="og:title" content="SpringBoot web开发前后端调用的一些问题梳理">
-<meta property="og:description" content="
-1、springboot+vue前后端不分离的项目，前端怎么与后端进行交互的，前端如何向后端发送请求（如何调用后端接口）
-
-前后端不分离项目常用Ajax、Axios或者Vue-resource请求接口；    对需要实时通讯的则可以考虑S">
-
-<link rel="shortcut icon" href="/favicon.ico">
-<link rel="stylesheet" href="/style/main.css">
-
-  </head>
-  <body>
-    <div id="app" class="main">
-
-<div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://yagote.github.io">
-        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
-      </a>
-      <a href="http://yagote.github.io">
-        <h1 class="site-title">虾壳</h1>
-      </a>
-    </div>
-    <div class="right">
-        <i class="icon menu-switch icon-menu-outline" ></i>
-    </div>
-  </div>
-</div>
-
-<div class="menu-container" style="height: 0;opacity: 0;">
-<nav class="menu-list">
-  
-    
-      <a href="/" class="menu purple-link">
-        首页
-      </a>
-    
-  
-    
-      <a href="/tags/" class="menu purple-link">
-        标签
-      </a>
-    
-  
-    
-      <a href="/archives" class="menu purple-link">
-        归档
-      </a>
-    
-  
-    
-      <a href="/about" class="menu purple-link">
-        关于
-      </a>
-    
-  
-</nav>
-</div>
-
-
-
-  <div class="content-container">
-    <div class="post-detail">
-      
-      <h2 class="post-title">SpringBoot web开发前后端调用的一些问题梳理</h2>
-      <div class="post-info post-detail-info">
-        <span><i class="icon icon-calendar-outline"></i> 2023-08-28</span>
+    article#article-container.post-content!=page.content
+    include includes/post/post-copyright.pug
+    .tag_share
+      if (theme.post_meta.post.tags)
+        .post-meta__tag-list
+          each item, index in page.tags.data
+            a(href=url_for(item.path)).post-meta__tags #[=item.name]
+      include includes/third-party/share/index.pug
         
-          <span>
-          <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="/tags/SpringBoot/">
-              SpringBoot
-                
-              </a>
-            
-          </span>
-        
-      </div>
-      <div class="post-content-wrapper">
-        <div class="post-content">
-          <blockquote>
-<p><strong>1、springboot+vue前后端不分离的项目，前端怎么与后端进行交互的，前端如何向后端发送请求（如何调用后端接口）</strong></p>
-</blockquote>
-<p>前后端不分离项目常用Ajax、Axios或者Vue-resource请求接口；    对需要实时通讯的则可以考虑SockJS或WebSocket等技术。</p>
-<p><strong>（1）原生Ajax请求</strong></p>
-<p>前端使用XMLHttpRequest或者Fetch API发送Ajax请求到后端,调用后端restful接口。（ fetch API可以替代传统的XMLHttpRequest对象来进行网络请求。）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Vue组件方法</span></span><br><span class="line"><span class="function"><span class="title">getData</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">  fetch(<span class="string">&#x27;/api/users&#x27;</span>) </span><br><span class="line">    .then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">    .then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 使用数据</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    if theme.reward.enable && theme.reward.QR_code
+      !=partial('includes/post/reward', {}, {cache: true})
 
-<p><strong>（2）Axios</strong></p>
-<p>Axios是非常流行的ajax请求库,使用起来比原生的更简单。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Vue组件</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="function"><span class="title">getData</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      axios.get(<span class="string">&#x27;/api/users&#x27;</span>)</span><br><span class="line">         .then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">           <span class="comment">// 使用数据  </span></span><br><span class="line">         &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    //- ad
+    if theme.ad && theme.ad.post
+      .ads-wrap!=theme.ad.post
 
-<p><strong>（3）Vue-resource</strong></p>
-<p>Vue-resource是一个官方不再维护的库，但可以方便地发送ajax请求。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Vue组件</span></span><br><span class="line"><span class="keyword">import</span> VueResource <span class="keyword">from</span> <span class="string">&#x27;vue-resource&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// 注册插件</span></span><br><span class="line">  <span class="attr">plugins</span>: [VueResource],</span><br><span class="line">  </span><br><span class="line">  <span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="function"><span class="title">getData</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.$http.get(<span class="string">&#x27;/api/users&#x27;</span>)</span><br><span class="line">         .then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">           <span class="comment">// 使用数据  </span></span><br><span class="line">         &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    if theme.post_pagination
+      include includes/pagination.pug
+    if theme.related_post && theme.related_post.enable
+      != related_posts(page,site.posts)
 
-<p><strong>（4）SockJS</strong></p>
-<p>利用Socket技术实现长连接实时通信,保持前后端心跳连接。</p>
-<p><strong>（5）WebSocket</strong></p>
-<p>支持原生WebSocket协议实现双向实时通信。</p>
-<p><strong>（6）EventBus</strong></p>
-<p>通过全局事件总线机制交互,针对不需要实时的情况。</p>
-<blockquote>
-<p><strong>2、controller层并没有显式设置“/”的路径，为什么启动后localhost:8080地址会自动显示index.html页面的内容</strong></p>
-</blockquote>
-<p>1、您使用的Spring Boot版本内置了默认首页处理规则。</p>
-<p>从Spring Boot 2.0版本开始，它默认会从项目类路径下的静态资源文件夹(如src/main/resources/static)查找首页文件index.html，并直接返回。</p>
-<p>2、所以尽管您的Controller代码没有设置”/“路径,但Spring Boot会自动从静态资源文件夹查找并返回index.html。</p>
-<p>3、可以这么理解:</p>
-<ul>
-<li>当请求”/“时,Spring MVC试图找一个Controller处理</li>
-<li>找不到时,Spring Boot自动从静态资源文件夹(如/static)寻找index.html文件</li>
-<li>返回index.html内容给浏览器</li>
-</ul>
-<p>4、若不需要这个默认规则，可以配置自己的首页路径，如设为欢迎页:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> WebMvcConfigurer <span class="title">configurer</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> WebMvcConfigurerAdapter()&#123;</span><br><span class="line">    <span class="meta">@Override</span> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addViewControllers</span><span class="params">(ViewControllerRegistry registry)</span> </span>&#123;</span><br><span class="line">       registry.addViewController(<span class="string">&quot;/&quot;</span>).setViewName(<span class="string">&quot;forward:/welcome&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>所以，总之是Spring Boot默认的静态资源处理规则，让”/“能自动找到index.html而返回。</p>
-<p>Spring Boot项目能自动跳转到index.html页面，主要原因有以下几点:</p>
-<ol>
-<li>Spring Boot默认会寻找静态资源，index.html就被视为默认的首页。</li>
-<li>Spring Boot在类路径下的静态资源文件夹中寻找静态资源文件，默认位置为:</li>
-</ol>
-<ul>
-<li>src/main/resources/static</li>
-<li>src/main/resources/public</li>
-<li>src/main/resources/resources/static</li>
-<li>src/main/resources/resources/public</li>
-</ul>
-<ol start="3">
-<li><p>通常我们会把index.html等前端文件放在src/main/resources/static目录下。</p>
-</li>
-<li><p>在这种情况下，当请求URL为项目根路径”/“时，Spring Boot会自动寻找static目录下的index.html来作为首页响应。</p>
-</li>
-<li><p>也可以自己配置欢迎页,例如在WebMvcConfigurer中设置默认的首页。</p>
-</li>
-</ol>
-<blockquote>
-<p><strong>3、有没有Springboot+vue+thymeleaf项目（这种情况前后端可不可以分离分离）？</strong></p>
-</blockquote>
-<p>有，可以使用前后端不分离的。</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/1399z3blog/p/15788700.html">https://www.cnblogs.com/1399z3blog/p/15788700.html</a></p>
-
-        </div>
-        <div class="top-div">
-          
-        </div>
-      </div>
-    </div>
-
-    
-      <div class="next-post">
-        <a class="purple-link" href="/2023/08/24/qian-duan-kuang-jia/">
-          <h3 class="post-title">
-            下一篇：前端框架
-          </h3>
-        </a>
-      </div>
-    
-  </div>
-
-
-
-
-
-
-
-
-
-
-<footer>
-<div class="site-footer">
-  <div class="social-container">
-    
+    if page.comments !== false && theme.comments && theme.comments.use
+      - var commentsJsLoad = true
+      !=partial('includes/third-party/comments/index', {}, {cache: true})
       
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-<!--  -->
-<!--    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>-->
-<!--  -->
-    
-        Copyright © 2021-2023 虾壳
-    
-  
-  
-  
-  
-  
-</div>
-</footer>
-
-
-      </div>
-    </div>
-    
-<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
-
-<script src="/js/main.js"></script>
-
-
-
-
-
-
-  </body>
-</html>
-

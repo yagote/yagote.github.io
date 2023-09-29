@@ -1,192 +1,32 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    
+extends includes/layout.pug
 
-    
-<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
-    
+block content
+  #post
+    if top_img === false
+      include includes/header/post-info.pug
 
-<meta charset="utf-8" >
-
-<title>Spring容器原理</title>
-<meta name="keywords" content="Spring容器原理, 虾壳">
-<meta name="description" content="Spring容器是Spring框架的核心部分，它负责管理和组织应用程序中的对象（Bean）的创建、配置和生命周期管理。Spring容器的原理可以概括为以下几个核心步骤：
-
-资源加载：Spring容器首先会加载配置文件，如XML配置文件或基于">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta property="og:title" content="Spring容器原理">
-<meta property="og:description" content="Spring容器是Spring框架的核心部分，它负责管理和组织应用程序中的对象（Bean）的创建、配置和生命周期管理。Spring容器的原理可以概括为以下几个核心步骤：
-
-资源加载：Spring容器首先会加载配置文件，如XML配置文件或基于">
-
-<link rel="shortcut icon" href="/favicon.ico">
-<link rel="stylesheet" href="/style/main.css">
-
-  </head>
-  <body>
-    <div id="app" class="main">
-
-<div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://yagote.github.io">
-        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
-      </a>
-      <a href="http://yagote.github.io">
-        <h1 class="site-title">虾壳</h1>
-      </a>
-    </div>
-    <div class="right">
-        <i class="icon menu-switch icon-menu-outline" ></i>
-    </div>
-  </div>
-</div>
-
-<div class="menu-container" style="height: 0;opacity: 0;">
-<nav class="menu-list">
-  
-    
-      <a href="/" class="menu purple-link">
-        首页
-      </a>
-    
-  
-    
-      <a href="/tags/" class="menu purple-link">
-        标签
-      </a>
-    
-  
-    
-      <a href="/archives" class="menu purple-link">
-        归档
-      </a>
-    
-  
-    
-      <a href="/about" class="menu purple-link">
-        关于
-      </a>
-    
-  
-</nav>
-</div>
-
-
-
-  <div class="content-container">
-    <div class="post-detail">
-      
-      <h2 class="post-title">Spring容器原理</h2>
-      <div class="post-info post-detail-info">
-        <span><i class="icon icon-calendar-outline"></i> 2023-08-06</span>
+    article#article-container.post-content!=page.content
+    include includes/post/post-copyright.pug
+    .tag_share
+      if (theme.post_meta.post.tags)
+        .post-meta__tag-list
+          each item, index in page.tags.data
+            a(href=url_for(item.path)).post-meta__tags #[=item.name]
+      include includes/third-party/share/index.pug
         
-          <span>
-          <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="/tags/Java/">
-              Java
-                
-                  ，
-                
-              </a>
-            
-              <a href="/tags/Spring/">
-              Spring
-                
-              </a>
-            
-          </span>
-        
-      </div>
-      <div class="post-content-wrapper">
-        <div class="post-content">
-          <p>Spring容器是Spring框架的核心部分，它<strong>负责管理和组织应用程序中的对象（Bean）的创建、配置和生命周期管理</strong>。Spring容器的原理可以概括为以下几个核心步骤：</p>
-<ol>
-<li><strong>资源加载</strong>：Spring容器首先会加载配置文件，如XML配置文件或基于注解的配置类。这些配置文件定义了应用程序中的Bean以及它们之间的依赖关系。</li>
-<li><strong>实例化Bean</strong>：根据配置文件中的定义，Spring容器会实例化应用程序中的Bean对象。Spring提供了多种实例化方式，包括使用构造函数、静态工厂方法、实例工厂方法等。</li>
-<li><strong>Bean的依赖注入</strong>：Spring容器会解析配置文件，查找Bean之间的依赖关系，并将相应的依赖注入到Bean中。依赖注入可以通过构造函数注入、Setter方法注入或字段注入等方式实现。</li>
-<li><strong>Bean的初始化</strong>：在依赖注入完成后，Spring容器会调用Bean的初始化方法（如果定义了的话），可以通过实现<code>InitializingBean</code>接口或使用<code>@PostConstruct</code>注解来指定初始化方法。</li>
-<li><strong>容器管理</strong>：Spring容器会对已创建的Bean进行管理，并提供各种服务，如AOP（面向切面编程）、事务管理、事件发布等。这些服务通过各种Bean后处理器（BeanPostProcessor）和特殊的Bean定义（如切面）来实现。</li>
-<li><strong>Bean的使用</strong>：应用程序可以通过Spring容器获取已创建并配置好的Bean，并使用它们执行相应的业务逻辑。</li>
-<li><strong>Bean的销毁</strong>：当应用程序关闭或销毁时，Spring容器会调用Bean的销毁方法（如果定义了的话），可以通过实现<code>DisposableBean</code>接口或使用<code>@PreDestroy</code>注解来指定销毁方法。</li>
-</ol>
-<p><strong>Spring容器的核心思想是控制反转（IoC）和依赖注入（DI）。</strong>它通过<strong>将对象的创建和依赖关系的管理交给容器</strong>来实现松耦合和可维护的应用程序设计。</p>
-<p><strong>常见的Spring容器实现包括<code>ApplicationContext</code>和<code>BeanFactory</code>。</strong><code>ApplicationContext</code>是<code>BeanFactory</code>的子接口，提供了更多的功能和便利的特性，如国际化支持、事件发布、AOP等，是使用最广泛的Spring容器实现。</p>
-<p>总结起来，Spring容器负责管理和组织Bean的创建、配置和生命周期，并提供了丰富的功能和服务，帮助开发人员构建灵活、可扩展和易于维护的应用程序。</p>
+    if theme.reward.enable && theme.reward.QR_code
+      !=partial('includes/post/reward', {}, {cache: true})
 
-        </div>
-        <div class="top-div">
-          
-        </div>
-      </div>
-    </div>
+    //- ad
+    if theme.ad && theme.ad.post
+      .ads-wrap!=theme.ad.post
 
-    
-      <div class="next-post">
-        <a class="purple-link" href="/2023/08/01/jpa-he-mybatis/">
-          <h3 class="post-title">
-            下一篇：JPA和MyBatis
-          </h3>
-        </a>
-      </div>
-    
-  </div>
+    if theme.post_pagination
+      include includes/pagination.pug
+    if theme.related_post && theme.related_post.enable
+      != related_posts(page,site.posts)
 
-
-
-
-
-
-
-
-
-
-<footer>
-<div class="site-footer">
-  <div class="social-container">
-    
+    if page.comments !== false && theme.comments && theme.comments.use
+      - var commentsJsLoad = true
+      !=partial('includes/third-party/comments/index', {}, {cache: true})
       
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-<!--  -->
-<!--    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>-->
-<!--  -->
-    
-        Copyright © 2021-2023 虾壳
-    
-  
-  
-  
-  
-  
-</div>
-</footer>
-
-
-      </div>
-    </div>
-    
-<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
-
-<script src="/js/main.js"></script>
-
-
-
-
-
-
-  </body>
-</html>
-

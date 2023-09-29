@@ -1,278 +1,32 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    
+extends includes/layout.pug
 
-    
-<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
-    
+block content
+  #post
+    if top_img === false
+      include includes/header/post-info.pug
 
-<meta charset="utf-8" >
-
-<title>vuex——vue中的状态管理</title>
-<meta name="keywords" content="vuex——vue中的状态管理, 虾壳">
-<meta name="description" content="一、Vuex简单介绍Vuex 是 Vue.js 的状态管理模式。它采用集中式存储管理应用的所有组件的状态,并以相应的规则保证状态以一种可预测的方式发生变化。【一句话：用于多个组件共享数据——通信】
-官网：https://vuex.vuejs">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta property="og:title" content="vuex——vue中的状态管理">
-<meta property="og:description" content="一、Vuex简单介绍Vuex 是 Vue.js 的状态管理模式。它采用集中式存储管理应用的所有组件的状态,并以相应的规则保证状态以一种可预测的方式发生变化。【一句话：用于多个组件共享数据——通信】
-官网：https://vuex.vuejs">
-
-<link rel="shortcut icon" href="/favicon.ico">
-<link rel="stylesheet" href="/style/main.css">
-
-  </head>
-  <body>
-    <div id="app" class="main">
-
-<div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://yagote.github.io">
-        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
-      </a>
-      <a href="http://yagote.github.io">
-        <h1 class="site-title">虾壳</h1>
-      </a>
-    </div>
-    <div class="right">
-        <i class="icon menu-switch icon-menu-outline" ></i>
-    </div>
-  </div>
-</div>
-
-<div class="menu-container" style="height: 0;opacity: 0;">
-<nav class="menu-list">
-  
-    
-      <a href="/" class="menu purple-link">
-        首页
-      </a>
-    
-  
-    
-      <a href="/tags/" class="menu purple-link">
-        标签
-      </a>
-    
-  
-    
-      <a href="/archives" class="menu purple-link">
-        归档
-      </a>
-    
-  
-    
-      <a href="/about" class="menu purple-link">
-        关于
-      </a>
-    
-  
-</nav>
-</div>
-
-
-
-  <div class="content-container">
-    <div class="post-detail">
-      
-      <h2 class="post-title">vuex——vue中的状态管理</h2>
-      <div class="post-info post-detail-info">
-        <span><i class="icon icon-calendar-outline"></i> 2023-09-13</span>
+    article#article-container.post-content!=page.content
+    include includes/post/post-copyright.pug
+    .tag_share
+      if (theme.post_meta.post.tags)
+        .post-meta__tag-list
+          each item, index in page.tags.data
+            a(href=url_for(item.path)).post-meta__tags #[=item.name]
+      include includes/third-party/share/index.pug
         
-          <span>
-          <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="/tags/vue/">
-              vue
-                
-              </a>
-            
-          </span>
-        
-      </div>
-      <div class="post-content-wrapper">
-        <div class="post-content">
-          <h2 id="一、Vuex简单介绍"><a href="#一、Vuex简单介绍" class="headerlink" title="一、Vuex简单介绍"></a>一、Vuex简单介绍</h2><p>Vuex 是 Vue.js 的状态管理模式。它采用集中式存储管理应用的所有组件的状态,并以相应的规则保证状态以一种可预测的方式发生变化。【一句话：用于多个组件共享数据——通信】</p>
-<p>官网：<a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/">https://vuex.vuejs.org/zh/</a></p>
-<p>（1）Vuex 的主要特点包括:</p>
-<ul>
-<li>单一状态树：Vuex 使用单一状态树——即一个对象树来存储应用中所有组件的状态,并且保证状态以统一的方式任何组件都可以获取到。</li>
-<li>提交 mutation：唯一改变 Vuex 状态的方法是提交 mutation。 mutation 里面的方法都是<strong>同步</strong>方法。</li>
-<li>Action：Action 可以包含任意<strong>异步</strong>操作。</li>
-<li>模块化：Vuex 允许我们将 store 分割成模块(module)。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块等等。</li>
-<li>严格模式：Vuex 可以开启严格模式,让状态变更更加可预测。</li>
-<li>插件机制：可以通过 Vuex 插件来扩展 Vuex 的功能。</li>
-</ul>
-<p>（2）Vuex 作用:</p>
-<ul>
-<li>集中状态管理,方便多个组件访问和修改状态</li>
-<li>可记录每次状态改变的操作,方便追踪bug</li>
-<li>能深入理解组件间关系和状态流动</li>
-<li>实现路由状态管理</li>
-<li>与其他库整合,实现更复杂的业务需求</li>
-</ul>
-<p>（3）Vuex包含了Store概念：</p>
-<p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/scaling-up/state-management.html">Store模式——状态管理</a></p>
-<p>Vuex是一个专为Vue.js应用程序开发的状态管理模式。它采用集中式store为所有的组件提供共享状态。</p>
-<p>Store在Vuex中的含义和作用是:</p>
-<ul>
-<li>Store就是保存状态的对象实例。</li>
-<li>使用Vuex需要先创建一个Store实例,这个实例用来保存整个应用的状态树。</li>
-<li>Store包含以下属性和方法:<ul>
-<li><strong>state: 储存应用中的数据</strong></li>
-<li><strong>getters: 获取state计算后的子状态</strong></li>
-<li><strong>mutations: 更改state的唯一方法</strong></li>
-<li><strong>actions: 包含了操作状态的方法,可异步处理</strong></li>
-<li><strong>modules: 将Store分割成不同的模块</strong></li>
-</ul>
-</li>
-<li>在Vue组件中使用connect将Store与组件连接起来。</li>
-<li>组件可以通过commit()触发mutation进行状态更新。</li>
-<li>也可以dispatch()触发action进行异步操作。</li>
-</ul>
-<p>Store就是Vuex中管理状态的单一资源库。需要对外暴露Store实例,供组件从中读取和修改状态值。Store提供了Vuex的数据管理能力，所有组件共享同一Store实例和状态。</p>
-<p>（4）使用 Vuex 需要以下步骤:</p>
-<p><strong>Vue2中要用vuex的3版本，Vue3中要用vuex的4版本。</strong></p>
-<ol>
-<li>引入 Vuex</li>
-<li>创建 store 对象,包含状态(state)、修改状态的方法(mutation)、以及操作状态的方法(action)等。</li>
-<li>在 Vue 实例中注入 store 对象</li>
-<li>组件通过调用 store 里的方法来改变状态,比如 this.$store.commit(‘mutation类型’,’参数’)</li>
-<li>组件通过计算属性对状态的监听订阅而更新视图</li>
-<li>创建模块分割代码,区分不同需求的模块管理</li>
-<li>使用插件进行功能增强</li>
-</ol>
-<p>（5）Vuex中的store文件一般建议放在src目录下的store文件夹里：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">src</span><br><span class="line">|- store</span><br><span class="line">   |- index.js // store文件</span><br><span class="line">   |- modules</span><br><span class="line">      |- cart.js       # 购物车模块</span><br><span class="line">      |- products.js   # 产品模块</span><br><span class="line">      |- ...</span><br><span class="line">|- components</span><br><span class="line">   |- ...</span><br><span class="line">|- views</span><br><span class="line">   |- ...</span><br><span class="line">|- App.vue</span><br><span class="line">|- main.js</span><br></pre></td></tr></table></figure>
+    if theme.reward.enable && theme.reward.QR_code
+      !=partial('includes/post/reward', {}, {cache: true})
 
-<p>把store文件存放在src/store目录下有以下几点好处:</p>
-<ul>
-<li>便于管理和组织,将状态管理代码与组件代码隔离开来。</li>
-<li>store目录下可以创建多个modules文件来对store进行模块化管理。</li>
-<li>其他文件可以使用相对路径或引入store,比如<code>import store from &#39;@/store&#39;</code>。</li>
-<li>在vue-cli脚手架中默认使用store目录,符合常见结构规范。</li>
-<li>store目录后续也可以考虑使用命名空间来进一步划分store代码块。</li>
-</ul>
-<p>除此以外,也可以选择直接在src目录下创建store.js文件。但建议采用Store文件夹管理独立的方式,有利于维护扩展。</p>
-<h2 id="二、Vue3中Vuex的变化"><a href="#二、Vue3中Vuex的变化" class="headerlink" title="二、Vue3中Vuex的变化"></a>二、Vue3中Vuex的变化</h2><p>Vuex 的工作原理和主要概念在 Vue 3 中保持不变:</p>
-<ul>
-<li>仍然有单一状态树(single state tree)的架构;</li>
-<li>使用 store.commit 触发同步 mutation;</li>
-<li>使用 store.dispatch 触发异步 action;</li>
-<li>通过 computed property 从 store 中获取 state;</li>
-<li>定义 getter 过滤和加工 state;</li>
-<li>模块化代码支持;</li>
-<li>严格模式可以增强可预测性;</li>
-<li>仍然提供插件系统进行代码增强。</li>
-</ul>
-<p>与 Vue 2 不同的是,Vuex 在 Vue 3 中的使用需要根据 Vue 3 的一些改变进行调整:</p>
-<ul>
-<li>store 不再作为 Vue 实例的其中一个选项 property 流入组件;</li>
-<li>需要使用 new Vuex.Store() 显式创建 Store 实例;</li>
-<li>使用 storeToRefs 从 store 中引用状态;</li>
-<li>组件挂载时使用提供的 store 而非 this.$store。</li>
-</ul>
-<h2 id="三、使用"><a href="#三、使用" class="headerlink" title="三、使用"></a>三、使用</h2><h3 id="1、基本使用"><a href="#1、基本使用" class="headerlink" title="1、基本使用"></a>1、基本使用</h3><ol>
-<li><p>初始化数据、配置<code>actions</code>、配置<code>mutations</code>，操作文件<code>store.js</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入Vue核心库</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="comment">//引入Vuex</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"><span class="comment">//引用Vuex</span></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> actions = &#123;</span><br><span class="line">    <span class="comment">//响应组件中加的动作</span></span><br><span class="line">	<span class="function"><span class="title">jia</span>(<span class="params">context,value</span>)</span>&#123;</span><br><span class="line">		<span class="comment">// console.log(&#x27;actions中的jia被调用了&#x27;,miniStore,value)</span></span><br><span class="line">		context.commit(<span class="string">&#x27;JIA&#x27;</span>,value)</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mutations = &#123;</span><br><span class="line">    <span class="comment">//执行加</span></span><br><span class="line">	<span class="function"><span class="title">JIA</span>(<span class="params">state,value</span>)</span>&#123;</span><br><span class="line">		<span class="comment">// console.log(&#x27;mutations中的JIA被调用了&#x27;,state,value)</span></span><br><span class="line">		state.sum += value</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化数据</span></span><br><span class="line"><span class="keyword">const</span> state = &#123;</span><br><span class="line">   <span class="attr">sum</span>:<span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建并暴露store</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">	actions,</span><br><span class="line">	mutations,</span><br><span class="line">	state,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li><p>组件中读取vuex中的数据：<code>$store.state.sum</code></p>
-</li>
-<li><p>组件中修改vuex中的数据：<code>$store.dispatch(&#39;action中的方法名&#39;,数据)</code> 或 <code>$store.commit(&#39;mutations中的方法名&#39;,数据)</code></p>
-<p><em>备注：若没有网络请求或其他业务逻辑，组件中也可以越过actions，即不写<code>dispatch</code>，直接编写<code>commit</code></em></p>
-<h5 id=""><a href="#" class="headerlink" title=""></a></h5></li>
-</ol>
-<h3 id="2、Vue2"><a href="#2、Vue2" class="headerlink" title="2、Vue2"></a>2、Vue2</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装vuex3</span></span><br><span class="line">npm i vuex@3</span><br></pre></td></tr></table></figure>
+    //- ad
+    if theme.ad && theme.ad.post
+      .ads-wrap!=theme.ad.post
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store.js</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  <span class="attr">state</span>: &#123;</span><br><span class="line">    <span class="attr">count</span>: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mutations</span>: &#123;</span><br><span class="line">    increment (state) &#123;</span><br><span class="line">      state.count++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">actions</span>: &#123;</span><br><span class="line">    incrementAsync (&#123; commit &#125;) &#123;</span><br><span class="line">      <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        commit(<span class="string">&#x27;increment&#x27;</span>) </span><br><span class="line">      &#125;, <span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+    if theme.post_pagination
+      include includes/pagination.pug
+    if theme.related_post && theme.related_post.enable
+      != related_posts(page,site.posts)
 
-
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Count: &#123;&#123; count &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;increment&quot;</span>&gt;</span>Increment<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123; mapState, mapActions &#125; <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  <span class="attr">computed</span>: mapState([<span class="string">&#x27;count&#x27;</span>]),</span></span><br><span class="line"><span class="javascript">  <span class="attr">methods</span>: mapActions([<span class="string">&#x27;incrementAsync&#x27;</span>]) </span></span><br><span class="line"><span class="javascript">&#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="3、Vue3"><a href="#3、Vue3" class="headerlink" title="3、Vue3"></a>3、Vue3</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vuex@next --save</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> createStore(&#123;</span><br><span class="line">  <span class="attr">state</span>: &#123;</span><br><span class="line">    <span class="attr">count</span>: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mutations</span>: &#123;</span><br><span class="line">    <span class="function"><span class="title">increment</span>(<span class="params">state</span>)</span> &#123;</span><br><span class="line">      state.count++</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">actions</span>: &#123;</span><br><span class="line">    <span class="function"><span class="title">incrementAsync</span>(<span class="params">&#123; commit &#125;</span>)</span> &#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Count: &#123;&#123; count &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123; storeToRefs &#125; <span class="keyword">from</span> <span class="string">&#x27;pinia&#x27;</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">const</span> &#123; count &#125; = storeToRefs(store)</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">increment</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">  store.commit(<span class="string">&#x27;increment&#x27;</span>)</span></span><br><span class="line"><span class="javascript">&#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>主要区别在于Vue3中不再使用this.$store,而是通过storeToRefs获取状态和方法。</strong></p>
-
-        </div>
-        <div class="top-div">
-          <ol class="top-box"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%B8%80%E3%80%81Vuex%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="top-box-text">一、Vuex简单介绍</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%BA%8C%E3%80%81Vue3%E4%B8%ADVuex%E7%9A%84%E5%8F%98%E5%8C%96"><span class="top-box-text">二、Vue3中Vuex的变化</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8"><span class="top-box-text">三、使用</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#1%E3%80%81%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="top-box-text">1、基本使用</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#2%E3%80%81Vue2"><span class="top-box-text">2、Vue2</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#3%E3%80%81Vue3"><span class="top-box-text">3、Vue3</span></a></li></ol></li></ol>
-        </div>
-      </div>
-    </div>
-
-    
-      <div class="next-post">
-        <a class="purple-link" href="/2023/09/11/k8s-chong-yao-ming-ling/">
-          <h3 class="post-title">
-            下一篇：k8s重要命令
-          </h3>
-        </a>
-      </div>
-    
-  </div>
-
-
-
-
-
-
-
-
-
-
-<footer>
-<div class="site-footer">
-  <div class="social-container">
-    
+    if page.comments !== false && theme.comments && theme.comments.use
+      - var commentsJsLoad = true
+      !=partial('includes/third-party/comments/index', {}, {cache: true})
       
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-<!--  -->
-<!--    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>-->
-<!--  -->
-    
-        Copyright © 2021-2023 虾壳
-    
-  
-  
-  
-  
-  
-</div>
-</footer>
-
-
-      </div>
-    </div>
-    
-<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
-
-<script src="/js/main.js"></script>
-
-
-
-
-
-
-  </body>
-</html>
-

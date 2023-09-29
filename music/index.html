@@ -1,157 +1,20 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    
+extends includes/layout.pug
 
-    
-<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
-    
+block content
+  #page
+    if top_img === false
+      h1.page-title= page.title
 
-<meta charset="utf-8" >
+    case page.type
+      when 'tags'
+        include includes/page/tags.pug
+      when 'link'
+        include includes/page/flink.pug
+      when 'categories'
+        include includes/page/categories.pug
+      default
+        include includes/page/default-page.pug
 
-<title>音乐歌单收藏</title>
-<meta name="keywords" content="音乐歌单收藏, 虾壳">
-<meta name="description" content="Blog 博客 网站搭建 IT技术 分享 教程 Hexo">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta property="og:title" content="音乐歌单收藏">
-<meta property="og:description" content="Blog 博客 网站搭建 IT技术 分享 教程 Hexo">
-
-<link rel="shortcut icon" href="/favicon.ico">
-<link rel="stylesheet" href="/style/main.css">
-
-  <meta name="generator" content="Hexo 5.4.0"></head>
-  <body>
-    <div id="app" class="main">
-
-<div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://yagote.github.io">
-        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
-      </a>
-      <a href="http://yagote.github.io">
-        <h1 class="site-title">虾壳</h1>
-      </a>
-    </div>
-    <div class="right">
-        <i class="icon menu-switch icon-menu-outline" ></i>
-    </div>
-  </div>
-</div>
-
-<div class="menu-container" style="height: 0;opacity: 0;">
-<nav class="menu-list">
-  
-    
-      <a href="/" class="menu purple-link">
-        首页
-      </a>
-    
-  
-    
-      <a href="/tags/" class="menu purple-link">
-        标签
-      </a>
-    
-  
-    
-      <a href="/archives" class="menu purple-link">
-        归档
-      </a>
-    
-  
-    
-      <a href="/about" class="menu purple-link">
-        关于
-      </a>
-    
-  
-</nav>
-</div>
-
-
-
-  <div class="content-container">
-    <div class="post-detail">
-      
-      <h2 class="post-title">音乐歌单收藏</h2>
-      <div class="post-info post-detail-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-07-30</span>
-        
-      </div>
-      <div class="post-content-wrapper">
-        <div class="post-content">
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<!-- require MetingJS -->
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-<meting-js style="width: auto;height: 2000px;" server="netease" type="playlist" id="2364053447" theme="#2980b9" loop="all" autoplay="false" order="list" storagename="aplayer-setting" lrctype="0" list-max-height="800px">
-</meting-js>
-
-<p style="text-align:center;margin-top:30px"><span style="font-size:14px">温馨提示：选择喜欢的音乐双击播放，由于版权原因部分不能播放。如果喜欢歌单<a href="https://music.163.com/#/user/home?id=132033817" target="_blank" rel="noopener">收藏</a>一下，去网易云都能播放哟！<span></span></span></p>
-        </div>
-        <div class="top-div">
-          
-        </div>
-      </div>
-    </div>
-
-    
-  </div>
-
-
-
-
-
-
-
-
-
-
-<footer>
-<div class="site-footer">
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-<!--  -->
-<!--    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>-->
-<!--  -->
-    
-        Copyright © 2021-2023 虾壳
-    
-  
-  
-  
-  
-  
-</div>
-</footer>
-
-
-      </div>
-    </div>
-    
-<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = false; </script>
-
-<script src="/js/main.js"></script>
-
-
-
-
-
-
-  </body>
-</html>
-
+    if page.comments !== false && theme.comments && theme.comments.use
+      - var commentsJsLoad = true
+      !=partial('includes/third-party/comments/index', {}, {cache: true})

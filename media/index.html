@@ -1,189 +1,20 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    
+extends includes/layout.pug
 
-    
-<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
-    
+block content
+  #page
+    if top_img === false
+      h1.page-title= page.title
 
-<meta charset="utf-8" >
+    case page.type
+      when 'tags'
+        include includes/page/tags.pug
+      when 'link'
+        include includes/page/flink.pug
+      when 'categories'
+        include includes/page/categories.pug
+      default
+        include includes/page/default-page.pug
 
-<title>虾壳</title>
-<meta name="keywords" content="虾壳, 虾壳">
-<meta name="description" content="Blog 博客 网站搭建 IT技术 分享 教程 Hexo">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta property="og:title" content="虾壳">
-<meta property="og:description" content="Blog 博客 网站搭建 IT技术 分享 教程 Hexo">
-
-<link rel="shortcut icon" href="/favicon.ico">
-<link rel="stylesheet" href="/style/main.css">
-
-  <meta name="generator" content="Hexo 5.4.0"></head>
-  <body>
-    <div id="app" class="main">
-
-<div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://yagote.github.io">
-        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
-      </a>
-      <a href="http://yagote.github.io">
-        <h1 class="site-title">虾壳</h1>
-      </a>
-    </div>
-    <div class="right">
-        <i class="icon menu-switch icon-menu-outline" ></i>
-    </div>
-  </div>
-</div>
-
-<div class="menu-container" style="height: 0;opacity: 0;">
-<nav class="menu-list">
-  
-    
-      <a href="/" class="menu purple-link">
-        首页
-      </a>
-    
-  
-    
-      <a href="/tags/" class="menu purple-link">
-        标签
-      </a>
-    
-  
-    
-      <a href="/archives" class="menu purple-link">
-        归档
-      </a>
-    
-  
-    
-      <a href="/about" class="menu purple-link">
-        关于
-      </a>
-    
-  
-</nav>
-</div>
-
-
-
-  <div class="content-container">
-    <div class="post-detail">
-      
-      <h2 class="post-title"></h2>
-      <div class="post-info post-detail-info">
-        <span><i class="icon icon-calendar-outline"></i> 2021-05-25</span>
-        
-      </div>
-      <div class="post-content-wrapper">
-        <div class="post-content">
-          <div class="music-container">
-    <div class="music-player">
-        <div class="d-title">
-                <i class="fa fa-music"></i>&nbsp;&nbsp;听听音乐
-        </div>
-        <br/>
-    </div>
-    <div id="musicarea">
-        <div class="music"></div>
-        <p id="p_message"><span id="music_story_message" class="span_animation"></span></p>
-        <br/>
-        <ul id="musiclist"></ul>
-        <br/>
-        <div id="desc"></div>
-    </div>
-</div>
-
-<link rel="stylesheet" href="/css/meplayer.min.css"/>
-<script type="text/javascript" defer src="/js/meplayer.js"></script>
-<script type="text/javascript" defer src="/js/music.js"></script>
-
-<br/>
-<p style = "text-align:center"><span style="font-size:13px;">音乐播放器由<a href="https://github.com/newraina/mePlayer" target="_blank" rel="noopener">mePlayer</a>提供，布局参照<a href="https://dp2px.com/music/" target="_blank" rel="noopener">网友博客</a>所作，感谢作者的辛勤付出。</span></p>
-<!-- 更多音乐分享请查看<a target="_blank" rel="noopener" href="https://removeif.github.io/music/">歌单</a> 这一行添加原本在上面</span>的左边的-->
-<link rel="stylesheet" href="/css/DPlayer.min.css"/>
-<br/>
-<br/>
-
-<!-- <div class="video-player">  我注释
-    <div class="d-title">
-            <i class="fa fa-video-camera"></i>&nbsp;&nbsp;看看视频
-    </div>
-    <br/>
-    <p class="hits">->点击以下条目开始播放视频,向下滑动查看更多<-</p>
-    <div id="video-list"></div>
-    <br/>
-    <div id="dplayer"><br/></div>
-</div> -->
-<script src="/js/DPlayer.min.js"></script>
-
-        </div>
-        <div class="top-div">
-          
-        </div>
-      </div>
-    </div>
-
-    
-  </div>
-
-
-
-
-
-
-
-
-
-
-<footer>
-<div class="site-footer">
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-<!--  -->
-<!--    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>-->
-<!--  -->
-    
-        Copyright © 2021-2023 虾壳
-    
-  
-  
-  
-  
-  
-</div>
-</footer>
-
-
-      </div>
-    </div>
-    
-<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = false; </script>
-
-<script src="/js/main.js"></script>
-
-
-
-
-
-
-  </body>
-</html>
-
+    if page.comments !== false && theme.comments && theme.comments.use
+      - var commentsJsLoad = true
+      !=partial('includes/third-party/comments/index', {}, {cache: true})
