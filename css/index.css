@@ -3815,8 +3815,8 @@ h1.page-title + .tag-cloud-list {
   -o-transition: filter 375ms ease-in 0.2s;
   -ms-transition: filter 375ms ease-in 0.2s;
   transition: filter 375ms ease-in 0.2s;
-  -webkit-box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* 添加阴影 */
+  -webkit-box-shadow: 0 0 16px rgba(0,0,0,0.5);
+  box-shadow: 0 0 16px rgba(0,0,0,0.5); /* 添加阴影 */
 }
 #article-container p {
   margin: 0 0 16px;
