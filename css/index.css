@@ -2111,12 +2111,12 @@ figure.highlight pre .javascript .function {
   -moz-box-flex: 1;
   -o-box-flex: 1;
   box-flex: 1;
-  -webkit-flex: 1 0 calc(100% - 30px);
-  -ms-flex: 1 0 calc(100% - 30px);
-  flex: 1 0 calc(100% - 30px);
+  -webkit-flex: 1 auto;
+  -ms-flex: 1 auto;
+  flex: 1 auto;
   margin: 0 auto;
-  padding: 20px 15px;
-  max-width: 1200px;
+  padding: 10px 5px;
+  max-width: 1800px;
   width: 100%;
 }
 @media screen and (max-width: 900px) {
