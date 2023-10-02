@@ -1,0 +1,263 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Kafka | 虾壳</title><meta name="author" content="虾壳"><meta name="copyright" content="虾壳"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Apache所有项目 Kafka github地址 下载地址 Kafka文档 参考笔记：https:&#x2F;&#x2F;bright-boy.gitee.io&#x2F;technical-notes&#x2F;#&#x2F;kafka&#x2F;kafka Kafka笔记 尚硅谷视频：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1vr4y1677k&#x2F;  一、认识Kafka1、Kafka概述Kafka是由Apache软件基金会开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kafka">
+<meta property="og:url" content="http://yagote.github.io/2023/10/02/kafka/index.html">
+<meta property="og:site_name" content="虾壳">
+<meta property="og:description" content="Apache所有项目 Kafka github地址 下载地址 Kafka文档 参考笔记：https:&#x2F;&#x2F;bright-boy.gitee.io&#x2F;technical-notes&#x2F;#&#x2F;kafka&#x2F;kafka Kafka笔记 尚硅谷视频：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1vr4y1677k&#x2F;  一、认识Kafka1、Kafka概述Kafka是由Apache软件基金会开">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yagote.github.io/img/favicon.png">
+<meta property="article:published_time" content="2023-10-02T03:57:42.000Z">
+<meta property="article:modified_time" content="2023-10-02T03:59:55.283Z">
+<meta property="article:author" content="虾壳">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="Kafka">
+<meta property="article:tag" content="消息队列">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yagote.github.io/img/favicon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yagote.github.io/2023/10/02/kafka/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Kafka',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: undefined,
+  isToc: true,
+  postUpdate: '2023-10-02 11:59:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">41</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="虾壳"><span class="site-name">虾壳</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Kafka</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-02T03:57:42.000Z" title="发表于 2023-10-02 11:57:42">2023-10-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-02T03:59:55.283Z" title="更新于 2023-10-02 11:59:55">2023-10-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/Java%E6%95%99%E7%A8%8B/">Java教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Kafka"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.apache.org/index.html#projects-list">Apache所有项目</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/apache/kafka">Kafka github地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/apache/kafka/tags">下载地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://kafka.apache.org/documentation/">Kafka文档</a></p>
+<p>参考笔记：<a target="_blank" rel="noopener" href="https://bright-boy.gitee.io/technical-notes/#/kafka/kafka">https://bright-boy.gitee.io/technical-notes/#/kafka/kafka</a></p>
+<p><a href="D:\MyITData\Gitee\Bright-technical-notes\technical-notes\study-notes\kafka\kafka.md">Kafka笔记</a></p>
+<p>尚硅谷视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1vr4y1677k/">https://www.bilibili.com/video/BV1vr4y1677k/</a></p>
+</blockquote>
+<h3 id="一、认识Kafka"><a href="#一、认识Kafka" class="headerlink" title="一、认识Kafka"></a>一、认识Kafka</h3><h4 id="1、Kafka概述"><a href="#1、Kafka概述" class="headerlink" title="1、Kafka概述"></a>1、Kafka概述</h4><p>Kafka是由Apache软件基金会开发的一个开源流处理平台，由Scala和Java编写。Kafka是一种<strong>高吞吐量的分布式发布订阅消息系统</strong>，它可以<strong>处理</strong>消费者在网站中的所有<strong>动作流数据</strong>。</p>
+<h4 id="2、获取Kafka"><a href="#2、获取Kafka" class="headerlink" title="2、获取Kafka"></a>2、获取Kafka</h4><p><a target="_blank" rel="noopener" href="https://github.com/apache/kafka">Kafka github地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/apache/kafka/tags">下载地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://kafka.apache.org/documentation/">Kafka文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://kafka.apache.org/32/documentation.html#producerapi">3.2.1版本文档</a></p>
+<h4 id="3、消息队列两种模式"><a href="#3、消息队列两种模式" class="headerlink" title="3、消息队列两种模式"></a>3、消息队列两种模式</h4><ul>
+<li><p>点对点模式</p>
+<img src="https://raw.githubusercontent.com/yagote/blog-image/master/202310021159997.png" alt="image-20230128224341439" style="zoom:80%;" /></li>
+<li><p>发布订阅模式</p>
+<img src="https://raw.githubusercontent.com/yagote/blog-image/master/202310021159998.png" alt="image-20230128224418736" style="zoom:80%;" /></li>
+</ul>
+<h4 id="4、概念介绍"><a href="#4、概念介绍" class="headerlink" title="4、概念介绍"></a>4、概念介绍</h4><ul>
+<li><p><strong>producer、broker、consumer</strong></p>
+</li>
+<li><p>分区partition只能增减，不能减少</p>
+</li>
+<li><p>broker是消息的代理，Producers往Brokers里面的指定Topic中写消息，Consumers从Brokers里面拉取指定Topic的消息，然后进行业务处理，broker在中间起到一个代理保存消息的中转站。</p>
+</li>
+</ul>
+<img src="https://raw.githubusercontent.com/yagote/blog-image/master/202310021159999.png" alt="image-20230128224604566" style="zoom:80%;" />
+
+
+
+
+
+<h3 id="二、如何使用"><a href="#二、如何使用" class="headerlink" title="二、如何使用"></a>二、如何使用</h3><h4 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h4><h5 id="1-1-单机安装"><a href="#1-1-单机安装" class="headerlink" title="1.1 单机安装"></a>1.1 单机安装</h5><p>只使用一台服务器，安装一台kafka，这种情况仅适用于简单的测试。<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_47114547/article/details/128781010">参考博客</a></p>
+<h5 id="1-2-集群安装"><a href="#1-2-集群安装" class="headerlink" title="1.2 集群安装"></a>1.2 集群安装</h5><p>准备多台（这里以3台为例）服务器，每台服务器均安装kafka。</p>
+<p>每个台服务器的server.properties文件要调整</p>
+<ul>
+<li><p>server.properties</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">broker.id= 0</span><br><span class="line">listeners=PLAINTEXT://192.168.65.60:</span><br><span class="line">log.dir=/usr/local/data/kafka-logsCopy to clipboardErrorCopied</span><br></pre></td></tr></table></figure></li>
+<li><p>server1.properties</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">broker.id= 1</span><br><span class="line">listeners=PLAINTEXT://192.168.65.60:</span><br><span class="line">log.dir=/usr/local/data/kafka-logs-Copy to clipboardErrorCopied</span><br></pre></td></tr></table></figure></li>
+<li><p>server2.properties</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">broker.id= 2</span><br><span class="line">listeners=PLAINTEXT://192.168.65.60:</span><br><span class="line">log.dir=/usr/local/data/kafka-logs-Copy to clipboardErrorCopied</span><br></pre></td></tr></table></figure>
+
+<p>使用如下命令来启动 3 台服务器</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./kafka-server-start.sh -daemon../config/server0.properties</span><br><span class="line">./kafka-server-start.sh -daemon../config/server1.properties</span><br><span class="line">./kafka-server-start.sh -daemon../config/server2.propertiesCopy to clipboardErrorCopied</span><br></pre></td></tr></table></figure>
+
+<p>搭建完后通过查看zk中的**/brokers/ids** 看是否启动成功</p>
+<h4 id="2、相关概念"><a href="#2、相关概念" class="headerlink" title="2、相关概念"></a>2、相关概念</h4><p><strong>（1）副本</strong>：副本是对分区的备份。在集群中，不同的副本会被部署在不同的broker上。下面例子：创建 1个主题， 2 个分区、 3 个副本。这多个副本中，只有一个是leader，而其他的都是follower副本。仅有leader副本可以对外提供服务。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./kafka-topics.sh --create --zookeeper 172.16.253.35:2181 --replication-factor 3 --partitions 2 --topic my-replicated-topic</span><br></pre></td></tr></table></figure>
+
+<p>通过查看主题信息，其中的关键数据：</p>
+<ul>
+<li>replicas：当前副本存在的broker节点</li>
+<li>leader：副本里的概念<ul>
+<li>每个partition都有一个broker作为leader。</li>
+<li>消息发送方要把消息发给哪个broker？就看副本的leader是在哪个broker上面。副本里的leader专⻔用来接收消息。</li>
+<li>接收到消息，其他follower通过poll的方式来同步数据。</li>
+</ul>
+</li>
+<li>follower：leader处理所有针对这个partition的读写请求，而follower被动复制leader，不提供读写（主要是为了保证多副本数据与消费的一致性），如果leader所在的broker挂掉，那么就会进行新leader的选举，至于怎么选，在之后的controller的概念中介绍。</li>
+</ul>
+<p>多个follower副本通常存放在和leader副本不同的broker中。通过这样的机制实现了高可用，当某台机器挂掉后，其他follower副本也能迅速”转正“，开始对外提供服务。</p>
+<p><strong>（2）分区partition</strong>：在kafka中，每个主题可以有多个分区，每个分区又可以有多个副本。</p>
+<p><strong>（3）offset</strong>：一个连续的用于定位被追加到分区的每一个消息的***，最大值为64位的long大小，19位数字字符长度。理解为类比Java中的数组，kafka里面存着消息的数组，offset类似于数组下标。Kafka与其它队列的一个区别是offset是在消费端进行维护，而不是服务端，因此多个消费端可以消费同一个队列里的数据，并自行控制消费位置。</p>
+<p>每个 Kafka 副本对象都有两个重要的属性：LEO 和 HW。注意是所有的副本，而不只是 leader 副本。</p>
+<p>对于消费者而言，异步模式下 committed offset 是落后于 current position 的。如果 consumer 挂掉了, 那么下一次消费数据又只会从 committed offset 的位置拉取数据，就会导致数据被重复消费。</p>
+<img src="https://raw.githubusercontent.com/yagote/blog-image/master/202310021159000.png" alt="image-20230128234814246" style="zoom:80%;" />
+
+<p>参考<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15057832/3456873">kafka中的offset概念</a></p>
+<h4 id="3、在Java中使用"><a href="#3、在Java中使用" class="headerlink" title="3、在Java中使用"></a>3、在Java中使用</h4><p>参考代码在java项目【kafka】中</p>
+<h5 id="3-1-引入依赖"><a href="#3-1-引入依赖" class="headerlink" title="3.1 引入依赖"></a>3.1 引入依赖</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.kafka<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>kafka-clients<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-2-生产者发送消息的基本实现"><a href="#3-2-生产者发送消息的基本实现" class="headerlink" title="3.2 生产者发送消息的基本实现"></a>3.2 生产者发送消息的基本实现</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomProducer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 0 配置</span></span><br><span class="line">        Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 连接集群 bootstrap.servers</span></span><br><span class="line">        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,<span class="string">&quot;192.168.79.128:9092,192.168.79.129:9092&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 指定对应的key和value的序列化类型 key.serializer</span></span><br><span class="line">        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());</span><br><span class="line">        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1 创建kafka生产者对象</span></span><br><span class="line">        <span class="comment">// &quot;&quot; hello</span></span><br><span class="line">        KafkaProducer&lt;String, String&gt; kafkaProducer = <span class="keyword">new</span> KafkaProducer&lt;&gt;(properties);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2 发送数据</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">            kafkaProducer.send(<span class="keyword">new</span> ProducerRecord&lt;&gt;(<span class="string">&quot;first&quot;</span>,<span class="string">&quot;StudyKafka&quot;</span>+i));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3 关闭资源</span></span><br><span class="line">        kafkaProducer.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-3-消费者消费消息的基本实现"><a href="#3-3-消费者消费消息的基本实现" class="headerlink" title="3.3  消费者消费消息的基本实现"></a>3.3  消费者消费消息的基本实现</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomConsumer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 0 配置</span></span><br><span class="line">        Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//连接bootstrap.servers</span></span><br><span class="line">        properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, <span class="string">&quot;192.168.79.128:9092,192.168.79.129:9092&quot;</span>);</span><br><span class="line">        <span class="comment">//反序列化</span></span><br><span class="line">        properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());</span><br><span class="line">        properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 配置消费者组id</span></span><br><span class="line">        properties.put(ConsumerConfig.GROUP_ID_CONFIG, <span class="string">&quot;test5&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置分区分配策略</span></span><br><span class="line">        properties.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, <span class="string">&quot;org.apache.kafka.clients.consumer.StickyAssignor&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1 创建一个消费者  &quot;&quot;, &quot;hello&quot;</span></span><br><span class="line">        KafkaConsumer&lt;String, String&gt; kafkaConsumer = <span class="keyword">new</span> KafkaConsumer&lt;&gt;(properties);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2 订阅主题 first</span></span><br><span class="line">        ArrayList&lt;String&gt; topics = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        topics.add(<span class="string">&quot;first&quot;</span>);</span><br><span class="line">        kafkaConsumer.subscribe(topics);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3 消费数据</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line"></span><br><span class="line">            ConsumerRecords&lt;String, String&gt; consumerRecords = kafkaConsumer.poll(Duration.ofSeconds(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (ConsumerRecord&lt;String, String&gt; consumerRecord : consumerRecords) &#123;</span><br><span class="line">                System.out.println(consumerRecord);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            kafkaConsumer.commitAsync();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="三、与SpringBoot结合"><a href="#三、与SpringBoot结合" class="headerlink" title="三、与SpringBoot结合"></a>三、与SpringBoot结合</h3><p>创建一个SpringBoot工程</p>
+<img src="https://raw.githubusercontent.com/yagote/blog-image/master/202310021159001.png" alt="image-20230128234323695" style="zoom:80%;" />
+
+<p>配置文件application.properties</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 连接kafka集群</span></span><br><span class="line"><span class="meta">spring.kafka.bootstrap-servers</span>=<span class="string">hadoop102:9092,hadoop103:9092</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#key value的序列化</span></span><br><span class="line"><span class="meta">spring.kafka.producer.key-serializer</span>=<span class="string">org.apache.kafka.common.serialization.StringSerializer</span></span><br><span class="line"><span class="meta">spring.kafka.producer.value-serializer</span>=<span class="string">org.apache.kafka.common.serialization.StringSerializer</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 连接kafka 集群</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># key value 的反序列化</span></span><br><span class="line"><span class="meta">spring.kafka.consumer.key-deserializer</span>=<span class="string">org.apache.kafka.common.serialization.StringDeserializer</span></span><br><span class="line"><span class="meta">spring.kafka.consumer.value-deserializer</span>=<span class="string">org.apache.kafka.common.serialization.StringDeserializer</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 消费者组id</span></span><br><span class="line"><span class="meta">spring.kafka.consumer.group-id</span>=<span class="string">atguigu</span></span><br></pre></td></tr></table></figure>
+
+<p>生产者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProducerController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    KafkaTemplate&lt;String, String&gt; kafka;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/atguigu&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">data</span><span class="params">(String msg)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 通过kafka发送出去</span></span><br><span class="line">        kafka.send(<span class="string">&quot;first&quot;</span>, msg);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;ok&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>消费者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KafkaConsumer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@KafkaListener(topics = &quot;first&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">consumerTopic</span><span class="params">(String msg)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;收到消息：&quot;</span> + msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://yagote.github.io">虾壳</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yagote.github.io/2023/10/02/kafka/">http://yagote.github.io/2023/10/02/kafka/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yagote.github.io" target="_blank">虾壳</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/Kafka/">Kafka</a><a class="post-meta__tags" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/10/02/redis/" title="Redis"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Redis</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/08/08/spring-data-jpa/" title="Spring Data JPA"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-08</div><div class="title">Spring Data JPA</div></div></a></div><div><a href="/2023/10/01/axios/" title="Axios"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-01</div><div class="title">Axios</div></div></a></div><div><a href="/2023/10/01/css/" title="CSS"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-01</div><div class="title">CSS</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%AE%A4%E8%AF%86Kafka"><span class="toc-text">一、认识Kafka</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81Kafka%E6%A6%82%E8%BF%B0"><span class="toc-text">1、Kafka概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E8%8E%B7%E5%8F%96Kafka"><span class="toc-text">2、获取Kafka</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%A4%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="toc-text">3、消息队列两种模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="toc-text">4、概念介绍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="toc-text">二、如何使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85"><span class="toc-text">1、安装</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-%E5%8D%95%E6%9C%BA%E5%AE%89%E8%A3%85"><span class="toc-text">1.1 单机安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85"><span class="toc-text">1.2 集群安装</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">2、相关概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E5%9C%A8Java%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="toc-text">3、在Java中使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="toc-text">3.1 引入依赖</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-%E7%94%9F%E4%BA%A7%E8%80%85%E5%8F%91%E9%80%81%E6%B6%88%E6%81%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0"><span class="toc-text">3.2 生产者发送消息的基本实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-%E6%B6%88%E8%B4%B9%E8%80%85%E6%B6%88%E8%B4%B9%E6%B6%88%E6%81%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0"><span class="toc-text">3.3  消费者消费消息的基本实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%B8%8ESpringBoot%E7%BB%93%E5%90%88"><span class="toc-text">三、与SpringBoot结合</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background: black"><div id="footer-wrap"><div class="footer_custom_text">Copyright © 2021 - 2023 <a href="https://yagote.github.io/">虾壳</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
