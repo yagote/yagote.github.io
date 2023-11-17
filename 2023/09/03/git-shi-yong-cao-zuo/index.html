@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yagote.github.io/img/favicon.png">
 <meta property="article:published_time" content="2023-09-03T15:52:56.000Z">
-<meta property="article:modified_time" content="2023-10-17T12:17:43.604Z">
+<meta property="article:modified_time" content="2023-11-17T16:01:33.171Z">
 <meta property="article:author" content="虾壳">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -58,7 +58,7 @@
   isHome: false,
   isHighlightShrink: undefined,
   isToc: true,
-  postUpdate: '2023-10-17 20:17:43'
+  postUpdate: '2023-11-18 00:01:33'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -162,20 +162,146 @@
       }
     }
     detectApple()
-    })(window)</script></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="虾壳"><span class="site-name">虾壳</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Git实用操作</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-03T15:52:56.000Z" title="发表于 2023-09-03 23:52:56">2023-09-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-17T12:17:43.604Z" title="更新于 2023-10-17 20:17:43">2023-10-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Git/">Git</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">280</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Git实用操作"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h3 id="1、分支重命名后本地项目修改（这里是main改为master）"><a href="#1、分支重命名后本地项目修改（这里是main改为master）" class="headerlink" title="1、分支重命名后本地项目修改（这里是main改为master）"></a>1、分支重命名后本地项目修改（这里是main改为master）</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git branch -m main master</span><br><span class="line">git fetch origin</span><br><span class="line">git branch -u origin/master master</span><br><span class="line">git remote set-head origin -a</span><br></pre></td></tr></table></figure>
+    })(window)</script></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="虾壳"><span class="site-name">虾壳</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Git实用操作</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-03T15:52:56.000Z" title="发表于 2023-09-03 23:52:56">2023-09-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-17T16:01:33.171Z" title="更新于 2023-11-18 00:01:33">2023-11-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Git/">Git</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Git实用操作"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="1、分支重命名后本地项目修改（这里是main改为master）"><a href="#1、分支重命名后本地项目修改（这里是main改为master）" class="headerlink" title="1、分支重命名后本地项目修改（这里是main改为master）"></a>1、分支重命名后本地项目修改（这里是main改为master）</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git branch -m main master</span><br><span class="line">git fetch origin</span><br><span class="line">git branch -u origin/master master</span><br><span class="line">git remote set-head origin -a</span><br></pre></td></tr></table></figure>
 
-<h3 id="2、Github仓库重命名后本地如何提交"><a href="#2、Github仓库重命名后本地如何提交" class="headerlink" title="2、Github仓库重命名后本地如何提交"></a>2、Github仓库重命名后本地如何提交</h3><p>本仓库路径下执行：git remote -v，显示只有一个：origin</p>
+<h2 id="2、Github仓库重命名后本地如何提交"><a href="#2、Github仓库重命名后本地如何提交" class="headerlink" title="2、Github仓库重命名后本地如何提交"></a>2、Github仓库重命名后本地如何提交</h2><p>本仓库路径下执行：git remote -v，显示只有一个：origin</p>
 <p>在本地仓库删除远程仓库：git remote rm origin</p>
 <p>本地添加远程仓库地址：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add README.md</span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span></span><br><span class="line">git remote add origin  http://XX/test.git</span><br></pre></td></tr></table></figure>
 
 <p>提交：git push origin master    </p>
-<h3 id="3、github文件夹有白色箭头且无法打开的解决方法"><a href="#3、github文件夹有白色箭头且无法打开的解决方法" class="headerlink" title="3、github文件夹有白色箭头且无法打开的解决方法"></a>3、github文件夹有白色箭头且无法打开的解决方法</h3><ul>
+<h2 id="3、github文件夹有白色箭头且无法打开的解决方法"><a href="#3、github文件夹有白色箭头且无法打开的解决方法" class="headerlink" title="3、github文件夹有白色箭头且无法打开的解决方法"></a>3、github文件夹有白色箭头且无法打开的解决方法</h2><ul>
 <li>clone到本地的这个文件夹中有一个.git的隐藏文件夹,可能内含了一些原始信息,导致将其push到GitHub后会被自动识别成一个子模块。</li>
 <li>解决步骤 在资源管理器“查看”中勾选“隐藏项目”,并删去这一子模块文件夹下的.git隐藏文件夹 执行命令git rm –cached &lt;文件夹名&gt; 执行git add &lt;文件夹名&gt; ……之后的操作一样。</li>
 </ul>
-<h3 id="4、克隆分支"><a href="#4、克隆分支" class="headerlink" title="4、克隆分支"></a>4、克隆分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b 分支名 仓库地址</span><br></pre></td></tr></table></figure>
+<h2 id="4、克隆分支"><a href="#4、克隆分支" class="headerlink" title="4、克隆分支"></a>4、克隆分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b 分支名 仓库地址</span><br></pre></td></tr></table></figure>
 
-<h3 id="5、清理缓存"><a href="#5、清理缓存" class="headerlink" title="5、清理缓存"></a>5、清理缓存</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br></pre></td></tr></table></figure>
+<h2 id="5、清理缓存"><a href="#5、清理缓存" class="headerlink" title="5、清理缓存"></a>5、清理缓存</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br></pre></td></tr></table></figure>
 
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://yagote.github.io">虾壳</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yagote.github.io/2023/09/03/git-shi-yong-cao-zuo/">http://yagote.github.io/2023/09/03/git-shi-yong-cao-zuo/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yagote.github.io" target="_blank">虾壳</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Git/">Git</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/09/11/k8s-chong-yao-ming-ling/" title="k8s重要命令"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">k8s重要命令</div></div></a></div><div class="next-post pull-right"><a href="/2023/08/28/springboot-web-kai-fa-qian-hou-duan-diao-yong-de-yi-xie-wen-ti-shu-li/" title="SpringBoot web开发前后端调用的一些问题梳理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">SpringBoot web开发前后端调用的一些问题梳理</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/07/24/git-ti-jiao-bo-ke-dao-github-shang-bao-cuo-connection-was-reset-errno-10054/" title="Git提交博客到github上报错Connection was reset, errno 10054"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-24</div><div class="title">Git提交博客到github上报错Connection was reset, errno 10054</div></div></a></div><div><a href="/2023/08/12/git/" title="Git"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-12</div><div class="title">Git</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%88%86%E6%94%AF%E9%87%8D%E5%91%BD%E5%90%8D%E5%90%8E%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%BF%AE%E6%94%B9%EF%BC%88%E8%BF%99%E9%87%8C%E6%98%AFmain%E6%94%B9%E4%B8%BAmaster%EF%BC%89"><span class="toc-text">1、分支重命名后本地项目修改（这里是main改为master）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Github%E4%BB%93%E5%BA%93%E9%87%8D%E5%91%BD%E5%90%8D%E5%90%8E%E6%9C%AC%E5%9C%B0%E5%A6%82%E4%BD%95%E6%8F%90%E4%BA%A4"><span class="toc-text">2、Github仓库重命名后本地如何提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81github%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9C%89%E7%99%BD%E8%89%B2%E7%AE%AD%E5%A4%B4%E4%B8%94%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">3、github文件夹有白色箭头且无法打开的解决方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%85%8B%E9%9A%86%E5%88%86%E6%94%AF"><span class="toc-text">4、克隆分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E6%B8%85%E7%90%86%E7%BC%93%E5%AD%98"><span class="toc-text">5、清理缓存</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background: black"><div id="footer-wrap"><div class="footer_custom_text">Copyright © 2021 - 2023 <a href="https://yagote.github.io/">虾壳</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+
+
+<h2 id="6、Git的撤销操作详解"><a href="#6、Git的撤销操作详解" class="headerlink" title="6、Git的撤销操作详解"></a>6、Git的撤销操作详解</h2><h3 id="6-1-常用撤销操作"><a href="#6-1-常用撤销操作" class="headerlink" title="6.1 常用撤销操作"></a>6.1 常用撤销操作</h3><p><strong>单个文件撤销：</strong></p>
+<ol>
+<li><p>撤销工作区单个文件修改</p>
+<p><code>git checkout &lt;file&gt;</code></p>
+<p>将文件恢复到最近一次提交的状态，撤销本地未提交的修改。</p>
+</li>
+<li><p>撤销单个文件暂存</p>
+<p><code>git reset HEAD &lt;file&gt;</code></p>
+<p>从暂存区移除指定文件，但不影响本地工作副本。</p>
+</li>
+<li><p>撤销工作区和暂存单个文件修改</p>
+<p><code>git checkout HEAD &lt;file&gt;</code></p>
+<p>撤销文件在工作区和暂存区的所有修改，使文件内容回到最新的提交状态。</p>
+</li>
+</ol>
+<p><strong>所有的文件撤销：</strong></p>
+<ol>
+<li><p>撤销最近一次提交</p>
+<p><code>git commit --amend</code></p>
+<p>修改最后一次提交的信息。</p>
+</li>
+<li><p>撤销最近一次暂存操作</p>
+<p><code>git reset HEAD</code></p>
+<p>从暂存区撤销，但不影响工作空间。</p>
+</li>
+<li><p>撤销最近的工作空间修改</p>
+<p><code>git reset --hard HEAD</code></p>
+<p>回滚到最新提交，撤销所有未提交的修改。 </p>
+</li>
+<li><p>回滚到任意版本</p>
+<p><code>git reset --hard &lt;commit&gt;</code></p>
+<p>将HEAD恢复到指定commit，撤销更改操作。</p>
+</li>
+</ol>
+<h3 id="6-2-工作区和暂存区"><a href="#6-2-工作区和暂存区" class="headerlink" title="6.2 工作区和暂存区"></a>6.2 工作区和暂存区</h3><p>工作区（Working Directory）：</p>
+<ul>
+<li><p>是项目本地目录下的实际文件，这些文件可以被编辑，但未经提交不会被保存到仓库中。</p>
+</li>
+<li><p>每一个文件都处于三种状态之一：已修改（modified）、已暂存（staged）或未修改（unmodified）。</p>
+</li>
+</ul>
+<p>暂存区（Staging Area/Index）： </p>
+<ul>
+<li><p>是git与工作区之间的缓冲区，为下一步提交做准备。</p>
+</li>
+<li><p>将工作区己修改的文件内容添加到暂存区后，这些变更才会纳入下一次提交操作当中。</p>
+</li>
+</ul>
+<p>两者的关系和作用：</p>
+<ul>
+<li><p>开发人员在工作区修改文件。</p>
+</li>
+<li><p>运行<code>git add</code>将文件添加到暂存区，摘要修改内容。</p>
+</li>
+<li><p>运行<code>git commit</code>将暂存区内容提交到仓库的当前分支。</p>
+</li>
+</ul>
+<p>所以：</p>
+<ul>
+<li><p>工作区是实际文件修改操作的地方。</p>
+</li>
+<li><p>暂存区是准备提交的中间区域，把将要提交的修改从工作区提取出来使之成为完整的变化提交。</p>
+</li>
+</ul>
+<blockquote>
+<p>git add 命令将文件从工作区提交到暂存区。<br>git commit命令用于将暂存区中的文件修改正式提交到仓库本地分支。</p>
+</blockquote>
+<h3 id="6-3-撤销命令中-lt-file-gt-介绍"><a href="#6-3-撤销命令中-lt-file-gt-介绍" class="headerlink" title="6.3 撤销命令中&lt;file&gt;介绍"></a>6.3 撤销命令中<code>&lt;file&gt;</code>介绍</h3><ul>
+<li><p><file>表示你需要撤销的具体文件，可以是单个文件或者多个文件名用空格隔开。</p>
+</li>
+<li><p>对于具体文件名,需要包含文件后缀。比如:</p>
+</li>
+</ul>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test.py</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">README</span>.</span></span>md</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果是路径下的文件，可以使用相对路径或绝对路径指定:</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.<span class="regexp">/src/m</span>ain.js</span><br><span class="line"><span class="regexp">/Users/</span>name<span class="regexp">/project/</span><span class="keyword">file</span>.txt</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通配符可以用于撤销目录下的所有文件:</li>
+</ul>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">images/*<span class="string">.jpg</span> </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>无文件名默认为当前目录下的所有文件:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD </span><br></pre></td></tr></table></figure>
+
+<p>所以在git撤销命令中:</p>
+<ul>
+<li><file>位置需要填写具体文件名包含后缀或者路径</li>
+<li>支持通配符和不填写默认当前目录等情况</li>
+<li>保证清楚指定了要撤销的特定文件或文件组</li>
+</ul>
+<h2 id="7、删除远程仓库地址"><a href="#7、删除远程仓库地址" class="headerlink" title="7、删除远程仓库地址"></a>7、删除远程仓库地址</h2><ol>
+<li><strong>查看当前所有远程地址</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>删除指定远程地址</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rm origin</span><br></pre></td></tr></table></figure>
+
+<p>替换origin为要删除的远程地址名。</p>
+<ol start="3">
+<li><strong>更新本地仓库配置</strong> </li>
+</ol>
+<p>删除.git/config文件中的对应远程地址段落。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[remote <span class="string">&quot;origin&quot;</span>]</span><br><span class="line">    url = git@github.com:username/repo.git</span><br><span class="line">    fetch = +refs/heads/*:refs/remotes/origin/*</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><strong>推送删除</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><strong>删除缓存记录</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote prune origin</span><br></pre></td></tr></table></figure>
+
+<p>通过以上步骤可以完成远程仓库的删除操作，包括本地和远程端的连接信息。之后就不会再与之前的远程仓库进行同步操作了。如果需要重连其他仓库，可以添加新的远程地址。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://yagote.github.io">虾壳</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yagote.github.io/2023/09/03/git-shi-yong-cao-zuo/">http://yagote.github.io/2023/09/03/git-shi-yong-cao-zuo/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yagote.github.io" target="_blank">虾壳</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Git/">Git</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/09/11/k8s-chong-yao-ming-ling/" title="k8s重要命令"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">k8s重要命令</div></div></a></div><div class="next-post pull-right"><a href="/2023/08/28/springboot-web-kai-fa-qian-hou-duan-diao-yong-de-yi-xie-wen-ti-shu-li/" title="SpringBoot web开发前后端调用的一些问题梳理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">SpringBoot web开发前后端调用的一些问题梳理</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/07/24/git-ti-jiao-bo-ke-dao-github-shang-bao-cuo-connection-was-reset-errno-10054/" title="Git提交博客到github上报错Connection was reset, errno 10054"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-24</div><div class="title">Git提交博客到github上报错Connection was reset, errno 10054</div></div></a></div><div><a href="/2023/08/12/git/" title="Git"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-12</div><div class="title">Git</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%88%86%E6%94%AF%E9%87%8D%E5%91%BD%E5%90%8D%E5%90%8E%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%BF%AE%E6%94%B9%EF%BC%88%E8%BF%99%E9%87%8C%E6%98%AFmain%E6%94%B9%E4%B8%BAmaster%EF%BC%89"><span class="toc-text">1、分支重命名后本地项目修改（这里是main改为master）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81Github%E4%BB%93%E5%BA%93%E9%87%8D%E5%91%BD%E5%90%8D%E5%90%8E%E6%9C%AC%E5%9C%B0%E5%A6%82%E4%BD%95%E6%8F%90%E4%BA%A4"><span class="toc-text">2、Github仓库重命名后本地如何提交</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81github%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9C%89%E7%99%BD%E8%89%B2%E7%AE%AD%E5%A4%B4%E4%B8%94%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">3、github文件夹有白色箭头且无法打开的解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%85%8B%E9%9A%86%E5%88%86%E6%94%AF"><span class="toc-text">4、克隆分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E6%B8%85%E7%90%86%E7%BC%93%E5%AD%98"><span class="toc-text">5、清理缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81Git%E7%9A%84%E6%92%A4%E9%94%80%E6%93%8D%E4%BD%9C%E8%AF%A6%E8%A7%A3"><span class="toc-text">6、Git的撤销操作详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E5%B8%B8%E7%94%A8%E6%92%A4%E9%94%80%E6%93%8D%E4%BD%9C"><span class="toc-text">6.1 常用撤销操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E5%B7%A5%E4%BD%9C%E5%8C%BA%E5%92%8C%E6%9A%82%E5%AD%98%E5%8C%BA"><span class="toc-text">6.2 工作区和暂存区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E6%92%A4%E9%94%80%E5%91%BD%E4%BB%A4%E4%B8%AD-lt-file-gt-%E4%BB%8B%E7%BB%8D"><span class="toc-text">6.3 撤销命令中&lt;file&gt;介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E5%88%A0%E9%99%A4%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%9C%B0%E5%9D%80"><span class="toc-text">7、删除远程仓库地址</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background: black"><div id="footer-wrap"><div class="footer_custom_text">Copyright © 2021 - 2023 <a href="https://yagote.github.io/">虾壳</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
