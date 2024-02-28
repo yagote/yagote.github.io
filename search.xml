@@ -204,6 +204,7 @@
         <tag>JSON</tag>
         <tag>Ajax</tag>
         <tag>jQuery</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -369,8 +370,8 @@
         <category>前端教程</category>
       </categories>
       <tags>
+        <tag>教程</tag>
         <tag>JavaScript</tag>
-        <tag>JavaScript教程</tag>
       </tags>
   </entry>
   <entry>
@@ -1214,6 +1215,21 @@
         <tag>SpringBoot</tag>
         <tag>Spring Security</tag>
         <tag>项目</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringBoot整合Thymeleaf实现增删改查</title>
+    <url>/2024/02/28/springboot-zheng-he-thymeleaf-shi-xian-zeng-shan-gai-cha/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Java</category>
+        <category>Java项目</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>MyBatis</tag>
+        <tag>SpringBoot</tag>
+        <tag>Thymeleaf</tag>
       </tags>
   </entry>
 </search>
