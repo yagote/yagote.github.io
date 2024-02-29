@@ -1229,7 +1229,20 @@
         <tag>Java</tag>
         <tag>MyBatis</tag>
         <tag>SpringBoot</tag>
+        <tag>项目</tag>
         <tag>Thymeleaf</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java知识点整理</title>
+    <url>/2024/02/29/java-zhi-shi-dian-zheng-li/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Java</category>
+        <category>面试题</category>
+      </categories>
+      <tags>
+        <tag>八股文</tag>
       </tags>
   </entry>
 </search>
