@@ -1245,4 +1245,30 @@
         <tag>八股文</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Go</title>
+    <url>/2024/05/06/go/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+        <tag>Go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java报表</title>
+    <url>/2024/05/06/java-bao-biao/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Java</category>
+        <category>Java教程</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+        <tag>Java</tag>
+        <tag>报表</tag>
+      </tags>
+  </entry>
 </search>
